@@ -10,35 +10,31 @@
 
 ### 三级路由框架
 
-| 任务类型 | 典型场景 | 推荐模型 | 理由 |
-|---------|---------|---------|------|
-| **重任务** | 跨模块重构、架构设计、疑难 Bug 排查 | Claude Opus 4.6 / GPT-5 / **Codex CLI**（大批量并行生成） | 需要深层推理，方向错误的代价极高；Codex CLI 额外适合需要同时跑多个子智能体的批量任务 |
-| **中任务** | 常规功能实现、单元测试编写、代码审查 | Claude Sonnet 4.6 / GPT-4o | 覆盖 80% 日常任务，性价比最优 |
-| **轻任务** | 文件检索、日志分析、格式转换、Linting 修复、子智能体探索 | Claude Haiku 4.5 / Gemini Flash / 本地模型 | 速度快、成本低，这类任务不需要深层推理 |
+| 任务类型 | 典型场景 | 推荐模型层 | 理由 |
+|---------|---------|-----------|------|
+| **重任务** | 跨模块重构、架构设计、疑难 Bug 排查 | Claude Opus / GPT-5 级旗舰模型 | 需要深层推理，方向错误的代价极高 |
+| **中任务** | 常规功能实现、单元测试编写、代码审查 | Sonnet / GPT-4.x / GPT-4o 一类中档模型 | 覆盖大多数日常任务，性价比最优 |
+| **轻任务** | 文件检索、日志分析、格式转换、Linting 修复、探索子任务 | Haiku / Flash / 本地模型 | 速度快、成本低，这类任务通常不需要深层推理 |
 
 ### 各工具的模型切换操作
 
-**Claude Code（CLI）——固化子智能体模型**
+**Claude Code（CLI）**
 ```bash
-# ~/.claude/settings.json
-{
-  "model": "claude-sonnet-4-6",           # 主会话使用 Sonnet
-  "CLAUDE_CODE_SUBAGENT_MODEL": "claude-haiku-4-5-20251001"  # 子智能体固定用 Haiku
-}
+# 重任务：显式切到旗舰模型
+claude --model opus "先做架构方案，再给我实施计划"
 
-# 效果：主会话保持中等推理能力，
-# 子智能体（文件探测、代码搜索）使用轻量模型
-# 整体 Token 消耗可降低 60-80%
+# 日常实现：默认使用中档模型
+claude --model sonnet "按已确认计划实现这个功能"
 ```
+
+**注意**：不要在正文里虚构某个“固定的子智能体模型配置键”。Claude Code 当前官方可直接确认的是 `--model`，以及 subagents 的存在；至于子智能体是否单独绑定模型，应以当期官方文档为准。
 
 **Cursor**
 ```
-# 日常使用：保持 Auto 模式（Cursor 自动路由）
-# 重任务：手动切换到特定的旗舰模型
-# 操作：在 Composer 右下角的模型选择器切换
-
-# 注意：Max Mode 会在标准 API 费率上叠加 20% 加价
-# 只在真正需要时开启，不要默认开启
+# 日常使用：保持 Auto，或手动选中档模型
+# 重任务：显式切到旗舰模型
+# 轻任务：Ask + 更轻量模型
+# 具体计费和可见模型以 Cursor 当前官方 pricing / model chooser 为准
 ```
 
 **Aider（CLI）**
@@ -52,8 +48,23 @@ aider --model claude-sonnet-4-6 src/features/
 # 轻任务：使用 Haiku 或本地模型
 aider --model claude-haiku-4-5 src/utils/
 
-# 混合工作流：先用 Opus 规划，再用 Sonnet 执行
-# （两个独立的 Aider 会话）
+# 还可以把弱模型和编辑模型分开
+aider --model claude-sonnet-4-6 \
+      --weak-model claude-haiku-4-5 \
+      --editor-model claude-haiku-4-5 src/utils/
+```
+
+**Codex CLI**
+```bash
+# 重任务：显式用旗舰模型
+codex --model gpt-5 "先做架构诊断，再给出重构路径"
+
+# 一次性执行任务：也可以在 exec 里显式设模型
+codex exec --model gpt-5 --ephemeral "按计划修改 src/auth/"
+
+# 轻任务：如果只是本地探索、格式转换或快速辅助，
+# 可以考虑更轻的模型或本地 provider（以当前环境支持为准）
+codex --oss "解释这个错误日志"
 ```
 
 **本地模型的使用场景**
@@ -105,31 +116,18 @@ aider --model ollama/qwen2.5-coder:7b
 - 生成 README
 - 写简单的 CRUD 接口
 
-**真实后果**：以 Claude 定价为例：
-- Opus 输出 Token：$25/百万
-- Sonnet 输出 Token：$15/百万
-- Haiku 输出 Token：$1.25/百万
+**真实后果**：旗舰模型通常更贵，也更容易更快吃掉订阅额度或 API 预算。把它长期用于重命名、格式化、README 这类任务，往往是最先失控的成本项。
 
-用 Opus 写一个简单的 CRUD 接口（约 2000 输出 Token）：$0.05
-用 Haiku 写同样的接口：$0.0025
-**20 倍的价格差距，对于这类任务，输出质量几乎没有差异。**
-
-有 Cursor 用户报告，将日常任务从旗舰模型切换到 Sonnet 后，可以连续高强度使用 8 小时而不触发额度限制；而使用旗舰模型，同样的工作量可能在 2-3 小时内就耗尽额度。
+安全写法是：
+- 复杂规划、跨模块重构、方向不明确的问题，才升级到旗舰模型
+- 常规实现默认留在中档模型
+- 检索、格式转换、样板生成尽量下沉到轻量模型或本地模型
 
 ### 错误二：不理解推理 Token 的计费方式
 
-推理模型（如 Claude 的 extended thinking 模式、OpenAI 的 o3）在给出最终答案前，会生成大量的隐性思维链（Chain-of-Thought）。这些推理过程全部按**输出 Token 价格**计费。
+更准确的说法是：更强的推理模式通常会带来更高延迟和更多 token 消耗，但具体计费方式要看当期 provider 的官方说明，不能把某一家当前的计费细节硬写成普遍规律。
 
-**Token 消耗乘数**：
-
-| 任务复杂度 | 典型场景 | Token 消耗乘数 |
-|-----------|---------|--------------|
-| 轻度 | 1-2 次工具调用 | 2-3x |
-| 中度 | 3-5 次工具调用 | 5-10x |
-| 重度 | 多步推理+验证 | 10-30x |
-| 编排 | 多智能体协作 | 20-50x |
-
-**错误场景**：在推理模式下要求 AI 修改变量名。AI 可能生成 1000 个推理 Token 来"思考"这个简单问题，然后输出 50 个实际有用的 Token。你为 1050 个 Token 付费，但真正有价值的只有 50 个。
+**错误场景**：让高推理模式处理“改变量名”“改文案”“补注释”这类简单任务。即使结果正确，推理开销通常也不值得。
 
 ### 错误三：混淆"旗舰模型"和"正确使用"
 
@@ -167,10 +165,7 @@ aider --model ollama/qwen2.5-coder:7b
 - 中任务（功能开发、代码审查）：60%
 - 轻任务（文件检索、格式化、测试模板）：30%
 
-如果全部使用 Opus：成本 = 100% × Opus 价格
-如果按任务路由：成本 ≈ 10% × Opus + 60% × Sonnet + 30% × Haiku
-
-以实际 Token 价格计算，按任务路由通常能节省 50-70% 的 API 成本，同时在重任务上保持最高质量。
+如果全部使用旗舰模型，成本一定向最贵的一档靠拢；如果按任务分层，通常能显著降低预算压力，同时把最贵的模型留给真正需要它的场景。
 
 ---
 
@@ -191,17 +186,16 @@ aider --model claude-sonnet-4-6 \
       src/auth/
 ```
 
-### OpenRouter 接入低成本模型
+### OpenRouter / 本地 provider 接入低成本模型
 
 对于不需要高质量输出的轻任务，可以通过 OpenRouter 接入性价比更高的模型：
 
 ```bash
-# 在 Aider 中使用 OpenRouter 接入 DeepSeek
+# 在 Aider 中用 OpenRouter 接入低成本模型
 aider --model openrouter/deepseek/deepseek-coder \
       src/utils/
 
-# DeepSeek Coder 在代码任务上表现接近 GPT-4 级别，
-# 但成本只有 Opus 的约 2%
+# 低成本模型适合轻任务，不适合直接接手关键架构决策
 ```
 
 ### 为团队建立模型路由规范
@@ -245,6 +239,6 @@ aider --model openrouter/deepseek/deepseek-coder \
 
 2. **本地模型的实际可用性边界**：Qwen2.5-Coder 7B 或 DeepSeek-Coder 6.7B 在哪些类型的任务上可以替代云端 API？量化准确率和速度的权衡？
 
-3. **Claude Code 子智能体模型配置的实测效果**：将 CLAUDE_CODE_SUBAGENT_MODEL 设置为 Haiku 后，在真实项目中，总 Token 消耗和输出质量的实际变化是多少？"60-80% 节省"这个数据是怎么来的？
+3. **工具内模型分工的真实边界**：Claude Code 的 subagents、Aider 的 `weak-model` / `editor-model`、Codex 的主模型选择，在真实项目里分别适合承担什么工作？哪些是官方支持，哪些只是用户习惯？
 
 4. **推理 Token 的消耗分布**：在启用 extended thinking 模式的 Claude 中，推理 Token 占总 Token 消耗的比例在不同任务类型下是多少？何时推理 Token 的额外成本是值得的？

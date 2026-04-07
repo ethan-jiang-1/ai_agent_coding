@@ -21,11 +21,11 @@
 
 **Claude Code（CLI）**
 ```bash
-# 在 CLI 中，使用上箭头键找到之前的提示词
+# 在 CLI 中，用 shell history 找回原始提示词
 # 或者直接重新输入一个更完整的版本
 
-# 如果 AI 已经修改了文件，先撤销
-git checkout -- src/auth/login.py
+# 如果 AI 已经修改了文件，先精确撤销目标文件
+git restore --source=HEAD --worktree src/auth/login.py
 
 # 然后重新发送优化后的提示词（一次性包含所有约束）
 # 而不是追加"你忘了处理 null 值"
@@ -35,7 +35,7 @@ git checkout -- src/auth/login.py
 - 在 Composer 中，找到最初的提示词消息
 - 点击消息旁边的编辑图标（铅笔）
 - 修改提示词内容，点击重新运行
-- Cursor 会自动撤销之前基于旧提示词的所有修改
+- 如果上一次 agent 已经改了文件，用 checkpoint 或 git 先回到正确边界，再重跑
 
 **Aider（CLI）**
 ```bash
@@ -46,38 +46,26 @@ git checkout -- src/auth/login.py
 # 而不是追加纠正
 ```
 
-**Cline / Roo Code**
-- 点击对话消息旁边的"Edit"按钮
-- 修改原始提示词
-- 点击"Retry"重新运行
-
 **Codex CLI**
 ```bash
-# Codex CLI 的每次调用天然就是独立会话，"Edit & Rerun"等价于重新运行一条优化后的命令
+# 一次性工作流：直接重跑一条更完整的命令
 
 # 第一次（方向错了）
-codex "帮我写一个用户登录函数"
-# AI 修改了文件但遗漏了 null 处理
+codex exec --ephemeral -s workspace-write "帮我写一个用户登录函数"
 
-# 正确做法：撤销文件修改，重新运行更完整的命令
-git checkout -- src/auth/login.ts
-codex "写一个用户登录函数，必须处理 username/password 为 null 或空字符串的情况，
-       返回 {error: 'invalid_credentials'}，密码错误不暴露具体原因"
-# 这就是 Codex CLI 的 Edit & Rerun——直接运行新命令，不存在"追加纠正"的概念
+# 如果 AI 修改了文件但遗漏了 null 处理，先回滚目标文件
+git restore --source=HEAD --worktree src/auth/login.ts
 
-# 利用 history 快速找回上次命令并修改
-# ~/.codex/config.json 控制历史保存行为：
-# {
-#   "history": {
-#     "maxSize": 1000,      # 保留最多 1000 条历史
-#     "saveHistory": true,  # 开启跨会话历史持久化
-#     "sensitivePatterns": ["password", "api_key"]  # 过滤敏感内容不写入历史
-#   }
-# }
-# 在终端中用上箭头键找到上次命令，直接修改后回车——这是 CLI 原生的 Edit & Rerun
+# 然后重跑更完整的命令
+codex exec --ephemeral -s workspace-write "写一个用户登录函数，必须处理 username/password 为 null 或空字符串的情况，
+返回 {error: 'invalid_credentials'}，密码错误不暴露具体原因"
+
+# 如果你在交互式 Codex session 里工作，方向错了也不要不断追加纠正，
+# 而是回到原始约束，必要时新开 session，或用 `codex fork --last`
+# 从更干净的分支重新执行
 ```
 
-**注意**：Codex CLI 的架构天然避免了"追加纠正"反模式——每次 `codex` 命令是新会话，没有持续对话，所以不存在在同一上下文里追加第 N 条纠正的可能。代价是需要通过 history 或手动记录来传递跨命令的上下文。
+**注意**：Codex CLI 并不是“只有一次性命令、没有持续对话”。它既支持 `exec --ephemeral` 的重跑，也支持交互式 session、`resume`、`fork`。本章要强调的是：无论你用哪条工作流，方向错了都应回到原始约束重跑，而不是在脏上下文里一条条追加纠正。
 
 ### 什么时候追加是可以的
 
@@ -204,11 +192,11 @@ prompts/
 # 检查 AI 修改了哪些文件
 git diff --name-only
 
-# 撤销所有未提交的修改
-git checkout .
+# 精确撤销特定文件
+git restore --source=HEAD --worktree src/auth/login.py
 
-# 或者只撤销特定文件
-git checkout -- src/auth/login.py
+# 如果确实要批量撤销，先确认 diff，再按目录或文件粒度恢复
+# 不要下意识用整个仓库范围的粗暴回滚
 ```
 
 ---
@@ -225,7 +213,7 @@ git checkout -- src/auth/login.py
 
 1. **追加纠正 vs 重新提示的输出质量对比**：有没有系统性的实验数据，比较同一任务在"追加 3 次纠正"和"重写原提示词"两种方式下的输出质量？
 
-2. **不同工具的 Edit & Rerun 实现差异**：Cursor 的编辑重运行会自动撤销之前的文件修改吗？Claude Code 的 CLI 是否有类似功能？各工具的实现细节值得深入测试。
+2. **不同工具的 Edit & Rerun 实现差异**：Cursor 的编辑重跑与 checkpoint 如何配合？Claude Code 与 Codex CLI 在“重跑原始约束”时的最省成本路径分别是什么？这些实现细节值得深入测试。
 
 3. **提示词版本管理的最佳实践**：有没有专门的工具或框架来管理 AI 提示词的版本？与代码版本控制的集成方式？
 

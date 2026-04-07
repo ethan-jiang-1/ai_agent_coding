@@ -1,115 +1,292 @@
-# Claude Code 官方核验摘要
+# Claude Code 官方参考手册
 
-最后核验日期：2026-04-07
-工具版本：`Claude Code 2.1.92`
-核验方式：Anthropic 官方文档 + 本机 `claude --help`
+最后核验日期：2026-04-07  
+本机版本：`Claude Code 2.1.92`
 
-## 官方来源
+## 1. 参考定位
 
-- Claude Code 文档总入口：`https://docs.anthropic.com/en/docs/claude-code`
-- Memory：`https://docs.anthropic.com/en/docs/claude-code/memory`
-- Settings：`https://docs.anthropic.com/en/docs/claude-code/settings`
-- Subagents：`https://docs.anthropic.com/en/docs/claude-code/sub-agents`
-- Common workflows：`https://docs.anthropic.com/en/docs/claude-code/common-workflows`
-- 本机帮助：
-  - `claude --help`
-  - `claude agents --help`
-  - `claude mcp --help`
+这份文件用于约束 `round1` 的写法，尤其是：
 
-## 已确认事实
+- 不把 Claude Code 的术语和其他工具混用
+- 不把记忆、规则、session persistence 混成一层
+- 不把某个 UI 按钮或快捷键的印象写成“产品本质”
 
-### 1. `CLAUDE.md`、`.claude/rules/`、auto memory 都是正式能力
+证据等级：
 
-- 官方 memory 文档明确有：
-  - `CLAUDE.md`
-  - `.claude/rules/`
-  - auto memory
-- `CLAUDE.md` 是 Claude Code 的正式指令文件，不是社区约定。
+- `A 级`：Anthropic 官方文档正文或本机 CLI 帮助直接核验
+- `B 级`：官方搜索摘要或官方页面标题能确认方向，但当前抓取未逐行展开
 
-### 2. auto memory 有明确存储路径和加载边界
+Claude Code 当前大部分关键结论都能做到 `A 级`。
 
-- 官方文档给出项目级 memory 路径：
-  - `~/.claude/projects/<project>/memory/`
-- 目录入口文件为：
-  - `MEMORY.md`
-- 官方文档写明：
-  - 每次会话启动时会加载 `MEMORY.md` 的前 200 行或前 25KB
-- 同一 git 仓库内的 worktree 和子目录共享同一 auto memory 目录。
+## 2. 官方来源
 
-### 3. `/memory` 是正式命令
+### A 级：Anthropic 官方文档
 
-- 官方 memory 文档写明 `/memory` 可：
-  - 列出当前 session 已加载的 `CLAUDE.md` / `CLAUDE.local.md` / rules
-  - 开关 auto memory
-  - 打开 memory 目录
+- `https://docs.anthropic.com/en/docs/claude-code`
+- `https://code.claude.com/docs/en/memory`
+- `https://code.claude.com/docs/en/permission-modes`
+- `https://docs.anthropic.com/en/docs/claude-code/settings`
+- `https://docs.anthropic.com/en/docs/claude-code/sub-agents`
+- `https://docs.anthropic.com/en/docs/claude-code/common-workflows`
 
-### 4. `/compact` 的官方语义比“纯压缩历史”更具体
+### A 级：本机 CLI
 
-- 官方 memory 文档写明：
-  - `CLAUDE.md` 在 `/compact` 后会从磁盘重新读取并重新注入
-- 所以“compact 后规则会丢失”的说法不成立。
+- `claude --version`
+- `claude --help`
+- `claude agents --help`
+- `claude mcp --help`
 
-### 5. Plan 是正式 permission mode
+## 3. 产品边界
 
-- 本机 `claude --help` 显示：
-  - `--permission-mode <mode>`
-  - 可选值包含 `plan`
-- 所以“Plan”在 Claude Code 里不是完全虚构的术语。
-- 但如果正文涉及快捷键、UI 切换入口，仍应以官方文档当前界面描述为准，不要只靠印象写。
+写作时先分层：
 
-### 6. Worktree 是正式工作流
+- `Claude Code` 是工具
+- `Sonnet / Opus / Haiku` 是模型或模型别名
+- `permission mode / subagent / memory / worktree` 是 Claude Code 的工作机制
 
-- 本机帮助有：
-  - `-w, --worktree [name]`
-- 官方 common workflows 也明确推荐 Git worktree 做并行会话。
+不要把 `Claude Code` 当模型名。
 
-### 7. Subagents 是正式能力
+## 4. 会话与持久化
 
-- 官方 subagents 文档明确说明：
-  - 子智能体有独立 context window
-  - 可配置工具权限
-  - 项目级位置：`.claude/agents/`
-  - 用户级位置：`~/.claude/agents/`
-- 本机帮助也有：
-  - `agents` 子命令
-  - `--agents <json>`
+### 4.1 默认就是交互式会话
 
-### 8. MCP 是正式能力，不是旁门插件
+本机 `claude --help` 明确写着：
 
-- 本机帮助有 `mcp` 子命令。
-- `claude mcp --help` 支持：
-  - `add`
-  - `list`
-  - `get`
-  - `remove`
-  - `serve`
+- 默认启动 interactive session
+- `-p/--print` 才是非交互式输出
 
-## 对 round1 的直接修正建议
+### 4.2 会话可以延续、恢复、分叉
 
-### 可以安全写成事实的
+本机帮助直接提供：
 
-- `CLAUDE.md`、`.claude/rules/`、`.claude/agents/`、auto memory 都是官方支持的机制。
-- `plan` 是正式 permission mode。
-- `/memory` 和 `/compact` 是官方内置命令。
-- Git worktree 是官方推荐的并行工作流之一。
+- `-c, --continue`
+- `-r, --resume`
+- `--fork-session`
+- `--session-id`
 
-### 需要谨慎写的
+所以 Claude Code 不是“只会从头开新对话”的工具。
 
-- 某个具体快捷键是否切换 Plan Mode
-- 某个 UI 按钮文案
-- auto memory 会“记录哪些具体类型的信息”的边界
+### 4.3 非交互式路径也是正式能力
 
-### 不应继续写成空泛比喻的
+本机帮助可确认：
 
-- “Claude Code auto-memory 会自动记住一切”
-- “/compact 只是把历史压缩一下”
+- `-p/--print`
+- `--output-format text/json/stream-json`
+- `--input-format text/stream-json`
+- `--json-schema`
+- `--no-session-persistence`
 
-## 建议在正文里采用的表述
+这意味着 Claude Code 既能做交互式 coding，也能做脚本化自动化。
 
-- 若讲状态传递：
-  - “Claude Code 同时提供 `CLAUDE.md`、`.claude/rules/` 和 auto memory 三层长期记忆机制”
-- 若讲多智能体：
-  - “Claude Code 的 subagents 有独立上下文和可配置工具权限”
-- 若讲并行：
-  - “官方明确支持用 Git worktree 跑并行 Claude Code 会话”
+## 5. Memory / 指令体系
 
+### 5.1 `CLAUDE.md` 是正式机制，不是民间约定
+
+官方 memory 文档明确写到：
+
+- `CLAUDE.md`
+- `CLAUDE.local.md`
+- `.claude/rules/`
+- auto memory
+
+因此：
+
+- `CLAUDE.md` 必须被当作正式指令入口
+- 它不是“社区推荐的 README 别名”
+
+### 5.2 auto memory 有明确路径和加载上限
+
+官方 memory 文档可直接确认：
+
+- auto memory 路径：`~/.claude/projects/<project>/memory/`
+- 入口文件：`MEMORY.md`
+- 每次 session 启动只加载 `MEMORY.md` 的前 200 行或前 25KB
+
+这很重要，因为它说明：
+
+- auto memory 不是无限上下文
+- 它是受边界约束的持久记忆层
+
+### 5.3 worktree / 子目录共享同一项目 auto memory
+
+官方 memory 文档明确指出：
+
+- 同一 git 仓库内的 worktree 和子目录共享同一 auto memory 目录
+
+所以如果正文谈“跨 worktree 的经验延续”，这是可以写成事实的。
+
+### 5.4 `/memory` 和 `/compact` 的真实语义
+
+官方 memory 文档明确：
+
+- `/memory` 可以查看当前 session 加载了哪些 `CLAUDE.md` / local / rules / memory
+- `/memory` 还能开关 auto memory、打开 memory 目录
+- `/compact` 后 `CLAUDE.md` 会从磁盘重新读取并重新注入
+
+因此不能写：
+
+- “/compact 只是简单压缩历史，规则也许会丢”
+
+## 6. `.claude/rules/` 与规则分层
+
+官方 settings / memory 文档可确认：
+
+- `.claude/rules/` 是正式规则目录
+- 规则支持 YAML frontmatter
+- 可以用 `paths` 做路径作用域
+
+这意味着 Claude Code 的规则体系不是只有单一 `CLAUDE.md`：
+
+- 全局或项目总则可以写在 `CLAUDE.md`
+- 目录或文件模式相关的精细约束可以写到 `.claude/rules/`
+
+对 `round1` 的直接影响：
+
+- 如果要讲“规则层级”，Claude Code 必须与 Codex 的 `AGENTS.md`、Cursor 的 `.cursor/rules/*.mdc` 区分开写
+
+## 7. Permission Modes
+
+### 7.1 `plan` 是正式 mode
+
+本机 `claude --help` 直接给出：
+
+- `--permission-mode <mode>`
+- 可选值包括 `plan`
+
+所以“Claude Code 有 Plan 模式”这个判断本身是对的，但要写对它的层级：
+
+- 它是 permission mode
+- 不是随便猜的 marketing 说法
+
+### 7.2 当前可见的 mode 枚举
+
+本机帮助当前给出：
+
+- `acceptEdits`
+- `auto`
+- `bypassPermissions`
+- `default`
+- `dontAsk`
+- `plan`
+
+写 `round1` 时：
+
+- 可以说 `plan` 是正式 mode
+- 不要随便编更多未核验的 mode 含义
+
+### 7.3 `plan` 对写作的意义
+
+安全写法：
+
+- “规划阶段可用 `--permission-mode plan` 把 Claude Code 限定在先分析、先拟方案的工作流中”
+
+不安全写法：
+
+- “Claude Code 的 Plan Mode 就是一个固定 UI 标签，所有版本都长一样”
+
+## 8. Worktree
+
+### 8.1 工作树是正式工作流，不是民间技巧
+
+本机帮助明确有：
+
+- `-w, --worktree [name]`
+
+官方 common workflows 也明确推荐：
+
+- 用 Git worktree 跑并行 Claude Code 会话
+
+### 8.2 写作时可以安全表达的事实
+
+- Claude Code 官方支持 worktree 工作流
+- worktree 适合并行任务和隔离实验
+
+但不要写死：
+
+- 某个具体 UI 文案
+- 某个固定目录名是否永远不变
+
+## 9. Subagents
+
+### 9.1 子智能体是正式能力
+
+官方 sub-agents 文档和本机 CLI 共同确认：
+
+- 子智能体存在
+- `claude agents` 是正式子命令
+- `--agents <json>` 是正式 CLI 入口
+
+### 9.2 官方可直接确认的关键点
+
+官方 sub-agents 文档明确：
+
+- 子智能体有独立 context window
+- 可配置工具权限
+- 项目级位置：`.claude/agents/`
+- 用户级位置：`~/.claude/agents/`
+
+这些点足以支撑 `round1` 里关于“多 agent 不是共享一个窗口硬切 prompt”的论述。
+
+### 9.3 对 `round1` 的直接约束
+
+可以写：
+
+- “Claude Code 的 subagents 具备独立上下文与可配置工具权限”
+
+不要写：
+
+- “Claude Code 的子 agent 只是同一个大上下文里分段回复”
+
+## 10. MCP
+
+本机 `claude mcp --help` 明确支持：
+
+- `add`
+- `add-from-claude-desktop`
+- `add-json`
+- `get`
+- `list`
+- `remove`
+- `reset-project-choices`
+- `serve`
+
+这说明：
+
+- MCP 不是旁门插件
+- 它是 Claude Code 的正式集成机制
+
+如果 `round1` 要谈外部工具扩展，Claude Code 这里应当落在 MCP，而不是杜撰私有插件配置键。
+
+## 11. 可以直接写成事实的内容
+
+- `CLAUDE.md`、`CLAUDE.local.md`、`.claude/rules/`、auto memory 都是正式机制
+- `plan` 是正式 permission mode
+- `/memory`、`/compact` 是正式命令
+- Git worktree 是官方支持的并行工作流
+- Claude Code subagents 有独立 context window 和可配置工具权限
+- MCP 有正式 CLI 管理命令
+
+## 12. 必须避免的错误写法
+
+- “Claude Code 会自动记住一切”
+- “/compact 只是压缩聊天记录”
+- “Plan Mode 只是网友起的名字”
+- “subagent 只是同一个 session 里切几次角色扮演”
+
+## 13. 给 `round1` 的推荐话术
+
+### 规划
+
+“Claude Code 可通过 `--permission-mode plan` 先做只读规划，再切到可编辑模式执行。”
+
+### 记忆
+
+“Claude Code 的长期记忆不是单一机制，而是 `CLAUDE.md`、`.claude/rules/` 和 auto memory 的组合。”
+
+### 多 agent
+
+“Claude Code 的 subagents 有独立上下文和独立工具权限，因此适合做并行探索和角色拆分。”
+
+### 持久化
+
+“Claude Code 既支持交互式持续会话，也支持 `--print` 非交互式运行；两者不要混为一谈。”
