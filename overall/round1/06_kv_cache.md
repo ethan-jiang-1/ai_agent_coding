@@ -56,6 +56,17 @@ gemini "修改 src/auth/login.ts 的 null 处理逻辑"
 - 但规则：保持 .cursorrules 内容稳定，不要频繁修改
 - Windsurf 的 Fast Context（RAG 系统）会缓存代码库的语义索引
 
+**Codex CLI**
+```bash
+# Codex CLI 底层调用 OpenAI API，同样支持提示词缓存
+# codex.md（全局规则文件）在每次命令启动时自动加载
+# 保持 codex.md 内容稳定 = 持续命中缓存前缀
+
+# 注意：Codex CLI 每次命令是独立会话
+# 缓存收益主要来自 codex.md 的多次重复加载，而非会话内的历史累积
+# 规则文件越精简、越稳定，每次命令启动的缓存命中率越高
+```
+
 ### 结构化对话模板：稳定在前，变动在后
 
 ```

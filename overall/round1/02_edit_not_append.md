@@ -51,6 +51,34 @@ git checkout -- src/auth/login.py
 - 修改原始提示词
 - 点击"Retry"重新运行
 
+**Codex CLI**
+```bash
+# Codex CLI 的每次调用天然就是独立会话，"Edit & Rerun"等价于重新运行一条优化后的命令
+
+# 第一次（方向错了）
+codex "帮我写一个用户登录函数"
+# AI 修改了文件但遗漏了 null 处理
+
+# 正确做法：撤销文件修改，重新运行更完整的命令
+git checkout -- src/auth/login.ts
+codex "写一个用户登录函数，必须处理 username/password 为 null 或空字符串的情况，
+       返回 {error: 'invalid_credentials'}，密码错误不暴露具体原因"
+# 这就是 Codex CLI 的 Edit & Rerun——直接运行新命令，不存在"追加纠正"的概念
+
+# 利用 history 快速找回上次命令并修改
+# ~/.codex/config.json 控制历史保存行为：
+# {
+#   "history": {
+#     "maxSize": 1000,      # 保留最多 1000 条历史
+#     "saveHistory": true,  # 开启跨会话历史持久化
+#     "sensitivePatterns": ["password", "api_key"]  # 过滤敏感内容不写入历史
+#   }
+# }
+# 在终端中用上箭头键找到上次命令，直接修改后回车——这是 CLI 原生的 Edit & Rerun
+```
+
+**注意**：Codex CLI 的架构天然避免了"追加纠正"反模式——每次 `codex` 命令是新会话，没有持续对话，所以不存在在同一上下文里追加第 N 条纠正的可能。代价是需要通过 history 或手动记录来传递跨命令的上下文。
+
 ### 什么时候追加是可以的
 
 追加纠正并非完全不可用，以下情况是合理的：

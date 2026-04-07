@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:developers.openai.com)",
+      "WebFetch(domain:aider.chat)",
+      "WebFetch(domain:openai.github.io)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(grep -l \"Codex\\\\|codex\" /Users/bowhead/ai_agent_coding/overall/round1/*.md)",
+      "Bash(grep -L \"Codex\\\\|codex\" /Users/bowhead/ai_agent_coding/overall/round1/*.md)"
+    ]
+  }
+}

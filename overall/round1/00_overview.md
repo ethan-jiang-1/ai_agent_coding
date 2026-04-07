@@ -2,7 +2,7 @@
 
 ## 你已经会用了，但还没用好
 
-你知道怎么写 Prompt，知道 Cursor 的 Composer 和 Claude Code 的 Plan Mode，也知道 Aider 的 /add 命令。你用 AI 写代码已经有一段时间了，效率确实提升了。
+你知道怎么写 Prompt，知道 Cursor 的 Composer 和 Claude Code 的 Plan Mode，也知道 Aider 的 /add 命令，甚至用过 Codex CLI 的沙箱跑并发任务。你用 AI 写代码已经有一段时间了，效率确实提升了。
 
 但你也遇到过这些情况：
 
@@ -19,7 +19,7 @@
 
 早期用 ChatGPT 写代码，上下文就是聊天历史——你问，它答，偶尔粘贴一段代码。这个心智模型在 2023 年是够用的。
 
-但现在的 AI Coding 工具已经完全不同了。Claude Code 可以自主读取几十个文件、执行终端命令、调用 MCP 服务器；Cursor 的 Agent 模式可以跨文件修改并自动运行测试；Aider 会在后台构建整个代码库的 AST 图谱。
+但现在的 AI Coding 工具已经完全不同了。Claude Code 可以自主读取几十个文件、执行终端命令、调用 MCP 服务器；Cursor 的 Agent 模式可以跨文件修改并自动运行测试；Aider 会在后台构建整个代码库的 AST 图谱；Codex CLI 能用 OS 级沙箱同时运行多个子智能体并行探索代码库。
 
 **这时候，上下文窗口不再是聊天记录，而是一块高度易失、预算严格受限的计算内存。**
 

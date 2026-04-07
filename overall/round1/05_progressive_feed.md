@@ -67,6 +67,20 @@ aider --read docs/api-spec.md --read CONVENTIONS.md
 make test 2>&1 | aider "修复这些测试失败"
 ```
 
+**Codex CLI**
+```bash
+# 管道传入（与 Claude Code 相同的方式，效果最佳）
+cat error.log | codex "分析根本原因"
+make test 2>&1 | codex "修复这些测试失败"
+
+# 引用特定文件（在提示词中明确指定，AI 会在沙箱内读取）
+codex "参考 src/db/pool.ts 的连接池实现，
+       在 src/db/cache.ts 里实现类似的 Redis 连接池"
+
+# 注意：Codex CLI 不支持 @ 语法，
+# 通过提示词描述 + 沙箱内自主读取来代替
+```
+
 ### 外部文档的正确处理方式
 
 **优先找 llms.txt，而不是 HTML 文档页**

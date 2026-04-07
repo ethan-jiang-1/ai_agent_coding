@@ -123,6 +123,7 @@ paths:
 | Claude Code | CLAUDE.md | .claude/rules/*.md（YAML frontmatter） | SKILL.md |
 | Cursor | .cursorrules 或 .cursor/rules/*.mdc | .mdc 的 globs 字段 | Agent Skills |
 | Aider | CONVENTIONS.md（通过 --read 加载） | 无内置支持，通过 --read 手动加载 | 无内置支持 |
+| Codex CLI | codex.md（项目根目录，启动时自动加载） | 无内置路径匹配，通过提示词指定范围 | 无内置支持 |
 | Gemini CLI | GEMINI.md | JIT 目录扫描（自动加载子目录的 GEMINI.md） | 无内置支持 |
 | Cline | .clinerules | 无内置支持 | Memory Bank 结构 |
 | Windsurf | 工作区规则 | 目录级规则 | 无内置 Skill 概念 |

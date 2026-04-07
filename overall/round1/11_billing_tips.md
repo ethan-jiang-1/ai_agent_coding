@@ -179,6 +179,13 @@ GitHub Copilot 将不同模型的成本差异直接映射为乘数：
   → 使用 OpenRouter 接入低成本模型
     （DeepSeek V3 等，成本约为 Opus 的 2%）
 
+批量代码生成 / 沙箱验证
+  → Codex CLI（BYOK 模式，直接对接 OpenAI API）
+  → 优势：OS 级沙箱允许无人值守执行，适合大批量无监督任务
+  → 成本完全透明，按 Token 实际消耗计费，无订阅迷雾
+  → history 配置（~/.codex/config.json）可控制历史保存，
+    saveHistory: false 可减少历史写入开销
+
 本地轻任务
   → Ollama + Qwen2.5-Coder（完全免费）
   → 格式化、变量重命名、模板生成
