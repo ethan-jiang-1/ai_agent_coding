@@ -60,21 +60,21 @@ Claude Code 的自动化版本，不需要手动管理：
 
 **4. Codex CLI 的状态传递方式**
 
-Codex CLI 不是“完全没有持续会话”，因为它支持 `resume` / `fork`。但当你故意开新 session 或用 `exec --ephemeral` 做批处理时，最稳的跨会话状态传递方式仍然是外部 handoff 文件：
+Codex CLI 不是“完全没有持续会话”，因为它支持 `resume` / `fork`。但当你故意开新 session 或用 `exec --ephemeral` 做批处理时，最稳的跨会话状态传递方式仍然是工作区里的外部 handoff 文件：
 ```bash
 # 每次命令结束前，要求 AI 写入状态文件
 codex exec --ephemeral "完成 OAuth2 中间件实现后，
-把当前状态摘要写入 .codex/handoff.md：
+把当前状态摘要写入 docs/handoffs/codex-handoff.md：
 完成了什么、下一步是什么、有什么注意事项"
 
 # 下次命令开始时，在提示词里引用状态文件
-codex exec --ephemeral "读取 .codex/handoff.md 了解上次进度，
+codex exec --ephemeral "读取 docs/handoffs/codex-handoff.md 了解上次进度，
 继续完成 OAuth2 迁移的下一步：token 刷新逻辑"
 
 # 如果本来就是同一逻辑任务，也可以直接恢复旧 session
 codex resume --last
 
-# 实践建议：把 .codex/handoff.md 纳入版本控制，
+# 实践建议：把 docs/handoffs/codex-handoff.md 纳入版本控制，
 # 让 git log 和状态文件形成完整的工作轨迹
 ```
 

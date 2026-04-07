@@ -181,7 +181,7 @@ prompts/
 - 使用 console.log 调试输出
 - 修改现有的 User 模型结构
 
-参考：@src/auth/register.ts（保持风格一致）
+参考：`src/auth/register.ts`（保持风格一致）
 ```
 
 这种格式让 AI 可以逐条检查，减少遗漏。
