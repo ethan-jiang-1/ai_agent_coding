@@ -1,287 +1,71 @@
 # Deep Research 主题上下文：不同 Coding Agent 的上下文管理习惯研究
 
-## 这个研究要解决什么问题
+这是一份给 Deep Research 的总控入口，不是完整研究说明书。
 
-我想研究的不是某一个模型的底层技术细节本身，而是一个更贴近用户的主题：
+## 总问题
 
-**当人开始长期使用 coding agent 时，应该怎样管理自己和 AI 的对话上下文，才能同时做到两件事：**
+研究主题是：
 
-- 更省钱
-- 更充分发挥模型与 agent 的能力
+**不同 coding agent 中，用户如何通过“上下文管理习惯”同时降低成本并提升效果。**
 
-这个主题的切入点不是“参数”“架构”“跑分”，而是：
+这里说的“上下文管理”，请先按用户能理解的方式理解，不要一上来跑偏到纯技术定义：
 
-- 用户如何发任务
-- 用户如何管理轮次
-- 用户如何管理上下文
-- 用户如何管理长期记忆、项目材料、工具调用、模型档位和工作节奏
+- 用户怎么发第一轮任务
+- 用户怎么管理多轮对话
+- 用户怎么处理长会话
+- 用户怎么放置稳定背景、规则、记忆、大材料
+- 用户怎么决定是否开工具、联网、切模型
 
-换句话说，我要研究的是：
+## 先限定研究对象
 
-**从用户习惯视角看，不同 coding agent 上有哪些被反复验证有效的上下文管理方法。**
+请确认研究对象是 **coding agent**，不是泛泛的 AI chat 产品。
 
-## 研究对象
-
-请至少覆盖这些产品或同类产品：
+优先覆盖这些产品：
 
 - Claude Code
-- Codex / OpenAI Codex CLI / ChatGPT coding workflow
+- Codex / OpenAI Codex / ChatGPT coding workflow
 - Cursor
 - Trae
-- OpenCode 或其他开源 coding agent
-
-如果研究过程中发现下面这些也很有代表性，也可以纳入：
-
+- OpenCode
 - Aider
 - Continue
 - Cline / Roo Code
 - Windsurf
 - Gemini CLI / Gemini Code Assist
 
-## 研究边界
+## 子上下文入口
 
-这不是一份“功能介绍”或“产品测评”。
+- [01_DR_通用上下文管理习惯.md](file:///Users/bowhead/ai_agent_coding/claude_code/result%20/01_DR_通用上下文管理习惯.md)
+- [02_DR_产品机制与上下文承载.md](file:///Users/bowhead/ai_agent_coding/claude_code/result%20/02_DR_产品机制与上下文承载.md)
+- [03_DR_成本_模型_工具_额度策略.md](file:///Users/bowhead/ai_agent_coding/claude_code/result%20/03_DR_成本_模型_工具_额度策略.md)
+- [04_DR_典型任务场景与工作流.md](file:///Users/bowhead/ai_agent_coding/claude_code/result%20/04_DR_典型任务场景与工作流.md)
 
-重点不是回答“谁最好”，而是回答：
-
-- 用户在这些 agent 里，到底是怎样管理 context 的
-- 哪些习惯是通用的
-- 哪些习惯依赖特定产品机制
-- 哪些习惯能降低 token / API / 额度消耗
-- 哪些习惯能让模型更稳定、更少返工、更少丢上下文
-
-## 核心研究问题
-
-请围绕下面这些问题展开：
-
-### 1. 用户眼里的 context 到底是什么
-
-不要只用技术术语定义 context，要从使用者视角解释：
-
-- 当前会话里的消息历史
-- 已打开或已索引的代码文件
-- 项目级说明和规则
-- 长期记忆
-- 外部文档和知识库
-- 工具调用产生的额外上下文
-- 模型切换与推理深度带来的隐性成本
-
-### 2. 不同 coding agent 里，用户最常见的“坏习惯”是什么
-
-例如但不限于：
-
-- 不断补丁式追问
-- 一个任务拆成很多轮才讲清
-- 每个新会话重复贴背景
-- 长会话不压缩也不换新会话
-- 把所有工具和外部能力一直开着
-- 小任务长期使用高成本模型
-- 大材料每次重传
-
-### 3. 不同 coding agent 里，被高手反复使用的“好习惯”是什么
-
-重点寻找那些可以被总结为“人类使用习惯”的东西，例如：
-
-- 回答方向不对时先编辑原任务，而不是继续补丁式追问
-- 相关任务在第一轮合并说清
-- 长会话及时摘要、压缩或开新会话
-- 把稳定背景沉淀为项目说明、记忆文件、规则文件
-- 用模板固定任务结构
-- 区分临时上下文和长期记忆
-- 按任务切模型
-- 关闭不必要的工具、联网、连接器、深度推理
-- 把大材料变成项目常驻背景，而不是反复上传
-- 根据额度策略、高峰时段、价格差异安排工作
-
-### 4. 这些习惯背后的技术机制分别是什么
-
-研究时请把用户习惯和技术原理对应起来，例如：
-
-- context window
-- message history replay
-- RAG / indexing / retrieval
-- project memory / workspace memory
-- prompt caching / prefix reuse / KV cache 的用户层投影
-- tool calling 的 token 成本
-- model pricing tiers
-- session compaction / summarization
-- long-term memory / profile preferences / project instructions
-
-### 5. 哪些习惯是通用的，哪些是产品特定的
-
-每条习惯都尽量判断它属于哪一类：
-
-- 通用习惯：几乎所有 coding agent 都成立
-- Claude / Cursor / Codex 等特定生态更强相关
-- 某个产品独有能力催生的习惯
-
-### 6. 用户真正可执行的动作是什么
-
-不要停留在抽象原则，要尽量落到：
-
-- 用户应该怎么发第一轮消息
-- 用户什么时候该开新会话
-- 用户什么时候该做摘要
-- 用户什么时候该把信息写进规则文件
-- 用户什么时候该切模型
-- 用户什么时候该关工具
-- 用户什么时候该把资料变成项目常驻上下文
-
-## 一个建议的“习惯分类框架”
-
-研究时可以先用这套框架做归纳，再看不同 agent 怎么映射：
-
-### A. 任务布置习惯
-
-- 第一轮把目标、约束、输出格式、验证方式说清
-- 不要靠后续很多轮补任务
-- 回答方向不对时，优先改原任务
-
-### B. 会话管理习惯
-
-- 长会话及时压缩
-- 需要时开启新会话
-- 保留高密度摘要，不保留低密度噪音
-
-### C. 背景管理习惯
-
-- 区分临时上下文与长期规则
-- 把稳定背景移出聊天框
-- 用项目说明、规则文件、记忆系统承载长期内容
-
-### D. 材料管理习惯
-
-- 大材料不要每次重传
-- 用项目知识库、索引、RAG、工作区文件承载稳定资料
-- 只为当前任务补增量信息
-
-### E. 能力开关习惯
-
-- 按任务决定是否联网、是否开工具、是否开深推理
-- 不要把昂贵能力默认常开
-
-### F. 模型与成本习惯
-
-- 按任务强度切模型
-- 区分轻任务、主力任务、高推理任务
-- 理解价格梯度和额度限制
-
-### G. 工作节奏习惯
-
-- 结合额度窗口安排工作
-- 避开高峰时段
-- 为关键时刻准备兜底策略
-
-## 希望重点搜寻的证据来源
-
-请优先用高质量来源，按这个优先级排序：
-
-- 官方文档
-- 官方博客、官方 changelog、官方论坛
-- 产品团队成员的公开说明
-- 高水平用户的实战总结
-- GitHub issue / discussion / RFC
-- 社区长文、案例复盘、播客、访谈
-
-对于社区来源，不要只摘观点，要尽量交叉验证。
-
-## 搜寻时要特别留意的关键词
-
-可以围绕这些关键词组合搜索，不限中英文：
+## 搜索时先用这些中英混合词把方向卡住
 
 - coding agent context management
+- coding agent 用户习惯
+- AI 编程助手 上下文管理
 - agent memory best practices
-- prompt habits for coding agents
-- Claude Code context window memory compact
-- Cursor memory rules project context
-- Codex CLI prompt workflow context
-- RAG codebase indexing coding assistant
-- tool calling token cost coding agents
-- model routing coding agents
-- session summary coding assistant
-- project rules CLAUDE.md Cursor rules system prompt memory
+- coding workflow context
+- project rules / workspace memory / session compact
+- codebase indexing / retrieval / RAG
+- tool calling cost / model routing / long session
 
-## 期望的研究输出格式
+## 优先去这些地方找
 
-请把结果整理成下面几层：
+- 官方文档
+- 官方 blog / changelog / docs
+- 官方论坛、GitHub repo、GitHub issues、GitHub discussions
+- 团队成员公开访谈、X 线程、演讲、播客
+- 高质量用户实战复盘
 
-### 第一层：总论
+如果社区内容很强，优先找那种：
 
-- 从用户习惯视角，context management 为什么是 coding agent 的核心能力
-- 为什么这件事同时关系到成本、效果、稳定性和返工率
+- 有截图、有操作细节
+- 提到具体产品机制
+- 能解释为什么省 token、为什么更稳
+- 不只是泛泛 prompt 技巧
 
-### 第二层：跨产品对照表
+## 这个总文件的作用
 
-至少做一个横向对比表，列出：
-
-- 产品
-- 它如何处理会话历史
-- 它有没有长期记忆
-- 它有没有项目级规则或项目说明
-- 它如何处理大材料 / 代码库索引 / 检索
-- 它是否支持会话压缩
-- 它是否方便切模型
-- 工具调用和联网能力是否容易带来额外成本
-- 对用户最重要的 3～5 个习惯
-
-### 第三层：习惯清单
-
-把最终研究结果提炼成一套“跨 agent 通用习惯 + 产品特定习惯”的清单。
-
-每条习惯都尽量包含：
-
-- 习惯名称
-- 适用范围
-- 用户动作
-- 背后技术原因
-- 成本影响
-- 对效果的影响
-- 在不同 agent 中的对应落点
-
-### 第四层：案例化说明
-
-请至少给出几种典型任务场景：
-
-- 修 bug
-- 大规模重构
-- 读代码库
-- 写文档 / PRD / 设计说明
-- 调 API / 查日志 / 做多工具协作
-
-对每种场景说明：
-
-- 低效的上下文管理方式是什么
-- 更优的习惯化工作流是什么
-
-## 我特别想看到的结论方向
-
-这部分不是结论预设，而是希望你重点验证：
-
-- 很多所谓“会不会用 AI”，本质上就是“会不会管理 context”
-- 真正成熟的用户，不是提示词写得花，而是上下文管理得稳
-- 好的 coding agent 使用方式，本质上是一套习惯系统
-- 技术底层虽然复杂，但用户层可感知的其实是几类稳定习惯
-- 不同产品表面功能不同，但很多高阶习惯可能高度共通
-
-## 最终交付要避免的东西
-
-- 不要只罗列功能
-- 不要只抄官方文档
-- 不要泛泛讲提示词技巧
-- 不要只讲“如何写 prompt”，要讲“如何管理整个协作上下文”
-- 不要只讲 Claude，要尽量做跨产品比较
-
-## 可以直接投喂给 Deep Research 的任务描述
-
-请研究：**不同 coding agent 中，用户如何通过“上下文管理习惯”来同时降低成本并提升效果。**
-
-我关注的不是底层模型参数本身，而是从使用者视角看，人应该如何管理自己与 AI 的协作上下文，包括消息轮次、长会话处理、项目规则、长期记忆、大材料复用、工具开关、模型切换、时间安排和额度策略。
-
-请至少覆盖 Claude Code、Codex、Cursor、Trae、OpenCode 或其他有代表性的开源 coding agent，并比较：
-
-- 哪些习惯是通用的
-- 哪些习惯依赖某个产品机制
-- 哪些习惯直接影响 token / API 成本
-- 哪些习惯能减少返工、提升稳定性、提高模型发挥上限
-
-请优先使用官方文档、官方说明、团队成员公开表述和高质量实战案例，最终输出一份“跨 agent 的上下文管理习惯研究”，包括总论、对照表、习惯清单和典型任务场景案例。
+它只负责定总题、限定对象、给出搜索方向和分流入口。
