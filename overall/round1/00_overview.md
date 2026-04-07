@@ -1,5 +1,7 @@
 # 导言：从 Prompt 工程师到上下文工程师
 
+> 标注说明：`A` = 官方正文 / 本机 CLI 可核验；`B` = 官方仓库 / 官方搜索摘要；`I` = 工程推论。本文工具事实以 `A/B` 为准。
+
 ## 你已经会用了，但还没用好
 
 你知道怎么写 Prompt，知道 Cursor 的 Ask / Agent 工作流、Claude Code 的 `plan` permission mode，也知道 Aider 的 `/add` 和 `/ask`，甚至用过 Codex CLI 的沙箱、`resume` / `fork` 或 `exec`。你用 AI 写代码已经有一段时间了，效率确实提升了。
