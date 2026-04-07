@@ -19,7 +19,7 @@
 
 ## 需要结合使用场景理解
 
-- 习惯 4：Claude Code 没有网页上的 Projects 按钮，但可以用项目目录和 `CLAUDE.md` 承接同类作用
+- 习惯 4：这条本质上是通用习惯，Claude 里对应 Projects，Claude Code 里可以用项目目录和 `CLAUDE.md` 承接同类作用
 - 习惯 6：Claude Code 里本质上也是先判断这次是否真的需要外部能力
 - 习惯 8、9、10：更多是使用节奏和额度策略，不是单个命令本身
 
