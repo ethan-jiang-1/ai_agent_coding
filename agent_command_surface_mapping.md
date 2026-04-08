@@ -200,6 +200,60 @@ Practice: 先规划，后执行
 
 ---
 
+## Fallback Chapter 12 Rule
+
+大多数情况下，应该优先把交互式命令面融合进原有的 11 个习惯，而不是轻易新增章节。
+
+但有一种情况需要例外处理：
+
+- 某个 slash command / interactive command 很重要
+- 它没有合适的 external 命令对应
+- 它也很难自然并入现有 11 个习惯
+
+这时不要硬塞进某一章，也不要为了对齐结构而假装它属于某个已有习惯。
+
+应该新增一个**特殊的第 12 章**，作为交互式命令面的兜底容器。
+
+### Chapter 12 is for
+
+第 12 章只收下面这些内容：
+
+- interactive-only 的重要命令
+- 没有 external CLI 对应物的 slash commands
+- 很难自然并入原 11 个习惯，但对真实工作流很有价值的会话内操作
+- 明显属于“命令面补充能力”，而不是“新习惯”的内容
+
+### Chapter 12 is not for
+
+第 12 章不是用来偷懒的，也不是把本来应该融进原 11 章的内容一股脑扔进去。
+
+以下情况不应该直接开 12：
+
+- 其实能并入某个已有习惯，只是需要多写一句映射说明
+- 其实只是一个已有外部命令的交互式别名
+- 其实只是组合对应，没有必要独立成章
+
+### The decision order
+
+以后处理交互式命令面时，顺序固定如下：
+
+1. 先查官方文档，找全 interactive command surface
+2. 优先映射进现有 `commands/` 的 11 章
+3. 再把对应的交互式执行方式补进 `practices/` 的 11 章
+4. 只有在确实无法自然归档时，才新增第 12 章
+
+### The nature of Chapter 12
+
+第 12 章的定位是：
+
+- interactive-surface-only supplement
+- unmapped command bucket
+- 结构兜底层
+
+它不是新的核心习惯，而是对命令面现实差异的诚实承认。
+
+---
+
 ## Output Standard For Future Agent Docs
 
 未来给任何 agent 做整理时，`commands/` 最好都同时覆盖：
@@ -239,5 +293,6 @@ Practice: 先规划，后执行
 - 还要检查 Codex CLI 的 slash commands 是否能对上这些 practice
 - 如果能对上，就补上映射
 - 如果只能部分对上，就明确标注是组合对应或近似对应
+- 如果有重要的 interactive-only 命令无法自然并入原 11 章，就新增一个第 12 章兜底
 
 这也是后续整理其他 agent 时的默认做法。
