@@ -39,4 +39,4 @@ Claude Code 的跨会话状态传递至少分三层：会话历史、auto-memory
 
 ## 对应支撑
 
-见 `commands/09_memory_resume_handoff_commands.md`。
+见 `../commands/09_memory_resume_handoff_commands.md`。

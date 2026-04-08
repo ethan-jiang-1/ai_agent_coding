@@ -40,4 +40,4 @@
 
 ## 对应支撑
 
-见 `commands/01_session_commands.md`。
+见 `../commands/01_session_commands.md`。

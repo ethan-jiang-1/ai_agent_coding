@@ -29,4 +29,4 @@
 
 ## 对应支撑
 
-见 `commands/06_compact_and_stable_prefix_commands.md`。
+见 `../commands/06_compact_and_stable_prefix_commands.md`。

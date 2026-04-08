@@ -29,7 +29,7 @@ claude --resume <session-id> --fork-session
 已知行为：
 
 - Claude 会自动更新项目级经验
-- 新会话启动时会自动读入前 200 行或前 25KB
+- 新会话启动时会自动读入 `MEMORY.md` 的前 200 行或前 25KB
 - 同一 Git 仓库的不同 worktree 共享这份 memory
 
 ## `--bare` 与 memory

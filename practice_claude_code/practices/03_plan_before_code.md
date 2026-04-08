@@ -40,4 +40,4 @@
 
 ## 对应支撑
 
-见 `commands/03_plan_and_execute_commands.md`。
+见 `../commands/03_plan_and_execute_commands.md`。

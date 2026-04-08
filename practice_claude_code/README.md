@@ -9,7 +9,7 @@
 
 - 默认交互式会话，以及 `--continue` / `--resume` / `--fork-session` 的分工
 - `--permission-mode plan`、`--allowedTools`、`--tools` 这类工具级控制
-- `CLAUDE.md`、`.claude/rules/*.md`、`CLAUDE.local.md` 的规则层
+- `CLAUDE.md` / `.claude/CLAUDE.md`、`.claude/rules/*.md`、`CLAUDE.local.md` 的规则层
 - auto-memory、subagents、worktree、`--print` / `--max-budget-usd`
 
 建议阅读顺序：

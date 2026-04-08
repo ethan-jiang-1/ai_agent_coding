@@ -38,4 +38,4 @@ Claude Code 擅长按需读文件，但它仍然需要你给出清晰边界：
 
 ## 对应支撑
 
-见 `commands/05_io_and_handoff_commands.md`。
+见 `../commands/05_io_and_handoff_commands.md`。

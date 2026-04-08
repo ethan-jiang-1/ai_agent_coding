@@ -37,4 +37,4 @@ Claude Code 在这章的优势是：
 
 ## 对应支撑
 
-见 `commands/10_subagents_and_worktree_commands.md`。
+见 `../commands/10_subagents_and_worktree_commands.md`。
