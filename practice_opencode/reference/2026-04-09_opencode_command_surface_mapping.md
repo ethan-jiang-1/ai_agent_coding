@@ -117,6 +117,28 @@ Commands 官方页当前确认：
 
 所以不要随便把自定义命令命名成 `share`、`undo`、`models` 这类会覆盖内建行为的名字。
 
+另外几条会直接影响 practice 设计的事实：
+
+- 如果 command 不指定 `agent`，默认继承当前 agent
+- 如果 command 绑定的是 subagent，默认就会触发 subagent invocation
+- `subtask: true` 可以强制 command 以 subtask 方式运行，即使它绑定的是 primary agent
+
+这意味着 OpenCode 的 custom commands 不只是“提示词模板”，而是真正会影响上下文污染边界的交互层。
+
+## 交互层不只 slash commands
+
+官方 TUI / keybinds docs 当前还明确写到：
+
+- 大多数命令也有 keybind
+- 默认 leader key 是 `ctrl+x`
+- 这层配置走 `tui.json` / `tui.jsonc`
+
+所以 OpenCode 的 interactive command surface 更准确地说有三层：
+
+1. built-in slash commands
+2. custom slash commands
+3. TUI keybind layer
+
 ## 映射总表
 
 | Interactive command | 主要用途 | 外部命令 / 配置对应 | 映射类型 | 建议落位 |
@@ -227,6 +249,20 @@ TUI 页当前明确写到：
 
 所以对一个原本依赖 `CLAUDE.md` fallback 的项目来说，运行 `/init` 不是纯粹“写个说明文件”，而是会改变后续 session 的项目规则入口。
 
+### 5.2 `AGENTS.md` 不会自动解析外部文件引用
+
+官方 rules docs 当前明确写到：
+
+- OpenCode 不会自动解析 `AGENTS.md` 中的外部文件引用
+- 推荐用 `instructions` 来包含更多文档、规则和约束
+
+这意味着：
+
+- 稳定规则材料应该优先放 `instructions`
+- `AGENTS.md` 更适合写高密度、慢变化的项目入口规则
+
+这件事会同时影响第 04 章和第 05 章，而不只是规则层本身。
+
 ### 6. 主题命令的 docs 目前存在不一致
 
 当前官方文档里：
@@ -241,6 +277,25 @@ TUI 页当前明确写到：
 - OpenCode 确实有 TUI 里的 theme selector
 - 但命令名在当前 docs 中存在 `/themes` vs `/theme` 不一致
 - 真正执行前，应在你本机版本用 `/help` 再确认
+
+### 6.1 `/export` vs `opencode export` 会影响第 09 章的 handoff 分工
+
+因为：
+
+- `/export` 更像人类可读的 Markdown handoff
+- `opencode export` 更像可搬运、可重新导入的 session state
+
+所以第 09 章不该只写成“都叫 export，选一个用”，而应该明确它们服务的是不同层级的状态传递。
+
+### 6.2 keybind layer 会影响第 12 章的边界
+
+由于 OpenCode 有 leader-key 为中心的 TUI 操作层，所以第 12 章不应只理解成“slash commands 补充章”。
+
+更准确的理解是：
+
+- slash commands + keybinds + TUI behavior config
+
+共同组成了 OpenCode 的 interaction layer。
 
 ## 对 `practice_opencode/` 的融合策略
 

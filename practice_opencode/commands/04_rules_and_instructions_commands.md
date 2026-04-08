@@ -72,6 +72,23 @@ OpenCode 当前官方说明：
 - glob
 - 远程 URL
 
+## 一个容易忽略的关键边界
+
+官方 rules docs 当前明确写到：
+
+- OpenCode 不会自动解析 `AGENTS.md` 里的外部文件引用
+
+所以如果你的规则体系里存在：
+
+- 团队共享规范
+- 外部 style guide
+- 目录级补充规则
+
+更稳的做法通常是：
+
+- 稳定规则材料放 `instructions`
+- `AGENTS.md` 里只保留最关键、最稳定的入口与加载策略
+
 ## 当前交互命令面的真实边界
 
 OpenCode 这次官方 built-in commands 里，和规则层直接相关的主要就是 `/init`。

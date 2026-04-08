@@ -77,6 +77,14 @@ Recent git status:
 
 这类命令适合把“探索、审查、总结”这类重复动作固定下来。
 
+官方 commands docs 当前还明确说明：
+
+- 如果 command 不指定 `agent`，默认继承你当前 agent
+- 如果 command 绑定的是 subagent，默认就会触发 subagent invocation
+- 如果你想强制某个 command 以 subtask 方式运行，即使它绑定的是 primary agent，也可以设 `subtask: true`
+
+这三点会直接影响“它到底是在主线程里做，还是在独立上下文里做”。
+
 ## 限制某个 agent 只能调哪些 subagents
 
 ```json

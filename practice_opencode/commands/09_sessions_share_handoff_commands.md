@@ -37,6 +37,11 @@ opencode import https://opncd.ai/s/abc123
 - `/share` 是当前 TUI 会话的分享动作
 - `opencode run --share` 是 run 场景的分享入口
 
+更实用的分工是：
+
+- 人类 handoff / 复盘：优先 `/export`
+- 会话搬运 / 备份 / 重新导入：优先 `opencode export` / `import`
+
 ## share 配置
 
 ```json

@@ -51,6 +51,7 @@ OpenCode 的一个真实优势是：
 
 - 你可以把高频规划动作做成自己的 `/plan-auth`、`/review-migration` 一类 custom commands
 - 这样“交互里怎么做”就不只是自然语言提示，而是正式的 slash command
+- 但要注意：如果 command 不写 `agent`，它默认继承你当前 agent；所以规划型 command 最好显式写 `agent: plan`
 
 ## 推荐的计划文件位置
 
@@ -77,6 +78,17 @@ description: Generate a migration plan
 agent: plan
 ---
 Analyze @src/auth and produce a staged migration plan.
+```
+
+如果你想让这类规划动作即使在主会话里触发，也尽量别污染当前主上下文，可以进一步考虑：
+
+```md
+---
+description: Analyze auth in isolation
+agent: plan
+subtask: true
+---
+Analyze @src/auth and return only a staged plan summary.
 ```
 
 这样在 TUI 里可以直接用对应的 `/...` custom command 触发。

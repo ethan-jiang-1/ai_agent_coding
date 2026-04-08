@@ -1,4 +1,4 @@
-# 12 会话内操作层：控制 TUI 时，用 slash commands，不要污染主提示词
+# 12 会话内操作层：控制 TUI 时，用 slash commands 和 keybinds，不要污染主提示词
 
 ## 核心习惯
 
@@ -11,12 +11,19 @@
 
 优先用 OpenCode 的 slash commands，而不是自然语言提示词。
 
+还要补一个关键理解：
+
+- OpenCode 的交互操作层不只 slash commands
+- 官方 docs 当前明确写到，大多数命令也有 leader-key keybind
+- 这层配置走 `tui.json`，不是 `opencode.json`
+
 ## 在 OpenCode 里怎么做
 
 - 想查当前命令面，先 `/help`。
 - 想看工具执行细节，先 `/details`。
 - 想切 reasoning blocks 可见性，用 `/thinking`。
 - 想选主题时，先在当前版本用 `/help` 核对命令名，或直接改 `tui.json`。
+- 如果你更习惯键盘流，先记住默认 leader key 是 `ctrl+x`，很多会话控制动作都可以不经过 `/...` 输入。
 
 这条习惯的本质是：
 
@@ -35,6 +42,7 @@
 - 不要每次都用自然语言问“现在有哪些命令可用”。
 - 不要把“打开细节”“切显示”“查主题”都写成普通任务提示词。
 - 不要把 `/thinking` 误解成切换模型或切换推理强度。
+- 不要把 `tui.json` 的交互层配置和 `opencode.json` 的 runtime/config 层混在一起。
 
 ## 验收标准
 

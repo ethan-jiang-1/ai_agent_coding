@@ -2,6 +2,34 @@
 
 这一章收那些很有价值、但没有稳定 external 对应，或者很难自然并入原 11 章的 OpenCode 会话内操作。
 
+还要补一个边界：
+
+- OpenCode 的交互操作层不只 slash commands
+- 官方 docs 当前明确写到，大多数命令也有 leader-key keybind
+- 默认 leader key 是 `ctrl+x`
+- 这层配置走 `tui.json`，不是 `opencode.json`
+
+## keybind layer
+
+官方 keybinds docs 当前给出的例子包括：
+
+- `<leader>n`：new session
+- `<leader>l`：session list
+- `<leader>x`：session export
+- `<leader>h`：tips/help
+- `<leader>t`：theme list
+
+还有一些交互动作目前更明显地出现在 keybind config 层，例如：
+
+- `status_view`
+- `session_timeline`
+- `session_rename`
+- `session_fork`
+- `session_share`
+- `session_unshare`
+
+这说明 OpenCode 的会话内操作层不只是“打 `/`”，还包括一整层可配置的键盘流。
+
 ## `/help`
 
 最直接的命令发现入口。
@@ -51,6 +79,18 @@
 
 - 真正执行时先用 `/help` 查你当前版本
 - 或直接在 `tui.json` 里设 `theme`
+
+## `tui.json` vs `opencode.json`
+
+官方 docs 当前明确写到：
+
+- `tui.json` / `tui.jsonc` 负责 TUI behavior
+- 这和 `opencode.json` 的 server/runtime behavior 是分开的
+
+所以：
+
+- slash/keybind/theme/scroll/mouse 这一层，先看 `tui.json`
+- model/agent/permission/instructions 这一层，先看 `opencode.json`
 
 ## 为什么这些动作值得单独成章
 

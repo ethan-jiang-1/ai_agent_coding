@@ -11,6 +11,7 @@
 - 需要和别人共享会话时，才考虑 `/share`，结束时记得 `/unshare`。
 - 当前阶段的真正交接信息，仍然写 handoff 文件。
 - 在 TUI 里要切历史会话，用 `/sessions`；要导出当前对话摘要或记录，用 `/export`。
+- 如果是给人接手，优先 `/export` 这种 Markdown 交接材料；如果是搬运会话状态或做机器可导入的备份，优先 `opencode export` / `import`。
 
 一个实用判断：
 
@@ -25,7 +26,8 @@
 
 - session ID 更适合同一使用者继续
 - share link 是公开链接，不是私有交接通道
-- export 是数据搬运，不等于别人能快速理解当前阶段
+- JSON export 是数据搬运，不等于别人能快速理解当前阶段
+- Markdown export 更适合人看，但不等于完整 session state
 
 ## 不要这样做
 

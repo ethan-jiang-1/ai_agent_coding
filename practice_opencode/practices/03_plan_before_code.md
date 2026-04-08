@@ -11,6 +11,7 @@
 - 审查计划后，再切回 `build` agent 实施。
 - 多文件改动时，把“计划”与“执行”拆成两个清楚阶段。
 - 如果你已经在 TUI 里，OpenCode 当前更现实的做法是切到 `plan` agent，或者定义一个绑定到 `plan` 的 custom `/plan-*` command；不要假设它有内建 `/plan`。
+- 如果你真去做 custom `/plan-*` command，别省略 `agent: plan`。OpenCode 官方 docs 当前明确说，command 如果不指定 agent，就默认继承你当前 agent。
 
 最稳的节奏是：
 
