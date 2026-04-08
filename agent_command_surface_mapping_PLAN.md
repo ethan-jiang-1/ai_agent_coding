@@ -51,6 +51,68 @@
 
 ---
 
+## Execution Handshake
+
+这份计划在真正执行前，也必须先完成一轮明确的握手，而不是直接开做。
+
+### Step 0. Ask which coding agent
+
+如果用户还没有明确指定目标 agent，先反问一句：
+
+`这次要做哪个 coding agent？`
+
+没有拿到 agent 名称之前，不进入实际研究和写文件阶段。
+
+### Step 1. Restate the current run
+
+拿到目标 agent 名称后，要先把本轮执行内容复述给用户，至少包括：
+
+- 这次处理的是哪个 coding agent
+- 对应的目标根目录是什么
+- 是否已有 `reference/`，如果没有会不会创建
+- 这次会如何处理 `commands/`
+- 这次会如何处理 `practices/`
+- 是否可能出现第 12 章兜底
+
+### Step 2. Show the expected output shape
+
+正式执行前，要把这轮工作的目标结构告诉用户，例如：
+
+```text
+<target_root>/
+  reference/
+    ...
+  commands/
+    ...
+  practices/
+    ...
+```
+
+### Step 3. Wait for confirmation
+
+在用户确认“没问题”之前，不正式执行。
+
+只有在用户确认后，才进入：
+
+- 官方资料审计
+- reference 落盘
+- commands 融合
+- practices 回写
+
+### Step 4. After confirmation, continue automatically
+
+用户确认之后，后续步骤默认连续执行。
+
+除非出现：
+
+- 真实阻塞
+- 关键歧义
+- 高风险分歧
+
+否则不再重复打断用户，只做进度汇报。
+
+---
+
 ## Reference Rule
 
 研究交互式命令面时，第一步往往要到官方文档、官方手册或本机帮助输出中系统找资料。
@@ -148,6 +210,12 @@
 - 目标
 - 验收
 - 具体执行
+
+### Step 0. Run the execution handshake
+
+先执行上面的 `Execution Handshake`。
+
+也就是说，先拿到目标 agent 名称，先复述本轮计划，先让用户确认无误，再进入正式执行。
 
 ### Step 1. Audit the interactive command surface
 
