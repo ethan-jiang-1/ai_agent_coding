@@ -8,7 +8,7 @@
 
 - 新任务，直接开新的 chat tab。
 - 同一逻辑任务继续推进，才留在原 tab。
-- editor 侧没有确认到 `/new-chat` 或 `/resume` 这类 built-in quick commands，所以任务切换仍以 tab / history 为主。
+- 当前官方 editor 文档没有把 `/new-chat` 或 `/resume` 列成 built-in quick commands，所以任务切换仍以 tab / history 为主。
 - 从只读分析切到实际改代码，如果范围和目标都没变，可以继续；如果模块、风险或目标变了，就开新 tab。
 - 跨天回来时，先看旧 tab 是否还干净；不干净就用 handoff 文件或 `@Past Chats` 重开。
 

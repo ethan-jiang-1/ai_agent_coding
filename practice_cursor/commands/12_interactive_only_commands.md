@@ -1,4 +1,4 @@
-# 12 交互式专用 commands
+# 12 值得复用时的 custom commands
 
 这一章承接那些很重要、但没有稳定 external 对应，或者很难自然并入前 11 章的 Cursor 交互式命令面。
 
@@ -29,6 +29,11 @@
 
 它的定位不是规则文件，而是“可复用会话动作”。
 
+补充边界：
+
+- commands 当前仍是 beta
+- 语法后续可能变化
+
 ## global commands
 
 官方同样支持：
@@ -43,7 +48,7 @@
 - 不适合提交到仓库的个人偏好
 - 跨项目复用的交互动作
 
-## 什么时候该做成 custom command
+## 什么时候值得做成 custom command
 
 适合做成 custom command 的，通常是：
 

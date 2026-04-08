@@ -1,4 +1,4 @@
-# 03 Ask、Agent、Manual 与 Custom Modes
+# 03 Ask、Agent 与 Custom Modes
 
 ## Ask：只读探索
 
@@ -19,13 +19,20 @@ Cursor 官方更稳的规划 grounding 是 `Ask`。
 
 当你已经看清方向，需要搜索、读写、跑命令时，再进 `Agent`。
 
-## Manual：窄范围编辑
+## 条件性的窄编辑模式
 
-`Manual` 更适合：
+Cursor 当前官方 modes 文档的稳定表述更集中在：
 
-- 明确只改你选中的文件
-- 不想让它自己大范围搜索
-- 不想让它自己跑命令
+- `Agent`
+- `Ask`
+- `Custom`
+
+但较早或其他语言页里，仍能看到 `Manual`。
+
+更稳的写法是：
+
+- 如果你的当前 Cursor 构建里仍暴露 `Manual`，它适合窄范围编辑
+- 如果没有，就用更收紧工具边界的 `Agent` / `Custom Mode` 来承接同类需求
 
 ## Custom Modes：把流程固定下来
 
@@ -51,18 +58,18 @@ Cursor 的官方叙事不是“内建固定 Plan Mode”，而是支持 `Custom 
 
 ## 和 custom commands 的配合
 
-如果某种“先想清楚再动手”的流程经常重复出现，除了 `Custom Modes`，还可以再配 project/global commands。
+如果某种“先想清楚再动手”的流程经常重复出现，除了 `Custom Modes`，还可以按需再配 project/global commands。
 
 官方 `Commands` 页的示例里，`setup-new-feature` 就很适合这章：
 
 - 用 command 把规划型提示词模板固定下来
 - 用 `Ask` 或相应 mode 承接只读分析
-- 计划审完后，再切 `Agent` 或 `Manual`
+- 计划审完后，再切 `Agent`
 
 更稳的分工是：
 
 - mode：决定工具边界和执行方式
-- command：决定这次会话怎么起手
+- command：在真的值得复用时，决定这次会话怎么起手
 
 ## 计划文件建议位置
 
@@ -77,4 +84,5 @@ docs/plans/
 - 不要把 Cursor 写成“内建标准 Plan Mode”。
 - 不要跳过 Ask，直接让 Agent 一边探索一边大改。
 - 不要把 custom command 误写成 mode 的替代品。
+- 不要把 `Manual` 写成当前所有 Cursor 文档都稳定列出的模式。
 - 不要让计划只停留在 tab 历史里。

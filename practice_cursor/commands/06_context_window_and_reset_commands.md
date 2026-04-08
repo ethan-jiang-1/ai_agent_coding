@@ -2,9 +2,19 @@
 
 ## Cursor 没有这章的官方 `/compact`
 
-所以这章的核心动作不是“压缩历史”，而是：
+但这不等于 Cursor 没有长对话管理能力。
+
+## 官方 summarization
+
+Cursor 官方还有单独的 summarization 文档，可确认：
+
+- 长对话会自动 summarization
+- chat 里支持手动 `/summarize`
+
+所以这章的核心动作不是只有“重置历史”，而是：
 
 - 稳定规则层
+- 利用 summarization 管理长对话
 - 及时外化任务状态
 - 在正确时机新开 tab
 
@@ -23,6 +33,11 @@ Cursor 官方 `Commands` 页可确认：
 
 - 任务边界变了，直接新开 tab
 - 阶段状态需要保留，就先落文件
+
+不要把 `/Reset Context` 和 `/summarize` 混成同一种操作：
+
+- `/summarize` 更接近保留关键信息、压缩长历史
+- `/Reset Context` 更接近直接清掉当前上下文继续聊
 
 ## lint 自动迭代的会话开关
 
@@ -68,4 +83,5 @@ Cursor 官方文档强调：
 - 不要把 Max Mode 当默认。
 - 不要把 rules / memories 当作“可以无限叠历史”的理由。
 - 不要把 Cursor 写成有和 Claude `/compact` 对等的官方操作。
+- 不要把自动 summarization 或 `/summarize` 理解成“永远不用重开 tab”。
 - 不要把 `/Reset Context` 写成“保留全部历史语义、同时自动压缩”的操作。

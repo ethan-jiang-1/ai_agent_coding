@@ -29,8 +29,10 @@ Cursor 的 Background Agents 不是本地多开一个聊天窗口，而是远程
 ## 更稳的组合
 
 - Ask / 主 tab：做方向确认
-- Agent / Manual：做前台受控执行
+- Agent：做前台受控执行
 - Background Agent：做异步独立执行
+
+如果你的当前 Cursor 构建里仍然有 `Manual` 或其他窄编辑模式，再把它当成前台补充通道。
 
 ## 工作前的边界
 
@@ -38,7 +40,7 @@ Cursor 的 Background Agents 不是本地多开一个聊天窗口，而是远程
 - 明确任务边界
 - 明确输出是 diff、PR，还是摘要
 
-## 前后台交接可以用 custom commands 固化
+## 前后台交接可以按需用 custom commands 固化
 
 这次补查官方 `Commands` 页后，能确认至少两类很适合补进这一章的示例命令：
 
@@ -53,7 +55,7 @@ Cursor 的 Background Agents 不是本地多开一个聊天窗口，而是远程
 所以这一章更稳的写法不是“有个 `/background-agent` 命令”，而是：
 
 - 背景 agent 负责异步执行
-- custom commands 负责把后续 PR / review / 返工动作标准化
+- 如果流程真的稳定复用，再用 custom commands 承接后续 PR / review / 返工动作
 
 ## 这章最容易写错的地方
 

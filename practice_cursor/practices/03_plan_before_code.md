@@ -8,16 +8,16 @@
 
 - 规划阶段，先切到 `Ask`。
 - 多文件改动前，先让 Ask 产出明确计划。
-- 计划经人工审查后，再交给 `Agent` 或 `Manual` 执行。
+- 计划经人工审查后，再交给 `Agent` 执行。
 - 如果这个流程反复出现，可以在启用 beta 之后做一个 Plan / Debug / Refactor 类的 `Custom Mode`。
-- 如果某类规划入口反复出现，可以再配一个 project/global custom command，例如把 `setup-new-feature` 这种起手模板固定下来。
+- 如果团队里某类规划入口反复出现，再考虑配一个 project/global custom command，例如把 `setup-new-feature` 这种起手模板固定下来。
 
 最稳的节奏是：
 
 1. Ask 只读分析
 2. 计划落盘
 3. 人工审查
-4. Agent / Manual 执行
+4. Agent 执行
 5. 验证结果
 
 ## 好计划至少要写清楚什么
@@ -38,7 +38,6 @@
 
 - 已经有一个可检查的计划文件。
 - 计划和执行是两个可区分的阶段。
-- 反复出现的规划起手动作已经有 mode 或 command 承载，而不是每次现编。
 - 执行时明确引用了计划文件，而不是让 Agent 自己“记得刚才说过什么”。
 
 ## 对应支撑
