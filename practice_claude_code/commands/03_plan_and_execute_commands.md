@@ -26,7 +26,6 @@ claude --permission-mode default \
 ## 会话内对应 slash commands
 
 - `Type C` `/plan [description]`：在当前交互里切到规划流，适合先规划、再继续同一会话。
-- `Type D` `/ultraplan [description]`：更重型的交互式规划入口，没有稳定的一键 CLI 等价物。
 
 ## 推荐的计划文件位置
 

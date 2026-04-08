@@ -56,12 +56,13 @@ Claude Code 官方把这类 `/...` 入口称为 `Built-in commands`。
 | `/compact [instructions]` | 压缩历史并保留规则层 | 无稳定外部等价 | D | `commands/06` |
 | `/config` | 打开配置界面 | `--settings`、settings 文件 | C | `commands/12` |
 | `/context` | 查看上下文窗口占用等信息 | 无稳定外部等价 | D | `commands/06` |
-| `/copy [N]` | 复制最近消息 | 无稳定外部等价 | D | `commands/12` |
+| `/copy [N]` | 复制最近消息 | 无稳定外部等价 | D | `commands/05` |
 | `/cost` | 看当前对话成本 | 无严格 CLI 等价 | D | `commands/11` |
 | `/doctor` | 诊断安装和环境 | `claude doctor` | A | `commands/12` |
 | `/effort [level]` | 调整当前会话 effort | `claude --effort <level>` | A | `commands/07` |
 | `/exit` `/quit` | 退出交互会话 | 结束当前 CLI 进程 | C | `commands/01` |
 | `/export [filename]` | 导出会话 | shell 重定向、handoff 文件 | C | `commands/05` |
+| `/fast [on|off]` | 会话内速度/体验开关 | 无完整 CLI 等价 | D | `commands/07` |
 | `/help` | 查看命令列表 | `claude --help` 不等价 | D | `commands/12` |
 | `/hooks` | 管理 hooks | 无单一 CLI flag | D | `commands/08` |
 | `/init [instructions]` | 初始化项目文档和上下文入口 | 手工创建 `CLAUDE.md` / `.claude/CLAUDE.md` | C | `commands/04` |
@@ -101,7 +102,6 @@ Claude Code 官方把这类 `/...` 入口称为 `Built-in commands`。
 - `/terminal-setup`
 - `/upgrade`
 - `/voice`
-- `/fast [on|off]`
 
 ## 需要明确区分的几组关系
 
@@ -141,7 +141,6 @@ Claude Code 官方把这类 `/...` 入口称为 `Built-in commands`。
 
 - `/btw`
 - `/config`
-- `/copy`
 - `/doctor`
 - `/help`
 - `/security-review`
