@@ -18,6 +18,11 @@ claude --agent reviewer "审查当前 diff"
 claude agents
 ```
 
+## 会话内对应 slash commands
+
+- `Type B` `/agents`：在交互里查看或管理 agents。
+- 外部入口更适合启动前准备；会话内入口更适合任务中途切角色或检查 agent 配置。
+
 ## 持久化 agent 文件位置
 
 ```text

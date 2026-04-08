@@ -29,6 +29,11 @@ claude --bare
 
 适合：你要最小上下文，不想自动加载规则和 memory 时。
 
+## 另一条关键 slash command：`/context`
+
+- `Type D` `/context`：查看当前上下文窗口和占用情况
+- 适合在决定“继续聊、`/compact`，还是直接重开”之前先看一眼
+
 ## 这章最容易写错的地方
 
 - 不要把 `/compact` 当成计划文件的替代品。

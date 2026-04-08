@@ -52,6 +52,12 @@ claude --dangerously-skip-permissions "..."
 
 只应在外部已沙箱环境中使用。
 
+## 会话内对应 slash commands
+
+- `Type B` `/permissions`：会话内调整审批和权限规则，对应 CLI 上一组权限参数。
+- `Type B` `/mcp`：查看或管理 MCP servers，对应 `claude mcp` 和 `--mcp-config` 一类入口。
+- `Type D` `/hooks`：会话内管理 hooks，没有一个单独 CLI flag 能完整覆盖。
+
 ## 这章最容易写错的地方
 
 - 不要只靠提示词说“先别改代码”。

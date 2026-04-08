@@ -9,6 +9,7 @@
 - 让 `CLAUDE.md` 和 `.claude/rules/` 慢变。
 - 会话过长时，及时 `/compact`。
 - 任务级信息不要写进规则层，而要落盘成计划文件或 handoff 文件。
+- 不确定是否该压缩前，先看 `/context`，再决定继续聊、`/compact` 还是重开。
 
 `/compact` 在 Claude Code 里的重要性有两个：
 

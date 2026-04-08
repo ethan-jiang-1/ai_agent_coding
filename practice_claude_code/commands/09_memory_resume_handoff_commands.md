@@ -40,6 +40,13 @@ claude --bare
 
 `--bare` 会跳过 auto-memory。
 
+## 会话内对应 slash commands
+
+- `Type A` `/resume [conversationId]`：在交互内切回历史会话。
+- `Type C` `/rename <name>`：给当前会话补命名，方便后续 handoff 和 resume。
+- `Type D` `/memory`：直接查看和编辑当前 memory 入口。
+- `Type C` `/export [filename]`：把当前会话导出来，作为 handoff 的补充材料。
+
 ## handoff 文件建议
 
 对跨天、跨人或跨阶段任务，仍然建议另写 handoff 文件，而不是只靠 memory 或 resume。

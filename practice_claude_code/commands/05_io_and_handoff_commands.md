@@ -25,6 +25,12 @@ cat stream-input.json | claude --print --input-format stream-json
 claude --file file_abc:doc.txt --file file_def:image.png "分析这些材料"
 ```
 
+## 会话内对应 slash commands
+
+- `Type A` `/add-dir <path>`：给当前会话追加可访问目录，对应 `--add-dir`。
+- `Type C` `/export [filename]`：导出当前会话，适合 handoff、留痕和复盘。
+- `Type D` `/copy [N]`：复制最近消息，适合摘取短结论或命令片段。
+
 ## handoff 文件模板
 
 ```text

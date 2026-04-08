@@ -43,6 +43,14 @@ claude --print \
 claude --print --no-session-persistence "做一次性分析"
 ```
 
+## 会话内对应 slash commands
+
+- `Type D` `/cost`：看当前对话成本。
+- `Type D` `/usage`：看 usage 数据。
+- `Type D` `/stats`：看统计信息。
+
+这些命令适合会话内观察，不替代 `--max-budget-usd` 这种启动前预算护栏。
+
 ## 这章最容易写错的地方
 
 - 不要把 `--max-budget-usd` 用在交互式会话里。

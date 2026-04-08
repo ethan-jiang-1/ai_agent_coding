@@ -10,6 +10,7 @@
 - 只是继续最近一次同一逻辑任务，用 `claude --continue`。
 - 要恢复指定历史，用 `claude --resume <session-id>`。
 - 想保留历史但走另一条路径，用 `claude --resume <id> --fork-session`。
+- 如果你已经在交互里了，要切回历史会话就用 `/resume`；想在当前终端里清掉旧历史重来，就用 `/clear`。
 
 一个实用判断：
 

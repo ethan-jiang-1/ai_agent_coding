@@ -36,6 +36,12 @@ claude "重新实现，按这版提示词来"
 
 如果你要的是“干净上下文重来”，通常应优先新开，而不是 fork。
 
+## 会话内对应 slash commands
+
+- `Type C` `/branch [name]` 或 `/fork`：在当前交互里分叉，会话作用接近 `--fork-session`。
+- `Type D` `/rewind [messageId]` 或 `/checkpoint`：回到更早节点，比“整场重开”更细。
+- `Type D` `/diff`：先看当前改动，再决定是补条件、rewind，还是直接回滚文件。
+
 ## 这章最容易写错的地方
 
 - 不要把 `--fork-session` 当作去除负向 few-shot 的万能工具。

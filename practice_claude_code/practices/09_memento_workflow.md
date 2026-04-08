@@ -10,6 +10,7 @@ Claude Code 的跨会话状态传递至少分三层：会话历史、auto-memory
 - 想保留历史但试另一方向，用 `--fork-session`。
 - 项目级长期经验交给 auto-memory。
 - 当前任务状态、下一步和风险点交给 handoff 文件。
+- 在交互里，需要看或改 memory 用 `/memory`；需要把当前会话直接导出来做交接，用 `/export`。
 
 一个实用判断：
 

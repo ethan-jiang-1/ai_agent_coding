@@ -46,6 +46,11 @@ CLAUDE.local.md
 ~/.claude/CLAUDE.md
 ```
 
+## 会话内对应 slash commands
+
+- `Type C` `/init [instructions]`：在会话内初始化项目上下文入口，通常会落到 `CLAUDE.md` 或 `.claude/CLAUDE.md`。
+- `Type D` `/memory`：查看或编辑当前加载的 memory / rules，并处理 auto-memory 相关操作。
+
 ## 最小化模式
 
 ```bash

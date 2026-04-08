@@ -26,6 +26,12 @@ claude --print \
 
 `--fallback-model` 当前只对 `--print` 有意义。
 
+## 会话内对应 slash commands
+
+- `Type A` `/model [model]`：在当前交互里切模型，对应 `--model`。
+- `Type A` `/effort [level]`：在当前交互里调 effort，对应 `--effort`。
+- `Type D` `/fast [on|off]`：更像会话内速度/体验开关，不要把它当成完整模型路由机制。
+
 ## 当前 Claude Code 的模型路由现实
 
 - 主模型切换靠 `--model`
