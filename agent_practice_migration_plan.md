@@ -53,6 +53,95 @@
 
 ---
 
+## Execution Handshake
+
+这个流程会反复执行，所以每次正式开始前都走同一套交互步骤。
+
+### Trigger
+
+当用户说：
+
+- “开始做”
+- “跑这个流程”
+- “跑这个脚本”
+- “继续下一个 agent”
+
+都视为准备启动一次新的迁移任务。
+
+### Handshake Steps
+
+#### Step 0. Ask which coding agent
+
+如果用户还没有明确指定目标 agent，先反问一句：
+
+`这次要做哪个 coding agent？`
+
+不要直接开始迁移。
+
+#### Step 1. Restate the current run
+
+当用户说出目标 agent 后，要先把本轮执行信息明确说出来：
+
+- 这次处理的是哪个 coding agent
+- 对应的目标根目录是什么
+- 本轮会如何从 `overall/round2_detailed` 迁移到该目录
+- 哪些内容会进 `practices/`
+- 哪些内容会进 `commands/`
+
+#### Step 2. Show the target output shape
+
+在正式执行前，要把最终输出目录结构也告诉用户。
+
+最小展示模板：
+
+```text
+<target_root>/
+  commands/
+  practices/
+```
+
+如果已经能确定更具体的落点，也可以提前展示更细结构，例如：
+
+```text
+<target_root>/
+  commands/
+    ...
+  practices/
+    01_session_lifecycle.md
+    02_edit_not_append.md
+    03_plan_before_code.md
+    04_rule_hierarchy.md
+    05_progressive_feed.md
+    06_kv_cache.md
+    07_model_routing.md
+    08_tool_permission.md
+    09_memento_workflow.md
+    10_multi_agent.md
+    11_billing_tips.md
+```
+
+#### Step 3. Wait for user confirmation
+
+在用户确认“没问题”之前，不进入实际迁移和写文件阶段。
+
+只有在用户确认后，才开始执行：
+
+- 审核 source 和 target
+- 建立章节映射
+- 写入或更新目标目录文件
+- 做一致性检查
+
+#### Step 4. Shortcut rule
+
+如果用户在同一条消息里已经同时给出了：
+
+- 目标 agent
+- 允许继续执行
+
+仍然应该先复述本轮计划和输出目录结构，再开始动手；不要跳过确认语义。
+
+---
+
 ## What Changes Per Agent
 
 每次切换 agent，只改这些内容：
@@ -103,6 +192,10 @@
 ---
 
 ## Standard Workflow
+
+### Step 0. Run the execution handshake
+
+先执行上面的 `Execution Handshake`，确认本轮的目标 agent、目标根目录和输出结构，再进入实际迁移。
 
 ### Step 1. Audit source and target
 
