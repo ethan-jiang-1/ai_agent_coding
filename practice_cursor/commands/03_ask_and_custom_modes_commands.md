@@ -49,6 +49,21 @@ Cursor 的官方叙事不是“内建固定 Plan Mode”，而是支持 `Custom 
 - 工具范围
 - 工作方式
 
+## 和 custom commands 的配合
+
+如果某种“先想清楚再动手”的流程经常重复出现，除了 `Custom Modes`，还可以再配 project/global commands。
+
+官方 `Commands` 页的示例里，`setup-new-feature` 就很适合这章：
+
+- 用 command 把规划型提示词模板固定下来
+- 用 `Ask` 或相应 mode 承接只读分析
+- 计划审完后，再切 `Agent` 或 `Manual`
+
+更稳的分工是：
+
+- mode：决定工具边界和执行方式
+- command：决定这次会话怎么起手
+
 ## 计划文件建议位置
 
 ```text
@@ -61,4 +76,5 @@ docs/plans/
 
 - 不要把 Cursor 写成“内建标准 Plan Mode”。
 - 不要跳过 Ask，直接让 Agent 一边探索一边大改。
+- 不要把 custom command 误写成 mode 的替代品。
 - 不要让计划只停留在 tab 历史里。

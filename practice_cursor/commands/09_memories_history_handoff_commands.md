@@ -10,6 +10,11 @@ Cursor 有聊天历史和旧对话检索能力。
 - 引用旧结论
 - 用 `@Past Chats` 补上下文
 
+补充理解：
+
+- 不是所有重要交互入口都有 slash 前缀
+- history 检索、`@Past Chats` 和 export chat 也属于这章的真实 command surface
+
 ## Project Memories
 
 Cursor 官方支持 Project Memories。
@@ -31,6 +36,8 @@ Cursor 官方支持把聊天导出为 markdown。
 - 复盘
 - 留档
 
+如果你准备跨天、跨人或跨阶段继续，这通常比“只相信旧 tab 还在”稳得多。
+
 ## 本地历史存储
 
 官方文档提到 chat 历史保存在本地 SQLite 数据库。
@@ -48,4 +55,5 @@ Cursor 官方支持把聊天导出为 markdown。
 
 - 不要把 memories 当成完整历史。
 - 不要把旧 tab 当成跨人交接方案。
+- 不要因为可以 export markdown，就不再把关键状态整理成 handoff 文件。
 - 不要让下一步只依赖“Cursor 自己会记得”。

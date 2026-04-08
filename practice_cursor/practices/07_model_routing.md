@@ -10,6 +10,7 @@ Cursor 的模型路由主要靠手动选择或按 mode 固定，不像 Aider 那
 - 跨模块分析、复杂重构、架构判断，再切到更强模型。
 - 代码库很大、文档很多、上下文确实不够时，才开 Max Mode。
 - 如果某类任务总是用同一种模型，可以把它固化到 `Custom Mode`。
+- 不要期待 editor chat 里有官方 `/model` quick command；这章主要仍靠 model picker 和 modes。
 
 一个实用判断：
 

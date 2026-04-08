@@ -8,6 +8,35 @@
 - 及时外化任务状态
 - 在正确时机新开 tab
 
+## 最接近会话内重置的 quick command
+
+Cursor 官方 `Commands` 页可确认：
+
+- `/Reset Context`
+
+它适合：
+
+- 当前推理链已经被污染
+- 你想在同一个交互面里先清一下上下文
+
+但更稳的边界仍然是：
+
+- 任务边界变了，直接新开 tab
+- 阶段状态需要保留，就先落文件
+
+## lint 自动迭代的会话开关
+
+官方还给出了：
+
+- `/Disable Iterate on Lints`
+
+它适合：
+
+- agent 在 lint 修复循环里浪费太多轮次
+- 你想先停掉这类自动迭代，再手工判断
+
+这也是 Cursor 的交互式控制层，但它不是“上下文压缩”能力。
+
 ## 正常上下文 vs Max Mode
 
 Cursor 官方文档强调：
@@ -39,3 +68,4 @@ Cursor 官方文档强调：
 - 不要把 Max Mode 当默认。
 - 不要把 rules / memories 当作“可以无限叠历史”的理由。
 - 不要把 Cursor 写成有和 Claude `/compact` 对等的官方操作。
+- 不要把 `/Reset Context` 写成“保留全部历史语义、同时自动压缩”的操作。

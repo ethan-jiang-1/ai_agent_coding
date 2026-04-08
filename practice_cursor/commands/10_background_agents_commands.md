@@ -38,6 +38,23 @@ Cursor 的 Background Agents 不是本地多开一个聊天窗口，而是远程
 - 明确任务边界
 - 明确输出是 diff、PR，还是摘要
 
+## 前后台交接可以用 custom commands 固化
+
+这次补查官方 `Commands` 页后，能确认至少两类很适合补进这一章的示例命令：
+
+- `create-pr`
+- `address-github-pr-comments`
+
+它们不等于 Background Agents 的专用 slash command，但很适合承接：
+
+- 后台 agent 已经完成一轮实现，前台准备整理成 PR
+- PR 上已经出现反馈，前台需要围绕 comments 再做一轮返工
+
+所以这一章更稳的写法不是“有个 `/background-agent` 命令”，而是：
+
+- 背景 agent 负责异步执行
+- custom commands 负责把后续 PR / review / 返工动作标准化
+
 ## 这章最容易写错的地方
 
 - 不要把 Background Agents 写成本地后台线程。

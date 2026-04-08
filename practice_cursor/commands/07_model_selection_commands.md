@@ -27,6 +27,18 @@
 - `Agent` + 日常模型：常规执行
 - `Custom Modes`：把固定任务绑定到固定模型
 
+## 这章为什么没有补很多 slash
+
+这次重新深挖官方资料后，editor 侧没有确认到 `/model` 这类 built-in quick command。
+
+所以对 Cursor editor 来说，这章的主要入口仍然是：
+
+- model picker
+- mode 选择
+- `Custom Modes`
+
+如果你印象里有 `/model`，更可能是 Cursor CLI 的 slash commands，而不是 editor chat 的 commands。
+
 ## Max Mode
 
 适合：
@@ -45,4 +57,5 @@
 
 - 不要把所有任务都默认升到最贵模型。
 - 不要把 Max Mode 当成常驻开关。
+- 不要把 CLI 的 `/model` 混写成 editor 的官方 quick command。
 - 不要把 Cursor 写成有 Aider 那样内建三模型自动路由。

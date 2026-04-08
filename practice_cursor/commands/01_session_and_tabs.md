@@ -17,6 +17,19 @@
 
 只有在目标、文件范围和风险轮廓都没变时，才继续原 tab。
 
+## 这章和 CLI slash 的边界
+
+这次重新核对官方资料后，更稳的结论是：
+
+- editor 侧没有确认到 `/new-chat`、`/resume` 这类 built-in quick commands
+- 如果你见过这类命令，更可能是在 Cursor CLI 的 slash commands 页面
+
+所以对 `practice_cursor/` 来说：
+
+- 新任务：还是新开 tab
+- 找旧任务：还是走 history 和 `@Past Chats`
+- `/` 命令面本身并没有替代 tab 边界
+
 ## 历史与旧对话
 
 Cursor 有 chat history，但这不等于你应该默认把所有旧对话都续上。

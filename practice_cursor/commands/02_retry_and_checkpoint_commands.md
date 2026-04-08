@@ -32,6 +32,22 @@ git restore --source=HEAD --worktree <target-files>
 参考 `src/auth/register.ts` 的风格
 ```
 
+## 可以沉淀成 custom command 的重试动作
+
+这次补查官方 `Commands` 页后，能确认一批适合这一章的示例命令方向：
+
+- `run-all-tests-and-fix`
+- `light-review-existing-diffs`
+- `address-github-pr-comments`
+
+它们的价值不是替代 checkpoint，而是把“失败后怎么再来一轮”做成稳定入口，例如：
+
+- 先看现有 diff，再决定回退还是继续修
+- 先跑完整测试，再基于失败结果做修复
+- 围绕已经存在的 PR comments 做定向返工
+
+对 Cursor 来说，这类动作更适合放进 `.cursor/commands`，而不是每次都临时重写一大段返工提示词。
+
 ## 这章最容易写错的地方
 
 - 不要把 checkpoint 当成 git 的完全替代。

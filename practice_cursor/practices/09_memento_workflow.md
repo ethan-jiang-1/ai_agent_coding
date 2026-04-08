@@ -9,6 +9,7 @@ Cursor 的跨会话状态传递至少分三层：chat history / past chats、Pro
 - 短期继续同一任务，直接回原 tab 或通过历史找到旧对话。
 - 需要复用旧对话片段时，用 `@Past Chats`。
 - 项目级长期经验交给经你确认后写入的 Project Memories。
+- 需要 handoff、留档或复盘时，直接把 chat 导出成 markdown，再整理成 handoff 文件。
 - 当前任务状态、下一步和风险点交给 handoff 文件。
 
 一个实用判断：
@@ -23,6 +24,7 @@ Cursor 的跨会话状态传递至少分三层：chat history / past chats、Pro
 
 - memories 不是完整对话历史
 - 旧 tab 太长会继续污染上下文
+- export chat 只是导出原记录，不自动替你整理当前阶段状态
 - 别人接手时，明文 handoff 比隐藏在历史和 memories 里更可靠
 
 ## 不要这样做

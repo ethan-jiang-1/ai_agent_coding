@@ -72,8 +72,33 @@ Cursor 官方文档还明确支持子目录自己的 `.cursor/rules`。
 
 如果老仓库里还在用，可以过渡保留，但不要再把它写成首选机制。
 
+## 会话内规则生成入口
+
+Cursor 官方 `Commands` 页确认，聊天里存在内建 quick commands。
+
+对这一章最相关的是：
+
+- `/Generate Cursor Rules`
+
+更稳的理解是：
+
+- 它适合先生成规则草稿
+- 真正长期生效的内容，还是要落到 `.cursor/rules/*.mdc` 或 `AGENTS.md`
+
+## 规则落盘动作
+
+如果你已经把规则想清楚了，官方文档还支持通过 command palette 创建规则，例如：
+
+- `New Cursor Rule`
+
+这类动作的实践意义是：
+
+- slash / quick command 适合起草
+- 规则文件才是稳定承载层
+
 ## 这章最容易写错的地方
 
 - 不要把 `.cursorrules` 当主规则文件。
 - 不要把所有规则都做成 `alwaysApply: true`。
 - 不要把任务计划和临时调试过程塞进 rules。
+- 不要把 `/Generate Cursor Rules` 产出的草稿直接当成无需审阅的最终规则。

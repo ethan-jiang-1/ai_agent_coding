@@ -11,6 +11,7 @@ Cursor 的权限控制不是一组 CLI 沙箱参数，而是通过 `Ask` / `Manu
 - 需要搜索、读写、跑命令时，再进 `Agent`。
 - 后台长跑任务才用 `Background Agents`，并先收紧边界。
 - MCP 只接你当前任务真需要的服务器。
+- 对 review、安全审计、测试修复这类重复动作，可以用 `.cursor/commands` 做固定入口，而不是每次重写 guardrail 提示词。
 
 最实用的理解：
 
@@ -29,6 +30,7 @@ Cursor 的权限控制不是一组 CLI 沙箱参数，而是通过 `Ask` / `Manu
 
 - 当前 mode 和任务阶段匹配。
 - 工具集没有超过实际需要。
+- 高频 guardrail 动作已经有可复用 command 承载。
 - 背景 agent 的权限、仓库和目标边界是清楚的。
 
 ## 对应支撑

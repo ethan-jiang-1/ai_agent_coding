@@ -39,6 +39,18 @@
 
 所以这章最实用的动作不是猜，而是定期看 dashboard。
 
+## 这章为什么几乎没有 slash 映射
+
+这次重新深挖官方 editor 文档后，没有确认到成本 / usage 相关的 built-in quick command。
+
+因此这章的主要入口仍然是：
+
+- usage dashboard
+- spending limit
+- 模式和模型的前置克制
+
+如果团队总是重复做同一种预算提醒动作，可以自己做 custom command，但那属于自定义 workflow，不是当前官方内建 quick command。
+
 ## 这章最容易写错的地方
 
 - 不要把 Background Agents 当成“看不见就不算成本”。
