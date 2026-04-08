@@ -4,6 +4,8 @@
 
 对 Cursor 来说，最稳的做法就是新开一个 chat tab。
 
+官方 overview 页明确强调：每个 tab 都维护自己的 context、history 和 model selection。
+
 适合：
 
 - 新 feature
