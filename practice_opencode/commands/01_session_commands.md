@@ -56,6 +56,13 @@ opencode session list --format json
 - `/sessions`：列会话并切换。别名 `/resume`、`/continue`。
 - `/quit` `/q`：退出当前 TUI。
 
+更准确的映射关系是：
+
+- `/sessions` 不是单独等于某一个外部命令
+- 它更接近 `opencode session list` + `--continue` / `--session` 的组合
+
+所以它是典型的 Type B combined mapping。
+
 ## 这章最容易写错的地方
 
 - 不要把 `--continue` 当默认入口。

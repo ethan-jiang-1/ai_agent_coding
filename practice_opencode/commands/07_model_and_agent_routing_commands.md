@@ -10,6 +10,21 @@ opencode models --verbose
 
 `--verbose` 会包含更多 metadata，比如 costs。
 
+## 会话内对应 slash commands
+
+```text
+/models
+/thinking
+```
+
+更准确的理解是：
+
+- `/models`：会话里查看并切换模型
+- `opencode models`：外部列模型清单
+- `-m/--model`：启动时指定模型
+
+所以 `/models` 更接近 combined mapping，不是单独等于 `opencode models`。
+
 ## 显式指定主模型
 
 ```bash
@@ -82,6 +97,7 @@ OpenCode 官方 docs 当前把 variants 当成正式能力：
 
 - `/thinking` 只是切换思考内容的显示
 - 不是模型切换入口
+- 真正和 reasoning / variant 更接近的是 `ctrl+t` cycle variants
 
 ## 这章最容易写错的地方
 

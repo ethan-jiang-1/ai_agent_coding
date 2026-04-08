@@ -21,6 +21,22 @@ opencode models --verbose
 
 适合：先看模型列表和成本元数据，再决定默认模型。
 
+## 交互状态下的 onboarding 入口
+
+```text
+/connect
+/models
+```
+
+更稳的映射关系是：
+
+- `/connect`：TUI 里加 provider credentials
+- `opencode auth login`：CLI 里做同样类别的事
+- `/models`：TUI 里看并选模型
+- `opencode models`：CLI 里列模型清单
+
+这组命令不是单纯“账号设置”，它直接决定你后续能用哪些模型，以及成本层面的选择空间。
+
 ## 成本更低的典型工作流
 
 ```bash

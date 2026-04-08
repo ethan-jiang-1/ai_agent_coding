@@ -8,7 +8,7 @@
 
 - 让 `AGENTS.md` 慢变。
 - `instructions` 的文件集合和顺序尽量稳定。
-- 会话过长时，用 `/compact`，不要硬撑。
+- 会话过长时，用 `/compact`，别名 `/summarize`，不要硬撑。
 - 任务级信息放计划文件或 handoff 文件，不要塞回规则层。
 
 OpenCode 在这章的关键点有两个：

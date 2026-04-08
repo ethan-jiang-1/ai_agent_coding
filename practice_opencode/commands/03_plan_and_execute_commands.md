@@ -11,6 +11,15 @@ opencode run --agent plan \
 
 `plan` 是 OpenCode 内建 primary agent，官方说明它默认对 file edits 和 bash 都走 `ask`，适合分析和规划阶段。
 
+## 一个重要边界：OpenCode 当前没有内建 `/plan`
+
+和 Claude Code 不同，OpenCode 这次官方 TUI 命令清单里没有一个内建 `/plan`。
+
+所以在交互状态下，更稳的做法是：
+
+- 用 `tab` 在 primary agents 间切到 `plan`
+- 或者定义一个 custom `/plan-*` command，把它绑定到 `agent: plan`
+
 ## 把计划落盘
 
 ```bash
@@ -35,6 +44,13 @@ opencode run --agent build \
 - `tab` 可以 cycle through primary agents
 
 也就是说，在长会话里你可以先切到 `plan`，再回 `build`，但多文件任务仍然建议把计划落盘。
+
+## 会话内对应 custom slash commands
+
+OpenCode 的一个真实优势是：
+
+- 你可以把高频规划动作做成自己的 `/plan-auth`、`/review-migration` 一类 custom commands
+- 这样“交互里怎么做”就不只是自然语言提示，而是正式的 slash command
 
 ## 推荐的计划文件位置
 

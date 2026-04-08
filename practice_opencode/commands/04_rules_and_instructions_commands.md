@@ -64,6 +64,15 @@ OpenCode 当前官方说明：
 - glob
 - 远程 URL
 
+## 当前交互命令面的真实边界
+
+OpenCode 这次官方 built-in commands 里，和规则层直接相关的主要就是 `/init`。
+
+也就是说：
+
+- 它没有一个像 `/rules` 这样的完整会话内规则管理面
+- 更细的规则分层，仍然主要靠 `AGENTS.md`、`instructions` 和文件本身
+
 ## 这章最容易写错的地方
 
 - 不要把任务计划写进 `AGENTS.md`。

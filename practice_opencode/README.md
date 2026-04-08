@@ -6,6 +6,8 @@
 - `practices/`：按 11 个习惯组织的主阅读内容
 - `commands/`：支撑这些习惯的 OpenCode 命令、TUI slash commands、agent、permission、rules 与 handoff 做法
 
+这套内容后续又补了一轮 command surface mapping，所以现在不仅覆盖 external command surface，也覆盖 OpenCode 在交互状态下的 built-in slash commands 和 custom commands。
+
 这套内容保留了 round2 的骨架，但收紧到 OpenCode 当前官方 docs 能确认的真实能力边界，重点包括：
 
 - 默认 TUI，会话继续与分叉
@@ -14,6 +16,7 @@
 - `AGENTS.md`、`instructions`、`CLAUDE.md` fallback
 - `permission`、`share`、`snapshot`、`custom commands`
 - `/compact`、`/undo`、`/redo`、`/sessions`、`/share`、`/models` 这些 TUI 入口
+- 一层额外的 interactive-only session ops 补充章，用来承接 `/help`、`/details` 一类不适合硬塞回原 11 章的会话内操作
 
 需要明确的是：
 
@@ -33,3 +36,4 @@
 如果要先看这轮 grounding 的事实底座，先读：
 
 - `reference/2026-04-09_opencode_official_reference.md`
+- `reference/2026-04-09_opencode_command_surface_mapping.md`

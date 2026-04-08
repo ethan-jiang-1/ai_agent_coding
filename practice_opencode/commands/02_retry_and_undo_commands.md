@@ -13,6 +13,13 @@ OpenCode 官方文档当前说明：
 - `/redo` 只在 `/undo` 之后可用
 - 这套文件恢复依赖 Git
 
+这组命令和外部命令面的关系要分清：
+
+- `/undo` / `/redo` 处理的是“会话状态 + 文件状态”
+- `git restore` 主要只处理文件状态
+
+所以 `git restore` 最多只是近似替代，不是 exact mapping。
+
 ## 用 `/undo` 后重试
 
 典型节奏：

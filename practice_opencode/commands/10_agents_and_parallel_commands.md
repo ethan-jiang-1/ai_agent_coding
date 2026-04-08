@@ -49,6 +49,16 @@ opencode agent create
 
 适合：让探索任务在独立上下文里完成，再把结果压缩返回主线程。
 
+## 当前没有内建 `/agents`
+
+这次官方 TUI 命令清单里，没有看到类似 `/agents` 的 built-in command。
+
+所以 OpenCode 的会话内 agent 入口更现实的是：
+
+- `@explore`、`@general` 这类 mention
+- custom `/review-*`、`/plan-*` commands
+- 用 `tab` 在 primary agents 之间切换
+
 ## 用 custom command 固定一个 agent 工作流
 
 例如 `.opencode/commands/review-diff.md`：

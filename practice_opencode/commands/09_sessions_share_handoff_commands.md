@@ -30,6 +30,13 @@ opencode import https://opncd.ai/s/abc123
 - `/share`：分享当前会话
 - `/unshare`：取消分享并删除分享数据
 
+这几组关系不要混：
+
+- `/export` 是 Markdown 导出
+- `opencode export` 是 JSON 导出
+- `/share` 是当前 TUI 会话的分享动作
+- `opencode run --share` 是 run 场景的分享入口
+
 ## share 配置
 
 ```json

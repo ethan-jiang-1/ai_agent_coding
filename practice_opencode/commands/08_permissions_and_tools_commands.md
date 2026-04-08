@@ -17,6 +17,16 @@ OpenCode 当前官方 docs 明确写到：
 - 默认大多数权限是 `allow`
 - `doom_loop` 和 `external_directory` 默认是 `ask`
 
+## 当前没有内建 `/permissions`
+
+至少在这次官方 TUI 命令清单里，没有看到类似 Claude Code / Codex CLI 那样的内建 `/permissions`。
+
+这意味着：
+
+- OpenCode 的权限收紧主路径是 config
+- 或者 agent config / agent markdown
+- 而不是会话里临时打一条 built-in slash command
+
 ## 整体默认 + 工具覆盖
 
 ```json
