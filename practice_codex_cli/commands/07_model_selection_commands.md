@@ -19,6 +19,22 @@ codex exec --oss --local-provider lmstudio "格式化这个文件"
 
 前提：本地已经运行 Ollama 或 LM Studio。
 
+## 交互式对应
+
+```text
+/model
+```
+
+映射关系：
+
+- `/model` ↔ Exact mapping
+  是交互态下最直接的模型切换入口
+
+实践上：
+
+- shell 外切模型：`-m` / `--model` 或 `--oss`
+- 会话内切模型：优先 `/model`
+
 ## 当前 Codex CLI 的模型路由现实
 
 - 主模型切换靠 `-m`
@@ -35,3 +51,4 @@ codex exec --oss --local-provider lmstudio "格式化这个文件"
 - 不要把 `--oss` 当成通用替代方案。
 - 不要把“单文件任务”自动等同为“轻任务”。
 - 不要在长期文档里硬编码某个具体模型列表。
+- 不要在交互态里还回到 shell 重新起命令，只为了切模型。

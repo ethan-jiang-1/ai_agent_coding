@@ -42,8 +42,25 @@ cat /tmp/auth-interfaces.md | \
 - handoff 说明
 - 结构化检查清单
 
+## 交互式对应
+
+```text
+/mentions
+/diff
+```
+
+映射关系：
+
+- `/mentions` ↔ Approximate mapping
+  适合在交互态里高效引用路径、文件和实体
+- `/diff` ↔ Approximate mapping
+  适合查看当前改动，不等同于把中间结果外化成文件
+
+这章里，交互式命令主要提升“会话内引用和查看”的效率，但真正的 handoff 外化仍然更适合落文件。
+
 ## 这章最容易写错的地方
 
 - 不要把大量日志手工复制粘贴进长会话。
 - 不要让关键中间结果只留在终端输出里。
 - 不要把“继续上一轮会话”当成“已经外化了信息”。
+- 不要把 `/diff` 当成 handoff 文件的替代品。

@@ -55,6 +55,22 @@ Do not propose broad refactors unless they block correctness.
 最后返回改动说明和剩余风险。
 ```
 
+## 交互式对应
+
+```text
+/agents
+/review
+```
+
+映射关系：
+
+- `/agents` ↔ Exact / Combined mapping
+  是交互态里进入 subagents 能力的核心入口
+- `/review` ↔ Exact mapping
+  与外部 `codex review` 高度对应
+
+这章里，交互态比 shell 外更适合临场拆角色、派探索代理和发起审查。
+
 ## 保守做法：不用 subagent，也能做隔离
 
 ```bash

@@ -20,6 +20,22 @@ codex --search "查一下这个依赖的最新文档"
 - `-a` / `--ask-for-approval`
 - `--search`
 
+## 交互式对应
+
+```text
+/approval-mode
+/approvals
+/status
+```
+
+映射关系：
+
+- `/approval-mode` ↔ Exact / Combined mapping
+  与 `-a` / `--ask-for-approval` 最接近
+- `/approvals` ↔ `/approval-mode` 的隐藏别名
+- `/status` ↔ Combined mapping
+  用来查看当前模型、沙箱、审批等会话状态
+
 ## 非交互式 exec 的权限面
 
 ```bash
@@ -50,3 +66,4 @@ codex exec --full-auto "低摩擦自动执行"
 - 不要把交互式的 `-a` 用法直接写到 `codex exec` 上。
 - 不要默认用危险绕过模式。
 - 不要把“工作区可写”当成“没有风险”。
+- 不要忘了 `/approvals` 只是 `/approval-mode` 的隐藏别名。

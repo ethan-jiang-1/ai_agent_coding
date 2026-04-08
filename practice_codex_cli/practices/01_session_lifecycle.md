@@ -9,6 +9,7 @@
 - 一次性任务，用 `codex exec --ephemeral`。
 - 分步但仍然偏自动化的任务，用 `codex exec` 起步，再用 `codex exec resume` 续跑。
 - 需要反复交流、人工判断、临场试探的任务，用交互式 `codex`，再配合 `codex resume` 或 `codex fork`。
+- 如果你已经在交互式会话里，`/new` 和 `/clear` 是最接近“重开边界”的会话内控制手段，但它们不完全等于外部新开一条命令。
 
 一个实用判断：
 

@@ -18,6 +18,25 @@ cat .codex/plans/oauth2-plan.md | \
   "按这份计划实现第一阶段，不要超出计划范围"
 ```
 
+## 交互式对应
+
+```text
+/new
+/clear
+/compact
+```
+
+映射关系：
+
+- `/new` ↔ Combined mapping
+  适合开始一轮新的规划或执行阶段
+- `/clear` ↔ Approximate mapping
+  适合清空当前对话后重新发起规划
+- `/compact` ↔ Approximate mapping
+  适合在长规划会话里压缩历史，保留核心上下文
+
+这三者都不能完全替代“只读规划并落盘”的外部工作流，但它们是交互态下最接近的控制手段。
+
 ## 用同一条非交互链继续推进
 
 ```bash
@@ -45,3 +64,4 @@ codex exec -s read-only resume --last "运行测试并总结风险"
 - 不要在规划阶段给工作区写权限。
 - 不要只把计划留在会话历史里。
 - 不要把 `-s` 写在 `resume` 后面。
+- 不要把 `/compact` 误当成计划文件的替代品。

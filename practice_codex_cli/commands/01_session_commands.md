@@ -35,6 +35,26 @@ codex fork --last
 - `codex resume`：继续原会话
 - `codex fork`：从历史分叉出新会话
 
+## 交互式对应
+
+```text
+/new
+/clear
+```
+
+映射关系：
+
+- `/new` ↔ Combined mapping
+  近似对应“重开一个新会话 / 新任务边界”
+- `/clear` ↔ Approximate mapping
+  更像“清空当前对话历史”，不是严格等同于外部新开命令
+
+实践上：
+
+- 要严格切换到新的 shell 级会话，用重新启动 `codex`、`codex resume`、`codex fork`
+- 要在交互态里快速重开任务边界，先看 `/new`
+- 要只是清掉当前对话内容而非完整外部会话切换，才用 `/clear`
+
 ## 把 exec 历史切回交互式
 
 ```bash
@@ -48,3 +68,4 @@ codex resume --include-non-interactive --last
 - 不要把交互式 `resume` / `fork` 和 `exec resume` 混写。
 - 不要把 `fork` 当成默认的 exec 延续方式。
 - 不要把 `--ephemeral` 理解成“本轮没有历史”。
+- 不要把 `/clear` 和“真正的新会话”画等号。

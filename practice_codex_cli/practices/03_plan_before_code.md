@@ -9,6 +9,7 @@
 - 规划阶段，用 `codex exec -s read-only --ephemeral`。
 - 规划结果落到文件，而不是只留在屏幕输出里。
 - 执行阶段，再切到 `-s workspace-write`，按计划实施。
+- 如果你已经在交互式会话里，可以用 `/new`、`/clear`、`/compact` 辅助控制规划节奏；但它们不能替代计划落盘。
 
 最稳的做法是：
 

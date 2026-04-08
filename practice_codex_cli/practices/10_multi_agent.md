@@ -9,6 +9,7 @@
 - 真正需要并行探索时，可以让 Codex 使用 subagents。
 - 内置的 `explorer` 更适合读多文件找线索，`worker` 更适合执行修改。
 - 如果任务更适合保守自动化，就用多个 `codex exec --ephemeral` 加 `-o` 文件串联。
+- 如果你已经在交互式会话里，`/agents` 和 `/review` 是最直接的会话内入口；如果这些都不够，再回到 shell 外工作流。
 
 当前 Codex 已经支持 subagents，但这不意味着所有任务都该自动拆代理。更稳的原则是：
 
