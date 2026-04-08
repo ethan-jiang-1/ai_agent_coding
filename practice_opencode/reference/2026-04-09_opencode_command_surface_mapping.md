@@ -172,6 +172,16 @@ Commands 官方页当前确认：
 
 这组关系不能写成 exact mapping。
 
+### 3.1 `/undo` 对第 02 章的影响比“有个回退命令”更深
+
+官方使用指南当前明确写到：
+
+- `/undo` 后会把原来的用户消息重新显示出来
+- 你可以从那里 tweak the prompt and try again
+- 还可以连续多次 `/undo`
+
+这意味着 OpenCode 对“修改原提示词，而不是继续追加”这条习惯给了正式的交互支撑。
+
 ### 4. `/thinking` 只控制显示，不控制真实推理能力
 
 TUI 页当前明确写到：
@@ -181,6 +191,15 @@ TUI 页当前明确写到：
 - 真正切 reasoning 相关变体，要用 `ctrl+t` cycle model variants
 
 所以不要把 `/thinking` 写成模型路由开关。
+
+### 4.1 `/new` 和 `/sessions` 对第 01 章的影响也不只是命令别名
+
+因为这两个动作都可以在 TUI 内完成，所以：
+
+- session boundary management 变成了会话内低摩擦动作
+- 用户不该因为“已经在这个 TUI 里了”就继续污染同一线程
+
+这会强化第 01 章，而不是只给它补一个 slash command 清单。
 
 ### 5. OpenCode 当前 docs 没有列出内建 `/agents` 或 `/permissions`
 
@@ -197,6 +216,16 @@ TUI 页当前明确写到：
 - permission 的主入口主要是 config / agent config
 
 不要硬补出并不存在的 slash command。
+
+### 5.1 `/init` 会影响第 04 章的规则主入口
+
+官方 rules docs 当前明确写到：
+
+- `/init` 会创建或更新 `AGENTS.md`
+- 如果已有 `AGENTS.md`，会就地改进
+- 规则优先级里，`AGENTS.md` 高于同层的 `CLAUDE.md`
+
+所以对一个原本依赖 `CLAUDE.md` fallback 的项目来说，运行 `/init` 不是纯粹“写个说明文件”，而是会改变后续 session 的项目规则入口。
 
 ### 6. 主题命令的 docs 目前存在不一致
 

@@ -63,6 +63,12 @@ opencode session list --format json
 
 所以它是典型的 Type B combined mapping。
 
+## 这组 slash commands 对习惯层的更深影响
+
+- `/new` 让“任务边界变了就新开”不再是一个高摩擦动作。你不需要退出 TUI 才能重置任务。
+- `/clear` 只是 `/new` 的别名，不是“把当前线程清空后继续”。
+- `/sessions` 让你在会话内部就能切历史会话，所以“继续哪条链”变成运行中持续决策，而不是启动前一次性决策。
+
 ## 这章最容易写错的地方
 
 - 不要把 `--continue` 当默认入口。
