@@ -34,7 +34,7 @@ Step: `Step 2A. Tool Baseline`
 | 权限设计 | `ba.codex_cli.practice.tool_permission` | 已把权限写成 workflow 问题，而不是单一开关 |
 | 跨会话状态传递 | `ba.codex_cli.practice.memento_workflow` | 已明确 `resume / fork / handoff / cloud` 的分层 |
 | 多智能体分流 | `ba.codex_cli.practice.multi_agent` | 已明确职责隔离、并行写入边界、subagent 适用条件 |
-| 交互式命令增强层 | `ba.codex_cli.practice.interactive_only` | 已承接 interactive-only slash commands 的兜底层 |
+| 交互式命令增强层 | `ba.codex_cli.practice.interactive_only` | 已承接 interactive-only slash commands 的交互控制层 |
 | 高级 agentic 协调 | `ba.codex_cli.practice.advanced_agentic_coordination` | 已把角色隔离、文件隔离、运行时隔离做出三分法 |
 
 ## 已在 commands / reference 层明确表达的内容
