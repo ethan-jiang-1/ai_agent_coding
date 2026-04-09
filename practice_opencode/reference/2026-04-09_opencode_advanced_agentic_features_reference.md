@@ -44,7 +44,7 @@
 因此对 OpenCode 来说：
 
 - 多 agent 协调的正式主轴是 subtask / subagent
-- 不是菜单式 `/agents`
+- 不应只写成 `/agents` 菜单操作
 
 ## 3. Worktree：当前没有稳定官方证据
 
@@ -112,7 +112,8 @@
 - 正式写 `build/plan/general/explore`
 - 正式写 `@subagent`
 - 正式写 `subtask: true`
-- 不要写不存在的 `/agents`
+- 可以写 `/agents` 作为当前 agent list / switch 入口
+- 但不要把多 agent 主轴缩成 `/agents` 菜单
 
 ### 对 worktree
 

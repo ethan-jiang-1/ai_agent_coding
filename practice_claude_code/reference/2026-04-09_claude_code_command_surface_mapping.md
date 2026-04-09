@@ -9,7 +9,7 @@
 
 - 把 Claude Code 的 external command surface 和 in-session command surface 放到同一张图里
 - 先确认官方术语和官方清单
-- 再决定哪些应融合进现有 11 章，哪些要进入最后一个补充兜底章
+- 再决定哪些应融合进现有 11 章，哪些要进入独立的第 `12` 章会话控制层
 
 ## 官方术语
 
@@ -137,7 +137,7 @@ Claude Code 官方把这类 `/...` 入口称为 `Built-in commands`。
 
 ## 对这次融合最重要的 no-mapping 命令
 
-这些命令很有用，但很难自然归到已有外部命令章节里，所以应考虑进入最后一个补充兜底章：
+这些命令很有用，但很难自然归到已有外部命令章节里，所以应考虑进入独立的第 `12` 章会话控制层：
 
 - `/btw`
 - `/config`
@@ -162,7 +162,7 @@ Claude Code 官方把这类 `/...` 入口称为 `Built-in commands`。
 
 1. 先把高相关 slash commands 融入已有的 11 个 `commands/` 章节
 2. 再把这些 in-session 入口补回对应的 `practices/`
-3. 对 interactive-only 且重要、又难并入原章节的内容，新增第 12 个补充章
+3. 对会话控制型、又难并入原章节的内容，新增第 `12` 章作为控制层章节
 
 ## 待确认或不写死的点
 

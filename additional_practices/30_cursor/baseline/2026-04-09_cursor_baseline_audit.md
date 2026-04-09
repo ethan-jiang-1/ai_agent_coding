@@ -87,7 +87,7 @@ Cursor 当前 command richness 的重点不是超长内建 slash 清单，而是
 - `command_surface_fluency` 在 Cursor 上可能成立
 - 但其形态更像“可扩展控制层”，而不是 Claude Code 式 built-in control plane
 
-### 4. Cursor 的原生隔离重点是 remote branch worker，不是本地 worktree
+### 4. 就 Background Agents 本体看，原生隔离重点是 remote branch worker
 
 当前基线已经清楚：
 
@@ -98,6 +98,17 @@ Cursor 当前 command richness 的重点不是超长内建 slash 清单，而是
 但没有稳定证据显示：
 
 - Cursor editor 有 Claude Code 那种第一方本地 `--worktree` 命令面
+
+这一点只适用于当时已核实的 Background Agents 本体。
+
+后续 validation 已进一步扩大为 Cursor 3 的多环境 handoff 判断：
+
+- local
+- worktrees
+- cloud
+- remote SSH
+
+所以这里不能再外推成“Cursor 整体只有 remote branch 叙事”。
 
 ### 5. long horizon 天生是跨入口问题
 
@@ -124,9 +135,9 @@ Cursor 当前已明显分出：
 - 当前已写 quick commands / custom commands / command palette
 - 但需要判断这到底是稳定行为变化，还是只是可扩展 convenience layer
 
-### `remote_branch_isolation_threshold`
+### `remote_branch_isolation_threshold`（后续 validation 已扩成 `local_cloud_worktree_handoff_threshold`）
 
-- 当前基线已经很强，因为 Background Agents 是正式 remote branch worker
+- 当前基线对 Background Agents 本体已经很强，因为它是正式 remote branch worker
 - 需要验证 2026 窗口里，用户是否真的把它当成默认异步隔离主路径
 
 ### `long_horizon_cross_surface_layering`
@@ -151,7 +162,7 @@ Cursor 当前已明显分出：
 
 1. `plan_first_kickoff`
 2. `command_surface_control_plane`
-3. `remote_branch_isolation_threshold`
+3. `remote_branch_isolation_threshold`（后续 validation 已扩成 `local_cloud_worktree_handoff_threshold`）
 4. `long_horizon_cross_surface_layering`
 5. `memory_hierarchy_and_handoff`
 

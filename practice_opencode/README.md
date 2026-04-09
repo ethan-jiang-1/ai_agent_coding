@@ -16,8 +16,8 @@
 - `AGENTS.md`、`instructions`、`CLAUDE.md` fallback
 - `permission`、`share`、`snapshot`、`custom commands`
 - `/compact`、`/undo`、`/redo`、`/sessions`、`/share`、`/models` 这些 TUI 入口
-- 一层额外的 interactive-only session ops 补充章，用来承接 `/help`、`/status`、`/editor`、tool details 这类不适合硬塞回原 11 章的会话内操作
-- 追加第 `13` 章，把 `subtask orchestration / serve-web-attach / absence of worktree & scheduler` 放到同一层处理
+- 一层额外的会话控制层章节，用来承接 `/help`、`/status`、`/editor`、tool details 这类不适合硬塞回原 11 章的会话内操作
+- 追加第 `13` 章，把 `subtask orchestration / serve-web-attach / absence of native worktree & native scheduler / external durable automation` 放到同一层处理
 
 需要明确的是：
 

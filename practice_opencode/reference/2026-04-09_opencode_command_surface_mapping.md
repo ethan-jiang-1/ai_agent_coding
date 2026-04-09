@@ -435,7 +435,7 @@ TUI 页当前明确写到：
 - `10`：`/agents`、`@explore`、`@general`、custom `/review-*` commands
 - `11`：`/connect` 和 `/models` 作为 provider/model onboarding
 
-### 需要兜底的 interactive-only
+### 需要单独成章的 interactive control-layer 内容
 
 本轮判断，OpenCode 里有一组命令很有价值，但没有稳定 external 等价物，也不适合硬塞进原 11 章：
 
@@ -446,14 +446,14 @@ TUI 页当前明确写到：
 - `/thinking` 的“显示层”侧面
 - theme selector 的 TUI 操作
 
-因此这次适合新增第 `12` 章，专门承接 interactive-only session ops。
+因此这次适合新增第 `12` 章，专门承接会话控制层 session ops。
 
 ## 本轮落地决策
 
 1. 新增一份 command surface mapping reference
 2. 补强现有 11 个 `commands/`
 3. 回写现有 11 个 `practices/`
-4. 新增第 `12` 章作为 OpenCode 的 interactive-only 兜底章
+4. 新增第 `12` 章作为 OpenCode 的会话控制层章节
 
 ## 待确认或不写死的点
 
