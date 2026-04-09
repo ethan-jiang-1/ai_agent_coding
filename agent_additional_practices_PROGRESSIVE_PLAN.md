@@ -1,5 +1,74 @@
 # Coding Agent Additional Practices Progressive Plan
 
+## Background And Current State
+
+这份 plan 不是从零开始写的，它建立在前面已经完成的一轮大规模整理工作之上。
+
+当前项目背景是：
+
+- 最初的 practice 体系，核心出发点来自 `Claude Code` 这一侧较强的 agentic 使用方式
+- 之后已经把一整套 practice / commands / reference 的整理方法，迁移并适配到了 4 个工具目录：
+  - `/Users/bowhead/ai_agent_coding/practice_codex_cli`
+  - `/Users/bowhead/ai_agent_coding/practice_claude_code`
+  - `/Users/bowhead/ai_agent_coding/practice_cursor`
+  - `/Users/bowhead/ai_agent_coding/practice_opencode`
+- 这 4 个目录目前都已经有相对完整的：
+  - `commands/`
+  - `practices/`
+  - `reference/`
+- 在前面的整理里，还已经额外处理过一些近阶段才变重要的话题，例如：
+  - 外部命令面与内建 slash / command surface 的映射
+  - sub-agent / delegation / worktree / long horizon 这类高级 agentic 能力
+
+也就是说，当前不是“还没整理 practice”，而是：
+
+- 已经有一套可用的基线
+- 已经对 4 个工具做过一轮结构化适配
+- 已经掌握了不少这 4 个工具的官方能力、交互入口和使用差异
+
+正因为已经跑过这一轮，才出现了新的问题：
+
+- 原来从 `Claude Code` 出发形成的 practice，是否仍然遗漏了别的高价值做法
+- 经过 4 个工具的横向调查之后，是否能看见一些更值得补充的新 practice
+- `2026-01-01` 之后的新能力、新工作流和可信社区/KOL 做法，是否已经足以支持新的 practice
+- 这些候选是否应该先进入 review queue，而不是直接写回 4 个正式工具目录
+
+所以，这份 plan 的任务不是直接改那 4 个正式目录，而是先做一轮带证据链的 deep research。
+
+这轮 deep research 的定位是：
+
+- 先调查
+- 先缓冲
+- 先 review
+- 最后才决定是否 apply 到正式工具目录
+
+当前这轮 research 的专用缓冲根目录是：
+
+- `/Users/bowhead/ai_agent_coding/additional_practices`
+
+这意味着：
+
+- 所有新增 research 材料先落到这个缓冲目录
+- review 完成前，不把新的候选直接混进 4 个正式工具目录
+- 只有当候选被判断值得 `promote` 或 `merge`，才进入后续 apply 阶段
+
+再补一条很重要的上下文约束：
+
+- 这份文件应该足够自解释
+- 即使后续清理上下文、切换到更轻的 session，重新打开本文件时，也应能立刻知道：
+  - 为什么要执行这个 plan
+  - 当前基线是什么
+  - 当前不是在做什么
+  - 这轮执行完成后会产出什么
+  - 这些产物会先放在哪里，等待人工 review
+
+如果后续是一个轻 session 接手这份文件，默认理解应当是：
+
+1. 4 个正式工具目录已经存在，不需要从零搭建
+2. 当前任务是额外挖掘“是否还有缺失的高价值 practice”
+3. 这次先做 research 和 review queue，不直接改正式 practice
+4. 执行时必须按这份 progressive plan 的 phase / step / status 纪律推进
+
 ## Purpose
 
 这是一份新的 progressive plan，用来系统判断：
