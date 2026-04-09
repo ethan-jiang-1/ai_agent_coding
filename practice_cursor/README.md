@@ -9,11 +9,12 @@
 这套内容保留了 round2 的骨架，但收紧到当前 Cursor 的真实能力边界，重点包括：
 
 - Chat tabs / history，而不是硬套 CLI 式 session 语义
-- `Ask` 做只读探索，`Agent` / `Manual` / `Custom Modes` 做执行
+- `Ask` 做只读探索，`Agent` / `Custom Modes` 做执行
+- 如果你的当前构建仍暴露 `Manual`，把它视为窄编辑通道，而不是当前稳定模式清单的一部分
 - `.cursor/rules/*.mdc`、`AGENTS.md`、Project Memories、`.cursorrules` legacy
 - editor 内 `Commands`、`/` quick commands、`.cursor/commands`、`~/.cursor/commands`
 - checkpoints、Background Agents、model picker、Max Mode、usage-based pricing
-- 追加第 `13` 章，把 `Background Agent orchestration / web-mobile / Slack / API / long horizon` 放到同一层处理
+- 追加第 `13` 章，把 `Background Agent / local-worktree-cloud-remote SSH handoff / web-mobile / Slack-GitHub-Linear / API-Automations / long horizon` 放到同一层处理
 
 建议阅读顺序：
 

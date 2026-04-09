@@ -23,7 +23,7 @@
 4. 想看 slash command 全景，先读 `reference/2026-04-09_claude_code_command_surface_mapping.md`
 5. 需要落地命令时，再去对应的 `commands/` 文件
 6. 如果任务进入并行编排、定时自动化或长程运行，再读 `practices/13_advanced_agentic_coordination.md`
-7. interactive-only 的补充操作，再看 `practices/12_interactive_only_session_ops.md`
+7. 需要看会话控制层，再看 `practices/12_interactive_only_session_ops.md`
 
 如果要先看这轮 grounding 的事实底座，先读：
 

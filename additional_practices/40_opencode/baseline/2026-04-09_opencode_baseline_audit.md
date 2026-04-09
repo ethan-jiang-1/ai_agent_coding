@@ -34,7 +34,7 @@ Step: `Step 2A. Tool Baseline`
 | session / share / export / handoff 分层 | `ba.opencode.practice.memento_workflow` | 已明确当前 session、shared backend、export/import、share link、handoff 文件的不同用途 |
 | subagent / subtask 分流 | `ba.opencode.practice.multi_agent` | 已明确 `plan`、`build`、`@general`、`@explore` 与 `subtask: true` 的使用边界 |
 | 会话内 TUI 操作层 | `ba.opencode.practice.interactive_only_session_ops` | 已明确 slash commands、keybinds、command palette 与主提示词分层 |
-| 高级协调 | `ba.opencode.practice.advanced_agentic_coordination` | 已明确 subtask、shared backend、share/export/handoff 和 absence of worktree / scheduler |
+| 高级协调 | `ba.opencode.practice.advanced_agentic_coordination` | 已明确 subtask、shared backend、share/export/handoff 和 absence of first-party worktree / native scheduler |
 
 ## 已在 commands / reference 层明确表达的内容
 
@@ -45,7 +45,7 @@ Step: `Step 2A. Tool Baseline`
 | permission / tools / pattern matching | `ba.opencode.command.permissions_and_tools` | 已明确 `permission` 主体规则、`last matching rule wins` 与 agent 级工具收窄 |
 | shared backend 与多客户端接续 | `ba.opencode.command.advanced_agentic_coordination` | 已明确 `serve`、`web`、`attach`、`run --attach` 的作用 |
 | share / export / import | `ba.opencode.command.sessions_share_handoff` | 已明确 share link、session export/import、handoff 模板的分层 |
-| absence of worktree / detached worker / scheduler | `ba.opencode.reference.advanced_agentic_features` | 已明确 reviewed docs 里没有这些第一方能力 |
+| absence of first-party worktree / detached worker / native scheduler | `ba.opencode.reference.advanced_agentic_features` | 已明确 reviewed docs 里没有这些第一方能力 |
 
 ## 当前工具相对全局基线的特殊点
 
