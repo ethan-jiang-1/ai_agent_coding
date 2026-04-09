@@ -1,7 +1,7 @@
 # opencode__command_surface_control_plane
 
 - `tool_candidate_id`: `opencode__command_surface_control_plane`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__command_surface_control_plane`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `TUI built-ins、built-in commands 与 custom commands 已构成控制面`

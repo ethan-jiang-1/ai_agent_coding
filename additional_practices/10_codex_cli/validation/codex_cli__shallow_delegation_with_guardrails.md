@@ -1,7 +1,7 @@
 # codex_cli__shallow_delegation_with_guardrails
 
 - `tool_candidate_id`: `codex_cli__shallow_delegation_with_guardrails`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__bounded_delegation_guardrails`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `浅层 delegation 比激进 fan-out 更像当前默认实践`

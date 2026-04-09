@@ -1,7 +1,7 @@
 # claude_code__long_horizon_layering
 
 - `tool_candidate_id`: `claude_code__long_horizon_layering`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__interactive_to_durable_handoff_threshold`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `会话续跑、session loop、durable automation 必须分层`

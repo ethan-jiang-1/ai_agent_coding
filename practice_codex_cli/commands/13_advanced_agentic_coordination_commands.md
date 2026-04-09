@@ -100,6 +100,8 @@ codex cloud apply <task-id>
 - 你要先放着跑，再回来取结果
 - 你希望先看 diff，再决定是否 apply
 
+在升级到 `codex cloud` 之前，先把计划、branch、env 和取回策略写清楚；否则更像是把模糊任务丢进 detached run。
+
 ## 4. 交互式运行中的观察面
 
 ```text
@@ -121,6 +123,10 @@ codex cloud apply <task-id>
 - 一个主代理带几个只读/定界角色：`/agent`
 - 多个写入面需要彻底隔离：外部 `git worktree` + `codex -C`
 - 需要 detached long-running：`codex cloud`
+
+补一条阈值：
+
+- 如果任务还没有清楚计划、branch、env 和取回策略，先不要上 `codex cloud`
 
 ## 这章最容易写错的地方
 

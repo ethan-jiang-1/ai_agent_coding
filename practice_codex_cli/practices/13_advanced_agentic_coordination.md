@@ -16,6 +16,7 @@
 - 需要真正避免写入互相踩踏时，用外部 Git worktree，再让 Codex 进不同目录工作。
 - 需要人不守着、任务异步跑、结果稍后取回时，用 `codex cloud`。
 - 只是继续当前任务或分叉方案时，用 `resume` / `fork`，不要过度升级到 detached task。
+- 如果后面要切到 `codex cloud`，先把计划和 handoff 写清，不要直接把模糊任务丢进 detached run。
 
 一个简单判断顺序：
 
@@ -30,6 +31,7 @@
 - 但更激进的 fan-out 还不该写成默认稳定做法
 - 官方 worktree 文档当前属于 `Codex App`，不是 `Codex CLI` 顶层命令面
 - `codex cloud` 是 detached 长程任务面，不等于本地 `resume`
+- 正确问题是“何时从交互式续跑切到 detached cloud”，不是“长任务默认都该上 cloud”
 
 ## 不要这样做
 
@@ -37,6 +39,7 @@
 - 不要把 subagent 误当成文件系统隔离。
 - 不要把 `resume` 硬写成“长程任务能力”。
 - 不要把 `Codex App worktrees` 误说成 `Codex CLI` 的 slash command 或子命令。
+- 不要在没有 branch、env、计划文件或取回策略的情况下直接上 detached cloud task。
 
 ## 验收标准
 

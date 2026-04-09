@@ -11,6 +11,8 @@ opencode run --agent plan \
 
 `plan` 是 OpenCode 内建 primary agent，官方说明它默认对 file edits 和 bash 都走 `ask`，适合分析和规划阶段。
 
+如果某个仓库长期都适合先规划后执行，也可以考虑把 `default_agent` 设成 `plan`，把执行动作显式切回 `build`。
+
 ## 一个重要边界：OpenCode 当前没有内建 `/plan`
 
 和 Claude Code 不同，OpenCode 这次官方 TUI 命令清单里没有一个内建 `/plan`。
@@ -36,6 +38,8 @@ opencode run --agent plan \
 opencode run --agent build \
   "读取 docs/plans/oauth2-plan.md，只实现第一阶段，不扩范围"
 ```
+
+如果后续要进入 `@general`、`subtask: true` 或 GitHub runner，这份计划文件也应继续作为统一输入。
 
 ## 在 TUI 里切 primary agent
 
@@ -98,3 +102,4 @@ Analyze @src/auth and return only a staged plan summary.
 - 不要让 `build` agent “顺便先规划”。
 - 不要让计划只留在会话历史里。
 - 不要跳过人工审查就直接执行多文件改动。
+- 不要把“已经切到 `plan`”误解成“计划已经被审查过”。

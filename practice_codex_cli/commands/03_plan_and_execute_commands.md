@@ -18,6 +18,8 @@ cat .codex/plans/oauth2-plan.md | \
   "按这份计划实现第一阶段，不要超出计划范围"
 ```
 
+如果后续可能切到 subagents 或 detached cloud task，更稳的做法仍然是先把这份计划文件作为统一输入，而不是让每个执行面各自“理解一下需求”。
+
 ## 交互式对应
 
 ```text
@@ -39,6 +41,12 @@ cat .codex/plans/oauth2-plan.md | \
   适合在长规划会话里压缩历史，保留核心上下文
 
 这些命令都不能完全替代“只读规划并落盘”的外部工作流，但它们是交互态下最接近的控制手段。
+
+## 切到更重执行面之前
+
+- 需要 subagents：先把计划文件交给主线程，再决定怎么拆角色。
+- 需要 `codex cloud`：先把计划、branch、env 和取回策略写清楚。
+- 需要 `resume`：只表示继续当前会话，不表示 kickoff contract 已经建立。
 
 ## 用同一条非交互链继续推进
 
@@ -68,3 +76,4 @@ codex exec -s read-only resume --last "运行测试并总结风险"
 - 不要只把计划留在会话历史里。
 - 不要把 `-s` 写在 `resume` 后面。
 - 不要把 `/compact` 误当成计划文件的替代品。
+- 不要在没有计划文件的情况下直接把模糊任务丢给 subagents 或 `codex cloud`。

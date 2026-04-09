@@ -11,6 +11,13 @@ Claude Code 的高级 agentic 能力不是一个开关，而是四层：
 
 先选最轻、最窄、最可控的一层，而不是一上来就把所有自动化能力全开。
 
+更稳的升级顺序通常是：
+
+- 先 subagents
+- 再 worktree
+- 再看是否真的需要 agent teams
+- 最后才进入 durable scheduling
+
 ## 在 Claude Code 里怎么做
 
 - 只是角色拆分，用 subagents。
@@ -33,6 +40,7 @@ Claude Code 的高级 agentic 能力不是一个开关，而是四层：
 - agent teams 是官方文档能力，但仍是 experimental
 - `/loop` 是 session-scoped，不是 durable scheduling
 - GitHub Actions 文档里的 `--max-turns` 不能直接等同于本机 help 已稳定暴露
+- agent teams 的真正门槛是 worker 之间要彼此直接通信，而不是“任务比较大”
 
 ## 不要这样做
 
@@ -40,6 +48,7 @@ Claude Code 的高级 agentic 能力不是一个开关，而是四层：
 - 不要把 `/loop` 当成长期计划任务系统。
 - 不要忽略 agent teams 的更高 token 成本。
 - 不要在没有 timeout、turns、recurrence 护栏时直接放长任务自己跑。
+- 不要在 subagents 或 worktree 已够用时，过度升级成 agent teams。
 
 ## 验收标准
 

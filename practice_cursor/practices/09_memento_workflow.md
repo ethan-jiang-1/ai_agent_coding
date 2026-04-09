@@ -2,13 +2,21 @@
 
 ## 核心习惯
 
-Cursor 的跨会话状态传递至少分三层：chat history / past chats、Project Memories、handoff 文件。长任务不要只靠其中一层。
+Cursor 的跨会话状态传递至少分四层：
+
+- chat history / `@Past Chats`
+- Project Memories
+- Background Agent 运行结果与外部链接
+- handoff 文件
+
+长任务不要只靠其中一层。
 
 ## 在 Cursor 里怎么做
 
 - 短期继续同一任务，直接回原 tab 或通过历史找到旧对话。
 - 需要复用旧对话片段时，用 `@Past Chats`。
 - 项目级长期经验交给经你确认后写入的 Project Memories。
+- 如果任务已经进了 Background Agent、web/mobile 或 chatops 入口，把 branch、PR、run link、Open in Cursor 这层单独当成 run artifact，不要硬写回普通旧 tab 逻辑。
 - 需要 handoff、留档或复盘时，直接把 chat 导出成 markdown，再整理成 handoff 文件。
 - 当前任务状态、下一步和风险点交给 handoff 文件。
 - 如果任务已经交给 Background Agent，记得它的交接更像 branch / PR / Open in Cursor / 外部链接，不是普通旧 tab 延续。
@@ -17,6 +25,7 @@ Cursor 的跨会话状态传递至少分三层：chat history / past chats、Pro
 
 - 同一任务继续做：tab / history 层
 - 项目通用经验：memories 层
+- agent run 结果：branch / PR / link 层
 - 当前阶段交接：handoff 层
 
 ## 为什么 handoff 文件仍然重要
@@ -24,6 +33,7 @@ Cursor 的跨会话状态传递至少分三层：chat history / past chats、Pro
 因为：
 
 - memories 不是完整对话历史
+- background agent chat 也不是普通 history 的简单延长
 - 旧 tab 太长会继续污染上下文
 - export chat 只是导出原记录，不自动替你整理当前阶段状态
 - 别人接手时，明文 handoff 比隐藏在历史和 memories 里更可靠

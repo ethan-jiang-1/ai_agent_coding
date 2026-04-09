@@ -1,5 +1,14 @@
 # 01 会话与恢复命令
 
+这一章处理的是 OpenCode 最基础的一层会话控制面：
+
+- 开新会话
+- 恢复旧会话
+- 从旧会话分叉
+- 在 TUI 内切换当前 session
+
+这些动作服务的是“当前会话怎么继续”，不是让模型直接产出内容。
+
 ## 开新 TUI 会话
 
 ```bash
@@ -55,6 +64,8 @@ opencode session list --format json
 - `/new`：开启新会话。别名 `/clear`。
 - `/sessions`：列会话并切换。别名 `/resume`、`/continue`。
 - `/quit` `/q`：退出当前 TUI。
+
+这几条都更接近 session control plane，而不是普通提示词模板。
 
 更准确的映射关系是：
 

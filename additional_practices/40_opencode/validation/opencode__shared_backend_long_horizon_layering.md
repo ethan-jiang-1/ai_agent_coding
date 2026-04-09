@@ -1,7 +1,7 @@
 # opencode__shared_backend_long_horizon_layering
 
 - `tool_candidate_id`: `opencode__shared_backend_long_horizon_layering`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__interactive_to_durable_handoff_threshold`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `shared backend、多客户端接续与公开分享必须分层`

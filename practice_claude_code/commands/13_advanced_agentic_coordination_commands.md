@@ -9,6 +9,13 @@ Claude Code 到这一步要分开四件事：
 
 这些都和“多 agent”有关，但不是同一种能力。
 
+更稳的升级顺序通常是：
+
+- 先 subagents
+- 再 worktree
+- 再 teams
+- 最后 durable scheduling
+
 ## 1. 更轻的并行：subagents
 
 会话内入口：
@@ -86,6 +93,7 @@ Create an agent team to review this PR: one teammate on security, one on perform
 - 这是 experimental
 - token 成本显著高于单一 session
 - teammates 启动时继承 lead 的 permission settings
+- 如果 subagents 或 worktree 已够用，不要为了“任务更大”就直接升级到 teams
 
 ## 4. 会话内长程：`/loop`
 

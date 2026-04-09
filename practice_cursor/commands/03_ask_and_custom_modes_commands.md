@@ -19,6 +19,8 @@ Cursor 官方更稳的规划 grounding 是 `Ask`。
 
 当你已经看清方向，需要搜索、读写、跑命令时，再进 `Agent`。
 
+如果任务后续要进入 Background Agent、web/mobile agent 或 Automations，更稳的做法也不是直接发起，而是先让 Ask 产出计划并过一轮人工审查。
+
 ## 条件性的窄编辑模式
 
 Cursor 当前官方 modes 文档的稳定表述更集中在：
@@ -71,6 +73,12 @@ Cursor 的官方叙事不是“内建固定 Plan Mode”，而是支持 `Custom 
 - mode：决定工具边界和执行方式
 - command：在真的值得复用时，决定这次会话怎么起手
 
+## 发起后台或长程执行前
+
+- Background Agent 前：先有计划文件
+- web/mobile follow-up 前：先有清楚的阶段目标
+- Automations 前：先把触发条件、验证方式和失败收口写清
+
 ## 计划文件建议位置
 
 ```text
@@ -86,3 +94,4 @@ docs/plans/
 - 不要把 custom command 误写成 mode 的替代品。
 - 不要把 `Manual` 写成当前所有 Cursor 文档都稳定列出的模式。
 - 不要让计划只停留在 tab 历史里。
+- 不要跳过 Ask，直接把大任务丢给 Background Agent 或 Automations。

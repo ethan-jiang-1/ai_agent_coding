@@ -10,6 +10,7 @@
 - 同一状态要在 terminal 和 web 之间来回切，用 `serve` / `web` / `attach` 这一层。
 - 跨天、跨机或要备份状态，用 export / import。
 - 需要和别人共享会话时，才考虑 `/share`，结束时记得 `/unshare`。
+- 如果任务是在 GitHub runner 里自动跑出来的，就把它当成外部 automation 产物，而不是 shared backend 的自然续跑。
 - 当前阶段的真正交接信息，仍然写 handoff 文件。
 - 在 TUI 里要切历史会话，用 `/sessions`；要导出当前对话摘要或记录，用 `/export`。
 - 如果是给人接手，优先 `/export` 这种 Markdown 交接材料；如果是搬运会话状态或做机器可导入的备份，优先 `opencode export` / `import`。
@@ -18,6 +19,7 @@
 
 - 还是你自己继续做：session
 - 还是同一套 backend 状态，但换客户端：serve / web / attach
+- 还是外部 runner 的自动化结果：workflow / PR / logs
 - 要搬到另一台环境或留底：export / import
 - 要给别人看这段会话：share
 - 要让人高质量接手：handoff
@@ -28,6 +30,7 @@
 
 - session ID 更适合同一使用者继续
 - shared backend 更适合同一状态续做，不等于别人一看就能接手
+- 外部 automation 结果更不等于可读 handoff
 - share link 是公开链接，不是私有交接通道
 - JSON export 是数据搬运，不等于别人能快速理解当前阶段
 - Markdown export 更适合人看，但不等于完整 session state

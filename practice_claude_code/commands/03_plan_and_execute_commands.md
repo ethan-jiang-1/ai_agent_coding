@@ -23,6 +23,8 @@ claude --permission-mode default \
   "读取 .claude/plans/oauth2-plan.md，按计划实现第一阶段"
 ```
 
+如果后续会进入 subagents、worktree、`/loop` 或 GitHub Actions，这份计划文件也应继续作为统一输入，而不是只在当前会话里“提过一次”。
+
 ## 会话内对应 slash commands
 
 - `Type C` `/plan [description]`：在当前交互里切到规划流，适合先规划、再继续同一会话。
@@ -46,3 +48,4 @@ claude --permission-mode default \
 - 不要在默认可编辑模式下“顺便先规划”。
 - 不要让计划只留在会话历史里。
 - 不要跳过人工审查就直接执行多文件改动。
+- 不要把 `/plan` 当成计划文件和 review loop 的替代品。

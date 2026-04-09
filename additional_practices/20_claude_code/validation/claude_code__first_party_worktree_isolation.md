@@ -1,7 +1,7 @@
 # claude_code__first_party_worktree_isolation
 
 - `tool_candidate_id`: `claude_code__first_party_worktree_isolation`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__environment_isolation_threshold`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `第一方 worktree 隔离已足以改变并行工作流`

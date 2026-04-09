@@ -1,7 +1,7 @@
 # claude_code__agent_teams_threshold
 
 - `tool_candidate_id`: `claude_code__agent_teams_threshold`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__bounded_delegation_guardrails`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `agent teams 需要高门槛，不应替代 subagents / worktree`

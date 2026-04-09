@@ -1,7 +1,7 @@
 # claude_code__memory_hierarchy_and_handoff
 
 - `tool_candidate_id`: `claude_code__memory_hierarchy_and_handoff`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__memory_hierarchy_and_handoff`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `memory、rules、handoff 必须是分层系统，不是单一记忆桶`

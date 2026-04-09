@@ -1,13 +1,31 @@
-# 12 交互式专用 session ops
+# 12 会话控制层命令与 keybinds
 
-这一章收那些很有价值、但没有稳定 external 对应，或者很难自然并入原 11 章的 OpenCode 会话内操作。
+这一章不是收容“没有外部等价物的小操作”，而是把 OpenCode 的正式会话控制面拉出来。
+
+这层控制面至少有四种入口：
+
+- built-in slash commands
+- command palette
+- leader-key keybinds
+- `tui.json` 配置
 
 还要补一个边界：
 
 - OpenCode 的交互操作层不只 slash commands
+- 也不只低层 TUI 控制
+- `/init`、`/review` 这类 built-in commands 也属于正式控制面
 - 官方 docs 当前明确写到，大多数命令也有 leader-key keybind
 - 默认 leader key 是 `ctrl+x`
 - 这层配置走 `tui.json`，不是 `opencode.json`
+
+## 控制面和产出面的分工
+
+更稳的分层是：
+
+- 产出型请求：写 prompt
+- 会话控制型动作：优先走 slash commands / palette / keybinds
+
+如果动作的目标是查命令、调显示、改会话状态、发起 built-in workflow，就不要把它重写成自然语言提示词。
 
 ## keybind layer
 
@@ -34,6 +52,15 @@
 - `session_unshare`
 
 这说明 OpenCode 的会话内操作层不只是“打 `/`”，还包括一整层可配置的键盘流。
+
+## built-in control commands
+
+这章里要特别记住两类 built-in：
+
+- `/init`：规则入口初始化
+- `/review`：拉起 review 动作
+
+它们的详细事实分别在第 `04` 章等别处展开，但从行为分层上看，它们和 `/help`、`/status` 一样，都是正式控制面。
 
 ## `/help`
 
@@ -127,6 +154,7 @@
 因为它们的共同点是：
 
 - 服务的是会话控制、观察或 TUI 自身
+- 有些是 built-in workflow trigger，不只是底层 UI 开关
 - 不是在要求 OpenCode “完成一个编码任务”
 
 如果把这些动作都写成自然语言提示，会带来两个问题：
@@ -139,4 +167,5 @@
 - 不要把 `/thinking` 当成模型切换。
 - 不要把 command palette `ctrl+p`、`/help` 和某一个 slash 名字混成同一层。
 - 不要把 docs 提到过的 `/details` 直接写成本机这版 CLI/TUI 已确认的稳定 slash。
+- 不要把 `/init`、`/review` 误当成“只是 prompt 模板”。
 - 不要把“看状态、调显示、查命令”这类动作混进主提示词。

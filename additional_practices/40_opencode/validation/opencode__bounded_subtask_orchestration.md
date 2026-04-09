@@ -1,7 +1,7 @@
 # opencode__bounded_subtask_orchestration
 
 - `tool_candidate_id`: `opencode__bounded_subtask_orchestration`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__bounded_delegation_guardrails`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `subtask orchestration 应保持有界，不把 subagents 误写成 detached workers`

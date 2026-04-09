@@ -2,7 +2,7 @@
 
 ## Run Snapshot
 
-Time: 2026-04-09 11:46:46 CST
+Time: 2026-04-09 12:09:08 CST
 Run ID: 2026-04-09_additional_practices_r1
 Supersedes Run ID: none
 Effective Window: 2026-01-01 to 2026-04-09
@@ -26,28 +26,26 @@ Non-Drift Constraints:
 
 ## Progress
 
-Current Phase: Phase 5. Tool Loop: OpenCode
-Phase Status: in_progress
-Current Tool: OpenCode
-Current Step: Step 2A. Tool Baseline
+Current Phase: Phase 9. Final Conclusion
+Phase Status: completed
+Current Tool: none
+Current Step: Step 6. 形成最终调研结论
 Step Status: completed
-Last Completed Checkpoint: Phase 4 completed and OpenCode Step 2A completed
+Last Completed Checkpoint: Phase 9 completed
 
 Next Action:
 
-- 执行 `Step 2B. Tool External Scan`
-- 先做 OpenCode 的 `Tier A` 官方时间窗扫描，再补必要的 practitioner / community 信号
-- 以 `40_opencode/baseline/2026-04-09_opencode_baseline_audit.md` 里标出的优先方向作为外部搜索入口
+- 当前 research run 已完成
+- 下一步如果进入施工阶段，应按 `90_review_queue/apply_matrix/2026-04-09_apply_matrix.md` 的顺序，把 `Merge` 候选 apply 回 4 个正式工具目录
+- `Hold` 候选本轮保持 `no-op`
 
 Next Mandatory Checkpoint:
 
-- 完成 OpenCode 的 `Step 2F. Tool Exit Summary`
+- none
 
 Blockers / Open Questions:
 
-- OpenCode 的官方时间窗扫描还未开始。
-- `plan` agent 的开局纪律，到底有多强 adoption，还需要外部信号确认。
-- `serve` / `web` / `attach` 的 shared-backend long horizon，是否真的改变了长程协作习惯，需要优先核实。
+- none for this run
 
 ## Working Memory
 
@@ -56,15 +54,13 @@ Current Candidate Set:
 - `Codex CLI` 已保留 `6` 个活跃候选，并完成工具级 exit summary
 - `Claude Code` 已保留 `6` 个活跃候选，并完成工具级 exit summary
 - `Cursor` 已保留 `6` 个活跃候选，并完成工具级 exit summary
-- 当前候选观察框架已固定在 `01_global/candidate_pool/2026-04-09_initial_candidate_observation_frame.md`
-- `OpenCode` 刚完成 baseline，尚未分配任何 `tool_candidate_id`
+- `OpenCode` 已保留 `7` 个活跃候选，并完成工具级 exit summary
+- 候选已收敛为 `8` 个 `global_candidate_id`
+- 当前候选观察框架与收敛结果已落到 `01_global/cross_tool/2026-04-09_cross_tool_candidate_convergence.md`
 
 Current Open Questions:
 
-- `plan` agent 是否已经在 2026 窗口里变成更强的开局契约，而不只是功能点。
-- OpenCode 的 TUI built-ins、built-in commands、custom commands，到底有多强的行为层意义。
-- shared backend、share/export/import、handoff 这些层次，外部 workflow 是否已经把边界说清。
-- bounded subtask orchestration 是否足以成为强 guardrail 候选，而不是纯 capability facts。
+- 本轮已无开放问题；后续若 rerun，重点应复核 `Hold` 候选是否获得更强 adoption signal。
 
 ## Artifacts Produced
 
@@ -84,12 +80,19 @@ Current Open Questions:
 - `30_cursor/validation/` candidate cards and deep dives
 - `30_cursor/summary/2026-04-09_cursor_exit_summary.md`
 - `40_opencode/baseline/2026-04-09_opencode_baseline_audit.md`
+- `40_opencode/intake/2026-04-09_opencode_additional_practices_scan.md`
+- `40_opencode/validation/` candidate cards and deep dives
+- `40_opencode/summary/2026-04-09_opencode_exit_summary.md`
+- `01_global/cross_tool/2026-04-09_cross_tool_candidate_convergence.md`
+- `90_review_queue/merge/*.md`
+- `90_review_queue/hold/*.md`
+- `90_review_queue/apply_matrix/2026-04-09_apply_matrix.md`
 - `99_final/final_recommendation.md`
 
 ## Review Queue Status
 
 - `90_review_queue/promote/`: empty
-- `90_review_queue/merge/`: empty
-- `90_review_queue/hold/`: empty
+- `90_review_queue/merge/`: 6 decision memos
+- `90_review_queue/hold/`: 2 decision memos
 - `90_review_queue/reject/`: empty
-- `90_review_queue/apply_matrix/`: empty
+- `90_review_queue/apply_matrix/`: 1 matrix file

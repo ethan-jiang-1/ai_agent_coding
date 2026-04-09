@@ -18,7 +18,8 @@ Cursor 在这章的优势是：
 - 背景 agent 有独立远程环境
 - 可以在独立 branch 上工作
 - 前台和后台的权限模型不同
-- 原生隔离重点是 remote branch worker，不是本地 worktree
+- Background Agent 默认是 remote branch worker
+- 如果要切 local / worktree / cloud / remote SSH，应转到 Cursor 3 的多环境 workspace 理解
 
 ## 什么时候不用多智能体
 
@@ -33,6 +34,7 @@ Cursor 在这章的优势是：
 - 不要把 Background Agents 当成本地多开聊天窗。
 - 不要不给职责边界就开多个执行通道。
 - 不要把 separate branch 写成 local worktree。
+- 不要反过来把 Cursor 3 的多环境 handoff 抹掉成“只有 remote branch”。
 
 ## 验收标准
 

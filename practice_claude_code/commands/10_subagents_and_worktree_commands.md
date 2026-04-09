@@ -107,6 +107,13 @@ cd ../project-auth
 claude
 ```
 
+这章更稳的默认升级顺序是：
+
+- 先 subagent
+- 再 worktree
+
+如果只是普通 subagent 或 worktree 已够用，不要直接越级到 agent teams；那属于第 `13` 章。
+
 ## 这章最容易写错的地方
 
 - 不要不给职责边界就开多个 subagent。

@@ -14,6 +14,8 @@
 还要补一个关键理解：
 
 - OpenCode 的交互操作层不只 slash commands
+- 也不只低层 TUI 控制
+- `/init`、`/review` 这类 built-in commands 也属于正式控制面
 - 官方 docs 当前明确写到，大多数命令也有 leader-key keybind
 - 这层配置走 `tui.json`，不是 `opencode.json`
 
@@ -21,6 +23,7 @@
 
 - 想查当前命令面，先 `/help`。
 - 想看全部动作和命令面，先 `ctrl+p` 打开 command palette。
+- 想初始化规则或发起 review，优先用 `/init`、`/review` 这类 built-in commands，而不是临时写长 prompt 模拟。
 - 想看工具执行细节，优先从 command palette 触发 `Show tool details` / `Hide tool details`。
 - 想切 reasoning blocks 可见性，用 `/thinking`。
 - 想看系统状态时，用 `/status`。
@@ -32,7 +35,7 @@
 这条习惯的本质是：
 
 - 产出型请求，走正常提示词
-- 会话控制型请求，优先走 slash commands
+- 会话控制型请求，优先走 slash commands / built-in commands / keybinds
 
 ## 为什么这很重要
 

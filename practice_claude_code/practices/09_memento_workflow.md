@@ -2,13 +2,20 @@
 
 ## 核心习惯
 
-Claude Code 的跨会话状态传递至少分三层：会话历史、auto-memory、handoff 文件。长任务不要只靠其中一层。
+Claude Code 的跨会话状态传递至少分四层：
+
+- 会话历史
+- 项目级 memory / rules
+- 当前任务 handoff
+- durable automation 前的计划与交接文件
+
+长任务不要只靠其中一层。
 
 ## 在 Claude Code 里怎么做
 
 - 短期继续同一任务，用 `--continue` / `--resume`。
 - 想保留历史但试另一方向，用 `--fork-session`。
-- 项目级长期经验交给 auto-memory。
+- 项目级长期经验交给 auto-memory；长期稳定规则仍放 `CLAUDE.md` / `.claude/rules`，不要混进 memory。
 - 当前任务状态、下一步和风险点交给 handoff 文件。
 - 在交互里，需要看或改 memory 用 `/memory`；需要把当前会话直接导出来做交接，用 `/export`。
 - 如果只是当前 session 里短期轮询，用 `/loop`；如果要跨重启、跨离线持续存在，就不要把它当 handoff 机制，而要转到 durable scheduling。
@@ -24,6 +31,7 @@ Claude Code 的跨会话状态传递至少分三层：会话历史、auto-memory
 因为：
 
 - auto-memory 不是完整对话历史
+- auto-memory 也不是长期规则层
 - 会话历史太长会继续污染上下文
 - 别人接手时，明文 handoff 比隐藏在历史里更可靠
 - session-scoped `/loop` 结束即失效，不能替代 handoff 或 durable automation

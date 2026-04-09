@@ -1,7 +1,7 @@
 # codex_cli__command_surface_fluency
 
 - `tool_candidate_id`: `codex_cli__command_surface_fluency`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__command_surface_control_plane`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `把 slash surface 当成控制平面，而不是零散快捷键`

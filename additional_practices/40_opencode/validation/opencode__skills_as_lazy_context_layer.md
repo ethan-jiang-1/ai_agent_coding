@@ -1,7 +1,7 @@
 # opencode__skills_as_lazy_context_layer
 
 - `tool_candidate_id`: `opencode__skills_as_lazy_context_layer`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__layered_context_packaging`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `skills 应作为按需加载的上下文层，而不是把一切塞进 AGENTS 与 commands`

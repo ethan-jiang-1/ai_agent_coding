@@ -1,7 +1,7 @@
 # codex_cli__approval_profiles_and_remembered_grants
 
 - `tool_candidate_id`: `codex_cli__approval_profiles_and_remembered_grants`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__agent_specific_permission_profiles`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `权限不再只是单次批准，而是可记忆的 profile 设计`

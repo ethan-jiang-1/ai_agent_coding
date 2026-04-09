@@ -1,7 +1,7 @@
 # cursor__automations_workflow_control_plane
 
 - `tool_candidate_id`: `cursor__automations_workflow_control_plane`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__interactive_to_durable_handoff_threshold`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `Automations 已把 Cursor 推向事件驱动的工作流控制面`

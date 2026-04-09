@@ -49,6 +49,13 @@ opencode agent create
 
 适合：让探索任务在独立上下文里完成，再把结果压缩返回主线程。
 
+更稳的默认法是：
+
+- 主线程负责收口
+- `explore` 优先做轻量只读探索
+- `general` 承接更重的研究子任务
+- `subtask: true` 用来隔离噪音，不是把任务变成 detached worker
+
 ## 当前 local CLI/TUI 有 built-in `/agents`
 
 这次本地 CLI/TUI 源码注册点里，已经能确认一条 built-in `/agents`：
@@ -146,3 +153,4 @@ Recent git status:
 - 不要在没有职责边界时就拆多 agent。
 - 不要忘了 `explore` 更适合轻量只读探索，`general` 更适合重研究子任务。
 - 不要把 absence of worktree / background worker 硬补成存在的能力。
+- 不要把 subtask 当成后台常驻 worker 的替代品。

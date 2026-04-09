@@ -2,13 +2,20 @@
 
 ## 核心习惯
 
-在 Cursor 里，规划阶段最稳的 grounding 不是虚构一个固定的 “Plan Mode”，而是先用 `Ask` 做只读探索；需要固定流程时，再用 `Custom Modes` 定义计划型工作流。
+在 Cursor 里，复杂任务的起手应该是：
+
+- Ask 先读
+- 计划先过审
+- Agent 或后台 agent 再执行
+
+重点不是虚构一个固定名称的 “Plan Mode”，而是把 `Ask -> plan file -> approval -> execution` 写成稳定开局节奏。
 
 ## 在 Cursor 里怎么做
 
 - 规划阶段，先切到 `Ask`。
 - 多文件改动前，先让 Ask 产出明确计划。
 - 计划经人工审查后，再交给 `Agent` 执行。
+- 如果后续要交给 Background Agent、web/mobile agent 或 Automations，也先用 Ask 把计划写清再发起。
 - 如果这个流程反复出现，可以在启用 beta 之后做一个 Plan / Debug / Refactor 类的 `Custom Mode`。
 - 如果团队里某类规划入口反复出现，再考虑配一个 project/global custom command，例如把 `setup-new-feature` 这种起手模板固定下来。
 
@@ -33,6 +40,7 @@
 - 不要把 Cursor 写成“内建固定名称的标准 Plan Mode”。
 - 不要在 Agent 已经能写代码时，一边写一边想还自称是在规划。
 - 不要让计划只留在对话里，不落到文件。
+- 不要跳过 Ask，直接把大任务丢给 Background Agent 或 cloud surface。
 
 ## 验收标准
 

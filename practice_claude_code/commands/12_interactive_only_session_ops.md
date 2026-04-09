@@ -1,6 +1,6 @@
-# 12 交互式专用 slash commands
+# 12 会话控制层 slash commands
 
-这一章收那些很有价值、但没有稳定 external command 对应，或者很难自然并入前 11 章的会话内操作。
+这一章不是收容“没有 CLI 等价物的小命令”，而是把 Claude Code 的正式会话控制面单独拉出来。
 
 ## 先分清三类 `/` 入口
 
@@ -14,7 +14,31 @@
 
 所以先别把“slash 菜单里出现了”直接理解成“它一定有 CLI 参数等价物”。
 
-## 高价值 interactive-only 命令
+真正属于这一章的，是 built-in command surface 这一层。它承接的是：
+
+- 会话控制
+- 权限与状态调整
+- 旁路问题
+- review / task 观察 trigger
+
+不是普通 prompt 的装饰语。
+
+## 控制面和产出面的分工
+
+更稳的分层是：
+
+- 产出型请求：写 prompt
+- 会话控制型动作：优先走 built-in commands
+
+如果动作已经有正式命令入口，就不要再改写成一段自然语言塞回主线程。
+
+## 高价值 control-plane 命令
+
+### `/permissions`
+
+适合调整当前会话的审批与权限边界。
+
+它的参数映射细节在第 `08` 章，但从行为分层上看，它就是 Claude Code 正式控制面的一部分。
 
 ### `/help`
 
@@ -67,6 +91,7 @@
 
 ## 这章最容易写错的地方
 
+- 不要把 built-in commands 写成“只是方便入口”。
 - 不要把所有 session 操作都塞进自然语言提示词。
 - 不要把 interactive-only 命令强行说成有外部 CLI 完全等价物。
 - 不要把 slash 菜单里的 skills、MCP prompts 和 built-in commands 混为一谈。

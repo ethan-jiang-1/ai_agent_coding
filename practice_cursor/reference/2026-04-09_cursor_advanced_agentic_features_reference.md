@@ -21,14 +21,14 @@
 ## 1. 本次只确认三条能力线
 
 - `background agent / remote agent orchestration`
-- `workspace isolation / branch isolation`
+- `environment handoff / workspace isolation / branch isolation`
 - `long horizon / async / cross-surface follow-up`
 
 原则：
 
 - 有官方证据的，写成正式能力
-- 没有官方 worktree 命令面的，明确写“没有”
-- 不把 editor surface 和可能存在的其他 CLI surface 混写
+- 新旧叙事冲突时，以更新的官方环境模型为准
+- 不把不同执行环境混写成同一种 worker
 
 ## 2. Cursor 的“多 agent”主叙事是 Background Agents
 
@@ -49,22 +49,28 @@
 - 独立 branch
 - 可异步跟进
 
-## 3. Cursor 当前没有官方 editor worktree 命令面
+## 3. Cursor 3 当前已形成多环境 handoff 叙事
 
-本次能稳定确认的 Cursor 原生隔离方式是：
+对 Background Agent 本身，本次仍能稳定确认的是：
 
 - isolated remote machine
 - separate branch
 - remote repo clone
 
-但没有稳定证据显示 Cursor editor 当前有像 `claude --worktree` 那样的第一方本地 worktree 命令面。
+但在 `2026-04-02` 之后的 Cursor 3 Agents Window 叙事里，官方已经把这些环境放进同一个 agent workspace：
+
+- local
+- worktrees
+- cloud
+- remote SSH
 
 因此更准确的写法应该是：
 
-- Cursor 的原生隔离重点是 remote branch worker
-- 不是本地 worktree orchestration
+- Background Agent 本身是 remote branch worker
+- Cursor 3 整体已经不适合再写成“没有 worktree / 多环境 story”
+- 但这也不等于所有任务都该默认切到 worktree 或 cloud
 
-如果真的需要本地 filesystem 级并行隔离，那已经超出当前 Cursor-native agent surface，应另用 Git 自己的 worktree 技术，不要误写成 Cursor 官方功能。
+如果真的需要更细的 filesystem 级并行隔离，仍要看当前入口到底落在 Cursor 的哪一层环境里，不要把 remote branch、worktree、cloud、remote SSH 混成一回事。
 
 ## 4. Background Agents 的权限与安全边界，比前台更强也更危险
 
@@ -147,10 +153,12 @@
 - 更准确的写法是：tabs 做轻量本地分流，Background Agents 做远程异步分流
 - 真正高级的编排层，应写到新增第 `13` 章
 
-### 对 worktree
+### 对 worktree / environment handoff
 
-- 要明确写“Cursor 当前没有稳定可确认的 editor worktree 命令面”
+- 要明确写“Background Agent 本身不等于 local worktree”
+- 也要明确写“Cursor 3 已经有 local / worktree / cloud / remote SSH 的多环境 handoff 叙事”
 - 不要把 remote branch isolation 误说成本地 worktree
+- 不要反过来把新环境模型抹掉成“只有 separate branch”
 
 ### 对 long horizon
 

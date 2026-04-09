@@ -31,6 +31,7 @@ claude --resume <session-id> --fork-session
 - Claude 会自动更新项目级经验
 - 新会话启动时会自动读入 `MEMORY.md` 的前 200 行或前 25KB
 - 同一 Git 仓库的不同 worktree 共享这份 memory
+- 这层适合项目经验，不适合承接长期规则或当前任务快照
 
 ## `--bare` 与 memory
 
@@ -51,8 +52,11 @@ claude --bare
 
 对跨天、跨人或跨阶段任务，仍然建议另写 handoff 文件，而不是只靠 memory 或 resume。
 
+如果任务后面要进 `/loop` 之外的 durable scheduling，也应把计划文件或 handoff 文件当成正式交接层，而不是只信会话或 memory。
+
 ## 这章最容易写错的地方
 
 - 不要把 auto-memory 当成完整对话历史。
 - 不要把 auto-memory 当成当前任务快照。
+- 不要把 auto-memory 当成 `CLAUDE.md` / `.claude/rules` 的替代层。
 - 不要把 resume 当成跨人协作的唯一方案。

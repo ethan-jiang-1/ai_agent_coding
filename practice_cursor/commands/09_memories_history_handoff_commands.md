@@ -53,6 +53,11 @@ Cursor 官方支持把聊天导出为 markdown。
 - Open in Cursor
 - 外部通知与链接
 
+补充一个重要边界：
+
+- Background Agent 的 run artifact 不一定回到 regular history
+- 所以不要把它简单当成“更长的旧 tab”
+
 ## 本地历史存储
 
 官方文档提到 chat 历史保存在本地 SQLite 数据库。
@@ -65,6 +70,15 @@ Cursor 官方支持把聊天导出为 markdown。
 ## handoff 文件建议
 
 对跨天、跨人或跨阶段任务，仍然建议另写 handoff 文件，而不是只靠 history 或 memories。
+
+如果当前任务已经跨到 web/mobile、Slack、GitHub 或 Background Agent 链路，更稳的做法是把：
+
+- branch / PR
+- run link
+- 当前阶段目标
+- 下一步
+
+一起写进 handoff，而不是分散在多个入口里。
 
 ## 这章最容易写错的地方
 

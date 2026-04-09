@@ -2,13 +2,16 @@
 
 ## 核心习惯
 
-在 Claude Code 里，规划阶段最好用 `--permission-mode plan` 这种工具级约束显式表达出来，而不是只靠提示词说“先别改代码”。
+在 Claude Code 里，复杂任务默认应先进入 `plan / written plan / review loop`，而不是在默认可编辑模式里“顺便先想想”。
+
+`--permission-mode plan` 的价值，不只是限制写入，而是把开局契约显式化。
 
 ## 在 Claude Code 里怎么做
 
 - 规划阶段，用 `claude --permission-mode plan`。
 - 最稳的做法是 `plan + --print + 落盘`。
 - 审查计划后，再切回 `default` 或其他执行模式开始写代码。
+- 如果后续要进入 subagents、worktree、`/loop` 或 GitHub Actions，也先把计划写成可复核输入。
 - 如果已经在交互里了，可以先用 `/plan` 进入规划流；但多文件大改仍建议把计划落盘。
 
 最稳的节奏是：
@@ -32,6 +35,7 @@
 - 不要一开始就在默认可编辑模式里“顺便分析一下”。
 - 不要让计划只存在会话历史里。
 - 不要把超过 3 个文件的改动当成“边写边想”的轻任务。
+- 不要把 `/plan` 当成计划文件本身的替代品。
 
 ## 验收标准
 

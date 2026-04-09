@@ -1,7 +1,7 @@
 # opencode__external_runner_durable_automation_threshold
 
 - `tool_candidate_id`: `opencode__external_runner_durable_automation_threshold`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__interactive_to_durable_handoff_threshold`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `真正的 durable automation 在 OpenCode 上更多发生在外部 runner`

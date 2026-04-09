@@ -1,7 +1,7 @@
 # cursor__plan_first_kickoff
 
 - `tool_candidate_id`: `cursor__plan_first_kickoff`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__plan_first_kickoff`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `Ask、plan approval 与 agent execution 的开局契约`

@@ -71,6 +71,7 @@ opencode run --attach http://localhost:4096 "继续已有 backend 的工作"
 - 改会话名字：`/rename`
 - 在当前长线程里精准回到某条消息：`/timeline`
 - 从旧消息节点开出分支：`/fork`
+- 外部 runner 的自动化结果：优先 workflow logs / PR，再补 handoff 文件
 
 ## share 配置
 
@@ -124,3 +125,4 @@ opencode run --attach http://localhost:4096 "继续已有 backend 的工作"
 - 不要把公开 share 当成内部安全协作。
 - 不要让“下一步做什么”只留在会话历史里。
 - 不要把 `serve` / `web` / `attach` 写成 scheduler 或后台 worker。
+- 不要把 GitHub runner 的结果误当成 shared backend 的自然续跑。

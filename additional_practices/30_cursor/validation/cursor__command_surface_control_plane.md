@@ -1,7 +1,7 @@
 # cursor__command_surface_control_plane
 
 - `tool_candidate_id`: `cursor__command_surface_control_plane`
-- `global_candidate_id`:
+- `global_candidate_id`: `global__command_surface_control_plane`
 - `created_in_run`: `2026-04-09_additional_practices_r1`
 - `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
 - `candidate_name`: `quick commands、custom commands 与 modes 已构成柔性控制面`

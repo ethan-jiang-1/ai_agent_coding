@@ -459,3 +459,128 @@ Blockers / Open Questions:
 
 - 需要先完成 OpenCode 的 `Tier A` 官方时间窗扫描
 - 需要验证 `plan` agent、shared backend、subtask orchestration、share/export/handoff 的 adoption 层强度
+
+## 2026-04-09 12:09:08 CST | Phase 5 Exit
+
+Time: 2026-04-09 12:09:08 CST
+Run ID: 2026-04-09_additional_practices_r1
+Effective Window: 2026-01-01 to 2026-04-09
+Main Question: 现有 4 个工具目录的 practice 体系，是否仍遗漏了会显著改变工作方式的高价值 practice。
+Fixed Non-Goals: 不直接改正式工具目录；不把单条社区经验直接升格为 practice；不混用未标注时间窗。
+Current Phase: Phase 5. Tool Loop: OpenCode
+Phase Status: completed
+Current Tool: OpenCode
+Current Step: Step 2F. Tool Exit Summary
+Step Status: completed
+Last Completed Checkpoint: Phase 5 completed
+Artifacts Produced:
+
+- `40_opencode/intake/2026-04-09_opencode_additional_practices_scan.md`
+- `40_opencode/validation/*.md`
+- `40_opencode/summary/2026-04-09_opencode_exit_summary.md`
+
+Next Action: 进入 `Phase 6. Cross-Tool Convergence`
+Next Mandatory Checkpoint: 完成 `Phase 6`
+Blockers / Open Questions:
+
+- 需要把 25 个工具内候选收敛成稳定 `global_candidate_id`
+- 需要明确哪些点只是同一大主题下的子形态，不应重复保留
+
+## 2026-04-09 12:09:08 CST | Phase 6 Exit
+
+Time: 2026-04-09 12:09:08 CST
+Run ID: 2026-04-09_additional_practices_r1
+Effective Window: 2026-01-01 to 2026-04-09
+Main Question: 现有 4 个工具目录的 practice 体系，是否仍遗漏了会显著改变工作方式的高价值 practice。
+Fixed Non-Goals: 不直接改正式工具目录；不把单条社区经验直接升格为 practice；不混用未标注时间窗。
+Current Phase: Phase 6. Cross-Tool Convergence
+Phase Status: completed
+Current Tool: none
+Current Step: Step 3. 做跨工具收敛
+Step Status: completed
+Last Completed Checkpoint: Phase 6 completed
+Artifacts Produced:
+
+- `01_global/cross_tool/2026-04-09_cross_tool_candidate_convergence.md`
+
+Next Action: 进入 `Phase 7. Promotion / Merge / Hold / Reject Decision`
+Next Mandatory Checkpoint: 完成 `Phase 7`
+Blockers / Open Questions:
+
+- 需要对 8 个 `global_candidate_id` 做最终归类
+- 需要避免把 partial-support 候选过早 merge
+
+## 2026-04-09 12:09:08 CST | Phase 7 Exit
+
+Time: 2026-04-09 12:09:08 CST
+Run ID: 2026-04-09_additional_practices_r1
+Effective Window: 2026-01-01 to 2026-04-09
+Main Question: 现有 4 个工具目录的 practice 体系，是否仍遗漏了会显著改变工作方式的高价值 practice。
+Fixed Non-Goals: 不直接改正式工具目录；不把单条社区经验直接升格为 practice；不混用未标注时间窗。
+Current Phase: Phase 7. Promotion / Merge / Hold / Reject Decision
+Phase Status: completed
+Current Tool: none
+Current Step: Step 4. 判断是新增、融合、搁置还是排除
+Step Status: completed
+Last Completed Checkpoint: Phase 7 completed
+Artifacts Produced:
+
+- `90_review_queue/merge/global__plan_first_kickoff.md`
+- `90_review_queue/merge/global__command_surface_control_plane.md`
+- `90_review_queue/merge/global__interactive_to_durable_handoff_threshold.md`
+- `90_review_queue/merge/global__environment_isolation_threshold.md`
+- `90_review_queue/merge/global__memory_hierarchy_and_handoff.md`
+- `90_review_queue/merge/global__bounded_delegation_guardrails.md`
+- `90_review_queue/hold/global__layered_context_packaging.md`
+- `90_review_queue/hold/global__agent_specific_permission_profiles.md`
+
+Next Action: 进入 `Phase 8. Landing Design`
+Next Mandatory Checkpoint: 完成 `Phase 8`
+Blockers / Open Questions:
+
+- 需要把 `Merge` 与 `Hold` 翻译成具体文件落位
+- 需要保持 no-op 范围清楚，避免对不支持的工具误落文
+
+## 2026-04-09 12:09:08 CST | Phase 8 Exit
+
+Time: 2026-04-09 12:09:08 CST
+Run ID: 2026-04-09_additional_practices_r1
+Effective Window: 2026-01-01 to 2026-04-09
+Main Question: 现有 4 个工具目录的 practice 体系，是否仍遗漏了会显著改变工作方式的高价值 practice。
+Fixed Non-Goals: 不直接改正式工具目录；不把单条社区经验直接升格为 practice；不混用未标注时间窗。
+Current Phase: Phase 8. Landing Design
+Phase Status: completed
+Current Tool: none
+Current Step: Step 5. 设计未来落章方式
+Step Status: completed
+Last Completed Checkpoint: Phase 8 completed
+Artifacts Produced:
+
+- `90_review_queue/apply_matrix/2026-04-09_apply_matrix.md`
+
+Next Action: 进入 `Phase 9. Final Conclusion`
+Next Mandatory Checkpoint: 完成 `Phase 9`
+Blockers / Open Questions:
+
+- 需要把整轮 run 压成一份后续施工输入
+
+## 2026-04-09 12:09:08 CST | Phase 9 Exit
+
+Time: 2026-04-09 12:09:08 CST
+Run ID: 2026-04-09_additional_practices_r1
+Effective Window: 2026-01-01 to 2026-04-09
+Main Question: 现有 4 个工具目录的 practice 体系，是否仍遗漏了会显著改变工作方式的高价值 practice。
+Fixed Non-Goals: 不直接改正式工具目录；不把单条社区经验直接升格为 practice；不混用未标注时间窗。
+Current Phase: Phase 9. Final Conclusion
+Phase Status: completed
+Current Tool: none
+Current Step: Step 6. 形成最终调研结论
+Step Status: completed
+Last Completed Checkpoint: Phase 9 completed
+Artifacts Produced:
+
+- `99_final/final_recommendation.md`
+
+Next Action: 当前 research run 已完成；如进入 apply 阶段，按 `90_review_queue/apply_matrix/2026-04-09_apply_matrix.md` 施工
+Next Mandatory Checkpoint: none
+Blockers / Open Questions: none
