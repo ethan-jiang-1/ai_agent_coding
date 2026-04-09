@@ -20,15 +20,24 @@
 - `https://opencode.ai/docs/providers/`
 - `https://opencode.ai/docs/themes/`
 
-本机边界：
+本机核验边界：
 
-- 当前环境里没有安装 `opencode`
-- 所以本次不能用本机 `opencode --help` 或真实 TUI 交互补核
+- 当前环境里没有全局 `opencode` 命令
+- 但本机存在 App bundle 自带 CLI：
+  - `/Applications/OpenCode.app/Contents/MacOS/opencode-cli`
+- 已核验：
+  - `opencode-cli --version` = `1.4.0`
+  - `opencode-cli --help` 可正常列出顶层命令面
+  - `opencode-cli run --help`
+  - `opencode-cli session --help`
+  - `opencode-cli agent --help`
+  - `opencode-cli serve --help`
 
-这意味着这份 mapping reference 是：
+这意味着这份 mapping reference 现在是：
 
 - `官方 docs grounded`
-- 不是 `本机命令面逐项实测 grounded`
+- 并补了 `本机 app-bundled CLI help grounded`
+- 但还不是 `本机 TUI 交互逐项实测 grounded`
 
 ## 官方术语
 

@@ -26,13 +26,23 @@
 
 本机核验结果：
 
-- 当前环境里 `opencode` 未安装
+- 当前环境里没有全局 `opencode` 命令
 - `command -v opencode` 返回 `command not found`
+- 但本机存在 App bundle 自带 CLI：
+  - `/Applications/OpenCode.app/Contents/MacOS/opencode-cli`
+- 已核验：
+  - `opencode-cli --version` = `1.4.0`
+  - `opencode-cli --help` 可正常列出顶层命令面
+  - `opencode-cli run --help`
+  - `opencode-cli session --help`
+  - `opencode-cli agent --help`
+  - `opencode-cli serve --help`
 
-所以这次整理是：
+所以这次整理现在是：
 
 - `官方 docs 已确认` 的事实
-- 不是 `本机 CLI --help 已逐项核验`
+- 并补了 `本机 app-bundled CLI --help` 级核验
+- 但不是 `本机 TUI 交互逐项实测`
 
 凡是涉及具体交互行为、UI 细节、默认 keybind 以外的体验，这次都按官方文档边界保守落文。
 

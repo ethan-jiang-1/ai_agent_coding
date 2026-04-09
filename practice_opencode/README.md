@@ -21,9 +21,12 @@
 
 需要明确的是：
 
-- 当前环境里没有安装 `opencode`
-- 所以这套材料是 `官方 docs grounded`
-- 不是 `本机 opencode --help grounded`
+- 当前环境里没有全局 `opencode` 命令
+- 但本机有 App bundle 自带 CLI：`/Applications/OpenCode.app/Contents/MacOS/opencode-cli`
+- 已本机核验：
+  - `--version` = `1.4.0`
+  - `--help` 可正常列出命令面
+- 所以这套材料现在是 `官方 docs + 本机 app-bundled CLI help grounded`
 
 建议阅读顺序：
 

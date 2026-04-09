@@ -20,3 +20,8 @@
 3. 接着看 `practices/08_tool_permission.md`
 4. 如果任务进入并行、隔离或长程执行，再读 `practices/13_advanced_agentic_coordination.md`
 5. 需要落地命令时，再去对应的 `commands/` 文件
+
+如果要先看这轮 grounding 的事实底座，先读：
+
+- `reference/2026-04-09_codex_cli_slash_commands_reference.md`
+- `reference/2026-04-09_codex_cli_advanced_agentic_features_reference.md`

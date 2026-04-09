@@ -24,3 +24,8 @@
 5. 如果任务进入后台、跨设备或异步编排，再读 `practices/13_advanced_agentic_coordination.md`
 6. 如果要补交互式命令层，再看 `practices/12_interactive_command_layer.md`
 7. 需要落地具体操作时，再去对应的 `commands/` 文件
+
+如果要先看这轮 grounding 的事实底座，先读：
+
+- `reference/2026-04-09_cursor_command_surface_mapping.md`
+- `reference/2026-04-09_cursor_advanced_agentic_features_reference.md`
