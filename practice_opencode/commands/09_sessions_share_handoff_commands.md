@@ -52,6 +52,9 @@ opencode run --attach http://localhost:4096 "继续已有 backend 的工作"
 - `/export`：导出当前对话到 Markdown
 - `/share`：分享当前会话
 - `/unshare`：取消分享并删除分享数据
+- `/rename`：重命名当前会话
+- `/timeline`：跳到特定消息
+- `/fork`：从消息处分叉当前会话
 
 这几组关系不要混：
 
@@ -65,6 +68,9 @@ opencode run --attach http://localhost:4096 "继续已有 backend 的工作"
 
 - 人类 handoff / 复盘：优先 `/export`
 - 会话搬运 / 备份 / 重新导入：优先 `opencode export` / `import`
+- 改会话名字：`/rename`
+- 在当前长线程里精准回到某条消息：`/timeline`
+- 从旧消息节点开出分支：`/fork`
 
 ## share 配置
 

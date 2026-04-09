@@ -14,16 +14,22 @@ opencode models --verbose
 
 ```text
 /models
+/variants
+/agents
 /thinking
 ```
 
 更准确的理解是：
 
 - `/models`：会话里查看并切换模型
+- `/variants`：当前 provider/model 有可用 variants 时，在会话里切换 variant
+- `/agents`：会话里查看并切换 agent
 - `opencode models`：外部列模型清单
+- `opencode agent list`：外部列 agent 配置
 - `-m/--model`：启动时指定模型
+- `--agent`：启动时指定 agent
 
-所以 `/models` 更接近 combined mapping，不是单独等于 `opencode models`。
+所以它们都更接近 combined mapping，不是和某一个外部命令一一对应。
 
 ## 显式指定主模型
 
@@ -86,18 +92,22 @@ provider/model
 - `default_agent` 必须是 primary agent
 - 如果指定不存在或是 subagent，会回退到 `build`
 
-## variants 与 `/thinking`
+## variants、`/variants` 与 `/thinking`
 
 OpenCode 官方 docs 当前把 variants 当成正式能力：
 
 - 有 built-in variants
 - 有 `variant_cycle` keybind
+- 当前本地 CLI/TUI 还注册了 `/variants`
 
 另外：
 
 - `/thinking` 只是切换思考内容的显示
 - 不是模型切换入口
-- 真正和 reasoning / variant 更接近的是 `ctrl+t` cycle variants
+- 真正和 reasoning / variant 更接近的是：
+  - `ctrl+t`：cycle variants
+  - `/variants`：打开 variant 相关选择面
+  - `/models`：打开模型选择面
 
 ## 这章最容易写错的地方
 

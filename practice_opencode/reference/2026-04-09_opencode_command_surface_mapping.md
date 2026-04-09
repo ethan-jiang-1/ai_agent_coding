@@ -39,9 +39,24 @@
 - 并补了 `本机 app-bundled CLI help grounded`
 - 但还不是 `本机 TUI 交互逐项实测 grounded`
 
+本地源码补核入口：
+
+- `packages/opencode/src/cli/cmd/tui/app.tsx`
+- `packages/opencode/src/cli/cmd/tui/routes/session/index.tsx`
+- `packages/opencode/src/cli/cmd/tui/component/prompt/index.tsx`
+- `packages/opencode/src/cli/cmd/tui/component/prompt/autocomplete.tsx`
+- `packages/opencode/src/command/index.ts`
+- `packages/opencode/src/config/config.ts`
+
+所以这份 mapping reference 这次实际采用的是三层 grounding：
+
+- `官方 docs grounded`
+- `本机 app-bundled CLI help grounded`
+- `本地 CLI/TUI 注册点 source grounded`
+
 ## 官方术语
 
-OpenCode 当前官方文档里，最稳的交互命令面术语有三层：
+OpenCode 当前更稳的交互命令面术语至少有三层：
 
 1. `slash commands`
 2. `built-in commands`
@@ -56,10 +71,18 @@ Commands 页的写法是：
 - custom commands 也是在 TUI 里通过 `/my-command` 触发
 - 它们是 built-in commands 之外的另一层可扩展命令面
 
+再结合当前本地源码，更准确的分层是：
+
+1. `TUI built-ins`
+2. `built-in command layer`，例如默认的 `init` / `review`
+3. `project/global custom commands`
+4. `MCP prompt commands`
+5. 一部分 `skills`
+
 另外，TUI 文档还明确提到：
 
 - `/help` 会打开 help dialog
-- `ctrl+x h` 或 `/help` 也被用作 command palette 入口
+- 当前本地源码里，真正稳定的 command palette 入口是 `ctrl+p`
 
 所以对 OpenCode 来说，真正的 interactive command surface 不只是 built-in slash commands，还包括：
 
@@ -74,33 +97,96 @@ Commands 页的写法是：
 - Type C：approximate mapping
 - Type D：no stable external mapping
 
-## 当前能确认的 built-in slash commands
+## 当前 local CLI/TUI 能确认的 slash built-ins
 
-TUI 官方页当前列出的 built-in slash commands 有：
+结合 `packages/opencode/src/cli/cmd/tui/` 当前注册点，本机这版 CLI/TUI 至少明确注册了：
 
-- `/connect`
-- `/compact`
-- `/details`
-- `/editor`
-- `/exit`
-- `/export`
-- `/help`
-- `/init`
+- `/sessions`，aliases：`/resume`、`/continue`
+- `/new`，alias：`/clear`
 - `/models`
-- `/new`
-- `/redo`
-- `/sessions`
+- `/agents`
+- `/mcps`
+- `/variants`
+- `/connect`
+- `/status`
+- `/themes`
+- `/help`
+- `/exit`，aliases：`/quit`、`/q`
 - `/share`
-- `/thinking`
-- `/undo`
+- `/rename`
+- `/timeline`
+- `/fork`
+- `/compact`，alias：`/summarize`
 - `/unshare`
+- `/undo`
+- `/redo`
+- `/timestamps`，alias：`/toggle-timestamps`
+- `/thinking`，alias：`/toggle-thinking`
+- `/copy`
+- `/export`
+- `/editor`
 
-已确认的 alias：
+其中一部分是 app 级 / system 级命令：
 
-- `/compact` = alias `/summarize`
-- `/exit` = aliases `/quit`、`/q`
-- `/new` = alias `/clear`
-- `/sessions` = aliases `/resume`、`/continue`
+- `/sessions`
+- `/new`
+- `/models`
+- `/agents`
+- `/mcps`
+- `/variants`
+- `/connect`
+- `/status`
+- `/themes`
+- `/help`
+- `/exit`
+
+另一部分是 session 级命令：
+
+- `/share`
+- `/rename`
+- `/timeline`
+- `/fork`
+- `/compact`
+- `/unshare`
+- `/undo`
+- `/redo`
+- `/timestamps`
+- `/thinking`
+- `/copy`
+- `/export`
+
+还有 prompt 输入层命令：
+
+- `/editor`
+
+一个重要校正：
+
+- 当前本地 CLI/TUI 源码里，确实注册了 “Show/Hide tool details” 命令
+- 但没有看到稳定的 slash 名称
+- 默认 keybind `tool_details` 也是 `none`
+
+所以 `/details` 这次不能再写成“本机已确认的稳定 slash command”。
+
+更稳的说法是：
+
+- docs 曾提到 `/details`
+- 但当前本地 CLI/TUI 注册点里，更可靠入口是 command palette `ctrl+p`
+- 或者你自己在 `tui.json` 里给 `tool_details` 绑 keybind
+
+## 当前 local CLI/TUI 能确认的 built-in command layer
+
+除了上面那批 TUI built-ins，本地 `packages/opencode/src/command/index.ts` 还明确内置了两条默认命令：
+
+- `/init`
+- `/review`
+
+已确认边界：
+
+- `/init`：默认命令名 `init`，描述为 `create/update AGENTS.md`
+- `/review`：默认命令名 `review`，描述为 `review changes [commit|branch|pr], defaults to uncommitted`
+- `/review` 默认 `subtask: true`
+
+所以 `/init` 和 `/review` 是正式的一等命令面，但它们更接近 built-in command layer，不是 `help/show status/themes` 这一组低层 TUI built-ins。
 
 ## 当前能确认的 custom commands 面
 
@@ -132,6 +218,17 @@ Commands 官方页当前确认：
 - 如果 command 绑定的是 subagent，默认就会触发 subagent invocation
 - `subtask: true` 可以强制 command 以 subtask 方式运行，即使它绑定的是 primary agent
 
+再结合本地源码，还有两个值得补上的边界：
+
+- slash autocomplete 会把 server-side command list 也并进来
+- 其中 `source === "mcp"` 的命令会以 slash 形式出现
+- 当前 CLI/TUI autocomplete 会跳过 `source === "skill"` 的条目
+
+所以“slash command surface”这次更准确的理解是：
+
+- 不是只有 `.opencode/commands/*`
+- 还会混入默认命令和一部分 MCP prompt commands
+
 这意味着 OpenCode 的 custom commands 不只是“提示词模板”，而是真正会影响上下文污染边界的交互层。
 
 ## 交互层不只 slash commands
@@ -142,32 +239,44 @@ Commands 官方页当前确认：
 - 默认 leader key 是 `ctrl+x`
 - 这层配置走 `tui.json` / `tui.jsonc`
 
-所以 OpenCode 的 interactive command surface 更准确地说有三层：
+所以 OpenCode 的 interactive command surface 更准确地说至少有四层：
 
-1. built-in slash commands
-2. custom slash commands
-3. TUI keybind layer
+1. TUI built-in slash commands
+2. built-in command layer，例如 `/init`、`/review`
+3. project/global custom slash commands，以及一部分 MCP prompt commands
+4. TUI keybind / command palette layer
 
 ## 映射总表
 
 | Interactive command | 主要用途 | 外部命令 / 配置对应 | 映射类型 | 建议落位 |
 |---|---|---|---|---|
-| `/connect` | 在 TUI 里添加 provider 凭证 | `opencode auth login` + provider config | B | `commands/11` |
+| `/connect` | 在 TUI 里添加 provider 凭证 | `opencode providers login`（顶层别名 `auth`）+ provider config | B | `commands/11` |
 | `/compact` `/summarize` | 压缩当前会话 | 无稳定外部等价物 | D | `commands/06` |
-| `/details` | 切换 tool execution details | 无稳定外部等价物 | D | `commands/12` |
+| `Show/Hide tool details` | 切换 tool execution details | 当前本地 CLI/TUI 未确认稳定 slash；更稳入口是 `ctrl+p` command palette 或自定义 keybind | D | `commands/12` |
 | `/editor` | 打开外部编辑器写长提示词 | 手工用 `$EDITOR` 写 prompt 再送入 `run` | C | `commands/05` |
 | `/exit` `/quit` `/q` | 退出当前 TUI | 结束当前 `opencode` 进程 | C | `commands/01` |
 | `/export` | 导出当前会话到 Markdown | `opencode export [sessionID]` 只导 JSON | C | `commands/09` |
-| `/help` | 打开 help dialog / command palette | 无单一外部等价物 | D | `commands/12` |
+| `/help` | 打开 help dialog | `ctrl+p` 更接近 command palette；无单一外部等价物 | D | `commands/12` |
 | `/init` | 生成或改进 `AGENTS.md` | 手工编辑 `AGENTS.md` | C | `commands/04` |
 | `/models` | 在 TUI 中查看并选择模型 | `opencode models` + `-m/--model` + config | B | `commands/07` |
+| `/agents` | 在 TUI 中查看并切换 agent | `opencode agent list` + `--agent` + `Tab`/`Shift+Tab` | B | `commands/10` |
+| `/mcps` | 查看和切换 MCP 状态 | `opencode mcp list` / `mcp add` / `mcp auth` | B | `commands/08`、`commands/12` |
+| `/variants` | 查看可用 model variants | `variant_cycle` keybind + model/provider-specific variant support | B | `commands/07` |
+| `/status` | 查看系统状态 | 无单一外部等价物 | D | `commands/12` |
+| `/themes` | 在 TUI 中切换主题 | `tui.json` theme config | B | `commands/12` |
 | `/new` `/clear` | 新开当前 TUI 会话 | 重新启动 `opencode` 或不用 `--continue` | C | `commands/01` |
 | `/redo` | 恢复刚刚被 `/undo` 的消息与改动 | 无稳定外部等价物 | D | `commands/02` |
 | `/sessions` `/resume` `/continue` | 列会话并切换 | `opencode session list` + `--continue` / `--session` | B | `commands/01`、`commands/09` |
 | `/share` | 分享当前 TUI 会话 | `opencode run --share` 只覆盖 run 场景 | C | `commands/09` |
+| `/rename` | 重命名当前 session | 无直接外部等价物 | D | `commands/09`、`commands/12` |
+| `/timeline` | 跳到特定消息 | 无直接外部等价物 | D | `commands/09`、`commands/12` |
+| `/fork` | 从消息处分叉 | `--fork` 只覆盖启动/继续场景，不等于 timeline fork | C | `commands/01`、`commands/09` |
+| `/copy` | 复制当前 session transcript | 无直接外部等价物 | D | `commands/05`、`commands/12` |
 | `/thinking` | 只切换 reasoning block 可见性 | 无稳定外部等价物 | D | `commands/07`、`commands/12` |
+| `/timestamps` | 切换时间戳显示 | 无直接外部等价物 | D | `commands/12` |
 | `/undo` | 撤销最近消息和相关改动 | `git restore` 只能近似回退文件 | C | `commands/02` |
 | `/unshare` | 取消当前会话分享 | 无直接外部命令对应 | D | `commands/09` |
+| `/review` | 评审未提交改动、branch 或 PR | 无单一外部等价物；更接近 built-in review workflow | C | `commands/10`、`commands/12` |
 
 ## 当前 docs 里值得特别注意的几组边界
 
@@ -232,21 +341,27 @@ TUI 页当前明确写到：
 
 这会强化第 01 章，而不是只给它补一个 slash command 清单。
 
-### 5. OpenCode 当前 docs 没有列出内建 `/agents` 或 `/permissions`
+### 5. `/agents` 与 `/permissions` 要分开看
 
-这点很重要，因为其他 agent 常常有：
+这点很重要，因为本轮复核后，二者结论已经分叉：
 
-- `/agents`
-- `/permissions`
+- 当前 local CLI/TUI 源码已经注册了 `/agents`
+- 但仍然没有看到一个第一方 built-in `/permissions`
 
-但 OpenCode 这次官方 TUI 命令清单里没有这两个 built-in commands。
+也就是说：
+
+- `/agents` 现在不该再写成“不存在”
+- `/permissions` 仍然更应写成 config / agent config 主路径
 
 所以在 `practice_opencode/` 里应该明确：
 
-- agent 的交互入口主要是 `@agent` mention 和 custom commands
+- agent 的交互入口包括：
+  - `/agents`
+  - `@agent` mention
+  - custom commands
 - permission 的主入口主要是 config / agent config
 
-不要硬补出并不存在的 slash command。
+不要把这两件事混成同一个结论。
 
 ### 5.1 `/init` 会影响第 04 章的规则主入口
 
@@ -272,20 +387,19 @@ TUI 页当前明确写到：
 
 这件事会同时影响第 04 章和第 05 章，而不只是规则层本身。
 
-### 6. 主题命令的 docs 目前存在不一致
+### 6. 主题命令的 docs 确实有过不一致，但本地 CLI/TUI 已能压实
 
-当前官方文档里：
+当前官方文档里一度有：
 
 - TUI 页列的是 `/themes`
 - Themes 页写的是 `/theme`
 
-在没有本机实测前，这次不把某一个名字写死成绝对正确。
+但这次本地 CLI/TUI 注册点已经明确给出：
 
-更稳的写法是：
+- 当前 local CLI/TUI 使用的是 `/themes`
+- 默认 keybind 是 `<leader>t`
 
-- OpenCode 确实有 TUI 里的 theme selector
-- 但命令名在当前 docs 中存在 `/themes` vs `/theme` 不一致
-- 真正执行前，应在你本机版本用 `/help` 再确认
+所以这轮落文不再需要把 `/themes` / `/theme` 保持成完全不确定状态。
 
 ### 6.1 `/export` vs `opencode export` 会影响第 09 章的 handoff 分工
 
@@ -316,9 +430,9 @@ TUI 页当前明确写到：
 - `04`：`/init`
 - `05`：`/editor`，以及 custom commands 对 `@file` / `!command` 的支持
 - `06`：`/compact`、`/summarize`
-- `07`：`/models`、`/thinking`
+- `07`：`/models`、`/variants`、`/thinking`
 - `09`：`/export`、`/share`、`/unshare`、`/sessions`
-- `10`：`@explore`、`@general`、custom `/review-*` commands
+- `10`：`/agents`、`@explore`、`@general`、custom `/review-*` commands
 - `11`：`/connect` 和 `/models` 作为 provider/model onboarding
 
 ### 需要兜底的 interactive-only
@@ -326,7 +440,9 @@ TUI 页当前明确写到：
 本轮判断，OpenCode 里有一组命令很有价值，但没有稳定 external 等价物，也不适合硬塞进原 11 章：
 
 - `/help`
-- `/details`
+- `/status`
+- `/editor`
+- command palette 下的 tool details
 - `/thinking` 的“显示层”侧面
 - theme selector 的 TUI 操作
 
@@ -341,7 +457,6 @@ TUI 页当前明确写到：
 
 ## 待确认或不写死的点
 
-- 当前 docs 的 `/themes` vs `/theme` 不一致
 - 某些命令在不同版本 TUI 里的 UI 细节
 - custom command 覆盖 built-in command 之后的优先级边界细节
-- 没有本机安装，无法确认本地 `/help` 菜单最终显示形态
+- 本轮没有逐项驱动真实 TUI 交互，所以 `/help` 菜单最终显示形态仍未逐项截图确认

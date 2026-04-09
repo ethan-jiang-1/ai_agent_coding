@@ -49,15 +49,32 @@ opencode agent create
 
 适合：让探索任务在独立上下文里完成，再把结果压缩返回主线程。
 
-## 当前没有内建 `/agents`
+## 当前 local CLI/TUI 有 built-in `/agents`
 
-这次官方 TUI 命令清单里，没有看到类似 `/agents` 的 built-in command。
+这次本地 CLI/TUI 源码注册点里，已经能确认一条 built-in `/agents`：
 
-所以 OpenCode 的会话内 agent 入口更现实的是：
+- `/agents`：打开 agent list / switch agent dialog
+- `<leader>a`：默认 keybind 是 agent list
+- `tab` / `shift+tab`：默认 cycle agent
 
-- `@explore`、`@general` 这类 mention
-- custom `/review-*`、`/plan-*` commands
-- 用 `tab` 在 primary agents 之间切换
+但要分清：
+
+- `/agents` 更接近“看和切当前 agent”
+- `@explore`、`@general` 更接近“直接在 prompt 里调用 subagent”
+- custom `/review-*`、`/plan-*` commands 更接近“固定一个多步工作流”
+
+另外，本机 `opencode-cli agent list` 已确认至少会列出：
+
+- `build (primary)`
+- `plan (primary)`
+- `explore (subagent)`
+- `general (subagent)`
+
+以及一些内部系统 agents：
+
+- `compaction`
+- `summary`
+- `title`
 
 ## 当前没有第一方 worktree 或 detached worker 叙事
 

@@ -91,7 +91,7 @@ OpenCode 当前官方说明：
 
 ## 当前交互命令面的真实边界
 
-OpenCode 这次官方 built-in commands 里，和规则层直接相关的主要就是 `/init`。
+OpenCode 这次和规则层直接相关的主要是一条 built-in command：`/init`。
 
 也就是说：
 

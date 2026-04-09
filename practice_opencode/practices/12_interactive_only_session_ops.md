@@ -20,9 +20,12 @@
 ## 在 OpenCode 里怎么做
 
 - 想查当前命令面，先 `/help`。
-- 想看工具执行细节，先 `/details`。
+- 想看全部动作和命令面，先 `ctrl+p` 打开 command palette。
+- 想看工具执行细节，优先从 command palette 触发 `Show tool details` / `Hide tool details`。
 - 想切 reasoning blocks 可见性，用 `/thinking`。
-- 想选主题时，先在当前版本用 `/help` 核对命令名，或直接改 `tui.json`。
+- 想看系统状态时，用 `/status`。
+- 想选主题时，用 `/themes`，或直接改 `tui.json`。
+- 想组织一段长输入时，用 `/editor`。
 - 如果你更习惯键盘流，先记住默认 leader key 是 `ctrl+x`，很多会话控制动作都可以不经过 `/...` 输入。
 - 如果问题已经变成“怎么跨客户端接同一 backend”或“怎么做更长程协调”，不要再停在这章，要转到第 `09` 章或第 `13` 章。
 
@@ -43,6 +46,7 @@
 - 不要每次都用自然语言问“现在有哪些命令可用”。
 - 不要把“打开细节”“切显示”“查主题”都写成普通任务提示词。
 - 不要把 `/thinking` 误解成切换模型或切换推理强度。
+- 不要把 docs 里提到过的 `/details` 直接当成你当前这版 CLI/TUI 已确认的稳定 slash。
 - 不要把 `tui.json` 的交互层配置和 `opencode.json` 的 runtime/config 层混在一起。
 - 不要把 `serve` / `attach` 这类 backend 协调问题误归到 interactive-only 小操作。
 

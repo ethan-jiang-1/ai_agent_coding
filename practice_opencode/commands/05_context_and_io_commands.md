@@ -40,16 +40,20 @@ opencode run \
 
 ## 查看工具执行细节
 
-```text
-/details
-```
+当前 local CLI/TUI 注册点里，确实有 “Show/Hide tool details” 这个命令，但这次没有看到稳定的 slash 名称。
+
+更稳的入口是：
+
+- `ctrl+p` 打开 command palette
+- 触发 `Show tool details` / `Hide tool details`
+- 或者在 `tui.json` 里给 `tool_details` 自己绑一个 keybind
 
 适合：
 
 - 你想看清 OpenCode 具体执行了哪些工具动作
 - 当前会话里 `!command`、文件读取或工具链行为比较复杂
 
-它没有稳定 external 等价物，所以更适合当作会话内操作来理解。
+所以这一层更像会话控制命令，而不是已经稳定落成 slash 的外部映射面。
 
 ## 导出当前对话
 

@@ -16,7 +16,7 @@
 - `AGENTS.md`、`instructions`、`CLAUDE.md` fallback
 - `permission`、`share`、`snapshot`、`custom commands`
 - `/compact`、`/undo`、`/redo`、`/sessions`、`/share`、`/models` 这些 TUI 入口
-- 一层额外的 interactive-only session ops 补充章，用来承接 `/help`、`/details` 一类不适合硬塞回原 11 章的会话内操作
+- 一层额外的 interactive-only session ops 补充章，用来承接 `/help`、`/status`、`/editor`、tool details 这类不适合硬塞回原 11 章的会话内操作
 - 追加第 `13` 章，把 `subtask orchestration / serve-web-attach / absence of worktree & scheduler` 放到同一层处理
 
 需要明确的是：
@@ -26,7 +26,8 @@
 - 已本机核验：
   - `--version` = `1.4.0`
   - `--help` 可正常列出命令面
-- 所以这套材料现在是 `官方 docs + 本机 app-bundled CLI help grounded`
+- 再结合本地 `packages/opencode/src/cli/cmd/tui` 注册点和 `src/command/index.ts`
+- 所以这套材料现在是 `官方 docs + 本机 app-bundled CLI help + 本地 command registration grounded`
 
 建议阅读顺序：
 
