@@ -1,0 +1,55 @@
+# opencode__shared_backend_long_horizon_layering
+
+- `tool_candidate_id`: `opencode__shared_backend_long_horizon_layering`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `shared backend、多客户端接续与公开分享必须分层`
+- `candidate_aliases`:
+  - `shared-backend long horizon`
+  - `serve-web-attach layering`
+  - `multi-client state continuation`
+- `source_tool`: `OpenCode`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 用户会明确区分当前 session 继续、`serve` / `web` / `attach` 的同状态接续、share/export/import 的协作搬运，而不是都当成“继续这次会话”。
+- `why_not_just_feature_tip`:
+  - 这定义的是长程协作和状态延续的切面，而不是单个 CLI 子命令。
+- `trigger_or_context`:
+  - 跨 terminal / web 切换
+  - 需要共享同一 state
+  - 避免 cold boot
+  - 跨客户端继续同一任务
+- `supporting_tool_facts`:
+  - `serve`
+  - `web`
+  - `attach`
+  - `run --attach`
+  - OpenAPI / `/tui`
+- `capability_evidence`:
+  - 官方 server docs
+  - 官方 web docs
+  - advanced agentic features reference
+- `adoption_signals`:
+  - OpenWork 明确把 OpenCode 用成 local host / remote client / sessions runtime
+  - 官方 docs 已将 shared state 作为多客户端架构的核心说明
+- `support_level`: `supported`
+- `strong_tool`: `OpenCode`
+- `counterevidence_or_limits`:
+  - 这不是 detached worker，也不是 native scheduler
+  - 公开团队级 workflow 复盘仍少于 Cursor cloud agents
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `OpenCode`
+  - `Cursor`
+  - `Claude Code`
+  - `Codex CLI`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.opencode.practice.advanced_agentic_coordination`
+  - `ba.opencode.command.advanced_agentic_coordination`
+  - `ba.opencode.practice.memento_workflow`
+- `why_continue_reviewing`:
+  - 需要与 Cursor multi-entry agents、Claude resume/loop/schedule、Codex cloud threshold 做跨工具收敛。

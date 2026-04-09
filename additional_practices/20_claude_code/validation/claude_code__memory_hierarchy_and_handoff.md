@@ -1,0 +1,55 @@
+# claude_code__memory_hierarchy_and_handoff
+
+- `tool_candidate_id`: `claude_code__memory_hierarchy_and_handoff`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `memory、rules、handoff 必须是分层系统，不是单一记忆桶`
+- `candidate_aliases`:
+  - `memory hierarchy`
+  - `context packaging`
+  - `memory vs handoff layering`
+- `source_tool`: `Claude Code`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 项目规则、长期经验、当前任务状态分别进入 `CLAUDE.md` / `.claude/rules`、auto-memory、handoff 文件，而不是混在一个记忆层里。
+- `why_not_just_feature_tip`:
+  - 这改变的是上下文组织结构，而不是某个 memory 文件路径。
+- `trigger_or_context`:
+  - 跨天任务
+  - 跨人交接
+  - 项目级约束沉淀
+  - 复杂长期项目
+- `supporting_tool_facts`:
+  - `CLAUDE.md`
+  - `.claude/rules/*.md`
+  - auto-memory
+  - `MEMORY.md`
+  - `--bare`
+- `capability_evidence`:
+  - 现有 docs / commands / references
+  - official docs on rules / memory / organization permissions
+- `adoption_signals`:
+  - Boris 的 research.md / plan.md / annotation cycle 把当前任务状态完全文件化
+  - Rungie 把不同项目 personality、skills、agents 分层配置
+  - Joe Hu 反复强调 document status、raw text、plan docs、small tasks
+- `support_level`: `supported`
+- `strong_tool`: `Claude Code`
+- `counterevidence_or_limits`:
+  - 这大概率仍是 `04` / `09` 的 merge 强化
+  - 单独作为新章的必要性不强
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Claude Code`
+  - `Codex CLI`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.claude_code.practice.rule_hierarchy`
+  - `ba.claude_code.practice.memento_workflow`
+  - `ba.claude_code.command.rules_and_context_commands`
+- `why_continue_reviewing`:
+  - 需要跨工具比较 memory / rules / handoff 的层次分工是否都已足够清晰。

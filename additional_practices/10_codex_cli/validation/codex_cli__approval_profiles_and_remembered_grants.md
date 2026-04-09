@@ -1,0 +1,47 @@
+# codex_cli__approval_profiles_and_remembered_grants
+
+- `tool_candidate_id`: `codex_cli__approval_profiles_and_remembered_grants`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `权限不再只是单次批准，而是可记忆的 profile 设计`
+- `candidate_aliases`:
+  - `approval strategy upgrade`
+  - `approval memory`
+  - `permission profiles`
+- `source_tool`: `Codex CLI`
+- `scope`: `agent-specific`
+- `behavior_change`:
+  - 用户会先设计一个可持续使用的 approval / sandbox profile，而不是每次临时切 flag；部分批准会被 remember，降低重复摩擦。
+- `why_not_just_feature_tip`:
+  - 这影响的是长期权限工作流，而不是单个 `--ask-for-approval` 参数。
+- `trigger_or_context`:
+  - 日常开发默认配置
+  - 多阶段工作流
+  - 高频重复命令或目录访问
+- `supporting_tool_facts`:
+  - `0.97.0` 引入 allow-and-remember approvals
+  - `0.102.0` / `0.105.0` / `0.112.0` / `0.113.0` 连续强化统一权限流、灵活 approval control、permission profile、request_permissions
+- `capability_evidence`:
+  - 官方 releases `0.97.0`、`0.102.0`、`0.105.0`、`0.112.0`、`0.113.0`
+  - CLI features / slash docs 中的 `/permissions`
+- `adoption_signals`:
+  - JP definitive guide 的 daily-driver config 采用 `on-request + workspace-write`
+  - JP quick-start 明确把“不要依赖危险全开模式”写成日常建议
+  - Blake guide 把 profiles 视为减少手工切换成本的核心机制
+- `support_level`: `supported`
+- `strong_tool`: `Codex CLI`
+- `counterevidence_or_limits`:
+  - 这类机制在其他工具上未必等价，跨工具通用性较弱
+  - 更可能作为 `08` 的 agent-specific 强化，而不是新的通用 practice
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Codex CLI`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.codex_cli.practice.tool_permission`
+  - `ba.codex_cli.command.sandbox_and_approval_commands`
+- `why_continue_reviewing`:
+  - 需要确认其他工具是否也已经把“记忆化批准 / executable permission profiles”推进到类似强度，否则它应该保留为 Codex-specific 强化。

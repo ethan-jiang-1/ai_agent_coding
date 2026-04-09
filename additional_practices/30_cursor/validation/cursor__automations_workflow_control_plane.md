@@ -1,0 +1,50 @@
+# cursor__automations_workflow_control_plane
+
+- `tool_candidate_id`: `cursor__automations_workflow_control_plane`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `Automations 已把 Cursor 推向事件驱动的工作流控制面`
+- `candidate_aliases`:
+  - `automations as workflow control plane`
+  - `event-driven cursor agents`
+  - `always-on agent workflow`
+- `source_tool`: `Cursor`
+- `scope`: `agent-specific`
+- `behavior_change`:
+  - 用户不再只把 Cursor 当成手动触发的 IDE agent，而是开始用 automations 承接 schedule / event-driven review、triage、digest 和 follow-up workflow。
+- `why_not_just_feature_tip`:
+  - 这改变的是 Cursor 在团队工作流里的位置，不是一个孤立新入口。
+- `trigger_or_context`:
+  - 定时巡检
+  - 事件触发 review
+  - 持续 triage
+  - cross-run memory
+- `supporting_tool_facts`:
+  - Automations
+  - schedule triggers
+  - Slack / Linear / GitHub / PagerDuty / webhook triggers
+  - memory tool across runs
+- `capability_evidence`:
+  - `2026-03-05` automations changelog
+  - 官方 docs / official examples
+- `adoption_signals`:
+  - 官方 examples 已围绕 overnight triage、weekly digest、push-time review 展开
+  - forum discussion 说明用户已开始把 Cursor 视为持续 workflow 组件
+- `support_level`: `partially_supported`
+- `strong_tool`: `Cursor`
+- `counterevidence_or_limits`:
+  - adoption 证据当前仍偏官方示例
+  - 很可能最终并回 `long_horizon_cross_surface_layering`，而不是保留为单独 canonical 候选
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Cursor`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.cursor.practice.advanced_agentic_coordination`
+  - `ba.cursor.command.advanced_agentic_coordination`
+  - `ba.cursor.practice.multi_agent`
+- `why_continue_reviewing`:
+  - 需要判断它是 Cursor-specific amplification，还是跨工具 durable automation 候选的一部分。

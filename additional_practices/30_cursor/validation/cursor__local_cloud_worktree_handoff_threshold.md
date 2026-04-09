@@ -1,0 +1,53 @@
+# cursor__local_cloud_worktree_handoff_threshold
+
+- `tool_candidate_id`: `cursor__local_cloud_worktree_handoff_threshold`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `本地、cloud、worktree 与 remote SSH 之间需要显式切层`
+- `candidate_aliases`:
+  - `environment handoff threshold`
+  - `local-cloud-worktree split`
+  - `multi-environment agent threshold`
+- `source_tool`: `Cursor`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 用户不再只在当前 IDE chat 里硬撑所有任务，而是会明确判断何时留在本地、何时切到 cloud agent、何时进入 worktree、何时转到 remote SSH，再通过 Agents Window 把执行与审查接回主流程。
+- `why_not_just_feature_tip`:
+  - 这定义的是执行环境切面和 handoff 方式，不是某个单独按钮。
+- `trigger_or_context`:
+  - 并行执行
+  - 大任务异步跑
+  - 多 repo / 多环境
+  - 需要本地与云端来回接力
+- `supporting_tool_facts`:
+  - Cursor 3 Agents Window
+  - locally / worktrees / cloud / remote SSH
+  - local <-> cloud handoff
+  - Background Agents
+- `capability_evidence`:
+  - `2026-04-02` Cursor 3 blog / changelog
+  - 官方 Background Agents docs
+- `adoption_signals`:
+  - Cursor 3 官方 forum discussion 已出现多环境窗口与 handoff 的真实使用信号
+  - 官方产品叙事已明确把多环境 agent orchestration 作为主线
+- `support_level`: `partially_supported`
+- `strong_tool`: `Cursor`
+- `counterevidence_or_limits`:
+  - 这条能力很新，外部 workflow 复盘仍少
+  - 现有 `practice_cursor/` 旧基线仍把 worktree 视为非官方主叙事，后续必须谨慎重写
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Cursor`
+  - `Claude Code`
+  - `Codex CLI`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.cursor.practice.multi_agent`
+  - `ba.cursor.practice.advanced_agentic_coordination`
+  - `ba.cursor.command.background_agents`
+- `why_continue_reviewing`:
+  - 需要继续验证 worktree / remote SSH adoption 是否足以改变正式 practice 写法，而不只是新界面能力。

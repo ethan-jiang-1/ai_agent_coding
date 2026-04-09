@@ -1,0 +1,53 @@
+# claude_code__long_horizon_layering
+
+- `tool_candidate_id`: `claude_code__long_horizon_layering`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `会话续跑、session loop、durable automation 必须分层`
+- `candidate_aliases`:
+  - `long_horizon_control`
+  - `session loop vs durable schedule`
+  - `resume/loop/schedule layering`
+- `source_tool`: `Claude Code`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 用户会明确区分 `--continue/--resume`、`/loop`、Cloud / Desktop / GitHub Actions，而不是把它们都当“继续跑一会儿”。
+- `why_not_just_feature_tip`:
+  - 这定义的是长任务的切面和恢复策略，不是某个命令的手册。
+- `trigger_or_context`:
+  - 跨天任务
+  - 后台轮询
+  - CI automation
+  - durable scheduled tasks
+- `supporting_tool_facts`:
+  - `--continue` / `--resume` / `--fork-session`
+  - `/loop`
+  - `/schedule`
+  - GitHub Actions with `claude_args`
+- `capability_evidence`:
+  - 官方 scheduling / GitHub Actions docs
+  - official webinars on long-horizon complex migrations
+- `adoption_signals`:
+  - 官方 service delivery webinar 直接强调 long-horizon complex migrations
+  - Joe Hu 的真实流程已明显分出 local / web / deployment / validation 阶段
+- `support_level`: `supported`
+- `strong_tool`: `Claude Code`
+- `counterevidence_or_limits`:
+  - 真实团队级 durable scheduling 公开案例仍不多
+  - 很可能最终只 merge 到 `09` / `13`
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Claude Code`
+  - `Codex CLI`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.claude_code.practice.memento_workflow`
+  - `ba.claude_code.practice.advanced_agentic_coordination`
+  - `ba.claude_code.command.advanced_agentic_coordination_commands`
+- `why_continue_reviewing`:
+  - 需要和 Codex cloud、Cursor background agents、OpenCode shared backend / share 做跨工具收敛。

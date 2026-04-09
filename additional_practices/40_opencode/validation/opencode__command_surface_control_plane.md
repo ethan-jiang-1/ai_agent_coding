@@ -1,0 +1,61 @@
+# opencode__command_surface_control_plane
+
+- `tool_candidate_id`: `opencode__command_surface_control_plane`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `TUI built-ins、built-in commands 与 custom commands 已构成控制面`
+- `candidate_aliases`:
+  - `command-surface control plane`
+  - `tui command fluency`
+  - `slash and command control layer`
+- `source_tool`: `OpenCode`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 会话控制、规则初始化、review、share、export、压缩、模型切换与旁路操作，优先通过多层 command surface 完成，而不是混进自由提示词主线程。
+- `why_not_just_feature_tip`:
+  - 重点不是命令列表，而是把控制动作从产出型请求里分层出来。
+- `trigger_or_context`:
+  - session control
+  - review
+  - share/export
+  - model / agent / mcp switching
+  - heavy TUI operations
+- `supporting_tool_facts`:
+  - `/sessions`
+  - `/new`
+  - `/agents`
+  - `/share`
+  - `/compact`
+  - `/undo`
+  - `/editor`
+  - `/init`
+  - `/review`
+  - custom commands
+- `capability_evidence`:
+  - 官方 commands docs
+  - 官方 config docs
+  - command surface mapping reference
+- `adoption_signals`:
+  - 官方 commands docs 已把 repetitive tasks、agent-bound commands、subtask commands 写成正式入口
+  - OpenWork 把 templates / sessions / permissions / workflow actions 建在 OpenCode 之上
+- `support_level`: `supported`
+- `strong_tool`: `OpenCode`
+- `counterevidence_or_limits`:
+  - 容易被误读成“命令越多 practice 越多”
+  - 需要和 Claude/Cursor 区分 built-in commands 与 extensible commands 的不同强度
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `OpenCode`
+  - `Claude Code`
+  - `Cursor`
+  - `Codex CLI`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.opencode.practice.interactive_only_session_ops`
+  - `ba.opencode.command.session_commands`
+  - `ba.opencode.reference.command_surface_mapping`
+- `why_continue_reviewing`:
+  - 需要跨工具比较 built-in-heavy 与 extensible-heavy 控制面的迁移强度。

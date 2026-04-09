@@ -1,0 +1,54 @@
+# opencode__plan_first_kickoff
+
+- `tool_candidate_id`: `opencode__plan_first_kickoff`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `用 plan primary agent 锁定开局契约`
+- `candidate_aliases`:
+  - `plan-first kickoff`
+  - `plan primary agent kickoff`
+  - `read-before-build`
+- `source_tool`: `OpenCode`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 非 trivial 任务默认先切到 `plan`，写出计划并经人工审查后，再切回 `build` 或把工作委派给 subtask / GitHub runner。
+- `why_not_just_feature_tip`:
+  - 重点不是记住一个 agent 名字，而是把读写分离写成任务起步纪律。
+- `trigger_or_context`:
+  - 多文件修改
+  - 架构调整
+  - 高风险任务
+  - 要进入 review / automation / subtask 的任务
+- `supporting_tool_facts`:
+  - `plan` primary agent
+  - `default_agent`
+  - `agent: plan` in custom commands
+  - GitHub workflow `agent` input
+- `capability_evidence`:
+  - 官方 agents docs
+  - 官方 config docs
+  - 官方 GitHub integration docs
+- `adoption_signals`:
+  - OpenAgentsControl 把 OpenCode 明确用成 plan-first approval-based workflow
+  - 官方 docs 反复把 `plan` 描述为分析与审查而非修改入口
+- `support_level`: `supported`
+- `strong_tool`: `OpenCode`
+- `counterevidence_or_limits`:
+  - OpenCode 没有 Claude 那样的 built-in `/plan`
+  - 如果团队不把计划落盘，容易退化成“切了 plan 但没有正式审查”
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `OpenCode`
+  - `Claude Code`
+  - `Cursor`
+  - `Codex CLI`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.opencode.practice.plan_before_code`
+  - `ba.opencode.command.plan_and_execute`
+  - `ba.opencode.practice.session_lifecycle`
+- `why_continue_reviewing`:
+  - 需要和 Claude 的 plan mode、Cursor 的 Ask-first、Codex 的 kickoff contract 做跨工具收敛。

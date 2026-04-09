@@ -1,0 +1,57 @@
+# claude_code__command_surface_control_plane
+
+- `tool_candidate_id`: `claude_code__command_surface_control_plane`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `built-in commands 已经成为 Claude Code 的控制平面`
+- `candidate_aliases`:
+  - `command-surface fluency`
+  - `built-in control plane`
+  - `slash command control layer`
+- `source_tool`: `Claude Code`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 会话控制、权限调整、任务观察、状态检查、旁路动作，优先通过 built-in commands 完成，而不是混进自然语言主线程。
+- `why_not_just_feature_tip`:
+  - 重点不是命令列表，而是把控制动作和产出型请求分层。
+- `trigger_or_context`:
+  - 调权限
+  - 管 agents / tasks
+  - 看状态
+  - 插旁路问题
+  - 重型规划
+- `supporting_tool_facts`:
+  - `/agents`
+  - `/permissions`
+  - `/plan`
+  - `/tasks`
+  - `/status`
+  - `/ultraplan`
+- `capability_evidence`:
+  - 官方 built-in commands docs
+  - 当前 command surface mapping reference
+- `adoption_signals`:
+  - Boris 全流程依赖书面计划与结构化控制，而不是把控制意图混进实现 prompt
+  - Rungie 把 plan mode、parallel sessions、session hygiene 写成固定节奏
+  - Joe Hu 显式区分 plan mode、pre-flight、browser validation、deployment flow
+- `support_level`: `supported`
+- `strong_tool`: `Claude Code`
+- `counterevidence_or_limits`:
+  - 单个命令本身通常只适合进入 `commands/` 或 `12`
+  - 需要防止“命令很多”被误写成“practice 很多”
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Claude Code`
+  - `Codex CLI`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.claude_code.practice.interactive_only_session_ops`
+  - `ba.claude_code.command.interactive_only_session_ops`
+  - `ba.claude_code.reference.command_surface_mapping`
+- `why_continue_reviewing`:
+  - 需要跨工具比较 command richness 和真实行为变化是否同强度成立。

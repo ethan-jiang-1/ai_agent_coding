@@ -1,0 +1,52 @@
+# claude_code__first_party_worktree_isolation
+
+- `tool_candidate_id`: `claude_code__first_party_worktree_isolation`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `第一方 worktree 隔离已足以改变并行工作流`
+- `candidate_aliases`:
+  - `workspace_worktree_isolation`
+  - `first-party worktree`
+  - `worktree isolation as default parallel primitive`
+- `source_tool`: `Claude Code`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 并行实现和独立审查不再只靠“开多个 session”，而是明确切到 `--worktree` 或 `isolation: worktree`。
+- `why_not_just_feature_tip`:
+  - 这改变的是并行写入和隔离审查的默认手段。
+- `trigger_or_context`:
+  - 多个实现任务并行
+  - 需要独立审查
+  - 需要避免文件踩踏
+- `supporting_tool_facts`:
+  - `--worktree`
+  - `--tmux --worktree`
+  - agent `isolation: worktree`
+  - `WorktreeCreate` / `WorktreeRemove` hooks
+- `capability_evidence`:
+  - 官方 docs
+  - 当前 changelog
+  - 现有 advanced reference
+- `adoption_signals`:
+  - Rungie 直接建议用 git worktrees 获得更强能力
+  - 官方 advanced patterns / semiconductor / service delivery webinar 都在推 project-level task execution
+- `support_level`: `supported`
+- `strong_tool`: `Claude Code`
+- `counterevidence_or_limits`:
+  - adoption signal 比 plan-first 强，但公开实战案例仍以高级用户为主
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Claude Code`
+  - `Codex CLI`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.claude_code.practice.multi_agent`
+  - `ba.claude_code.practice.advanced_agentic_coordination`
+  - `ba.claude_code.command.subagents_and_worktree_commands`
+- `why_continue_reviewing`:
+  - 需要和 Codex / OpenCode 的文件系统隔离能力做强对比，判断它是不是 Claude Code 的独特优势候选。

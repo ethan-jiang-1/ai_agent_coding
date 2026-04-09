@@ -1,0 +1,55 @@
+# cursor__memory_hierarchy_and_handoff
+
+- `tool_candidate_id`: `cursor__memory_hierarchy_and_handoff`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `history、Project Memories、background chat 与 handoff 必须分层`
+- `candidate_aliases`:
+  - `memory hierarchy`
+  - `history-memory-handoff layering`
+  - `project memories plus handoff`
+- `source_tool`: `Cursor`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 旧对话检索、项目长期经验、后台运行结果和当前阶段 handoff 分别进入 history / `@Past Chats`、Project Memories、background chat、export/handoff 文件，而不是混成一个“Cursor 会记住”的模糊记忆层。
+- `why_not_just_feature_tip`:
+  - 重点是上下文组织结构，不是某个记忆入口的名称。
+- `trigger_or_context`:
+  - 跨天任务
+  - background agent follow-up
+  - 跨人交接
+  - 长期项目经验沉淀
+- `supporting_tool_facts`:
+  - history / old chats
+  - `@Past Chats`
+  - Project Memories
+  - export chat to markdown
+  - background chats outside regular history
+- `capability_evidence`:
+  - 官方 history docs
+  - 官方 memories docs
+  - 现有 command/reference grounding
+- `adoption_signals`:
+  - Cursor 官方现在明确把 background chat 与 normal history 分开
+  - automations 和 cloud agent 的扩展让 handoff / export 的必要性变强
+- `support_level`: `supported`
+- `strong_tool`: `Cursor`
+- `counterevidence_or_limits`:
+  - Project Memories 仍是自动提议 + 人工审批，不是万能记忆层
+  - adoption 层目前更多来自产品逻辑与官方 workflow，而不是大量第三方复盘
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Cursor`
+  - `Claude Code`
+  - `Codex CLI`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.cursor.practice.memento_workflow`
+  - `ba.cursor.command.memories_history_handoff`
+  - `ba.cursor.command.background_agents`
+- `why_continue_reviewing`:
+  - 需要比较其他工具的 memory / rules / handoff layering 是否同样清晰，还是 Cursor 因 background chat 分流而更突出。

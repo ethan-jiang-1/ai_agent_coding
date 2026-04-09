@@ -1,0 +1,55 @@
+# opencode__bounded_subtask_orchestration
+
+- `tool_candidate_id`: `opencode__bounded_subtask_orchestration`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `subtask orchestration 应保持有界，不把 subagents 误写成 detached workers`
+- `candidate_aliases`:
+  - `bounded subtask orchestration`
+  - `subagent guardrails`
+  - `shallow orchestration`
+- `source_tool`: `OpenCode`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 任务拆分优先走 `plan/build/general/explore` 的清晰角色边界和 `subtask: true` 的独立上下文，而不是把 `@general`、`@explore` 想象成 detached background workers。
+- `why_not_just_feature_tip`:
+  - 这改变的是多智能体拆分策略，而不是某个 agent 的存在。
+- `trigger_or_context`:
+  - 研究与实现分离
+  - review 噪音隔离
+  - 并行只读探索
+  - 需要把结果压缩回主线程
+- `supporting_tool_facts`:
+  - `@general`
+  - `@explore`
+  - `subtask: true`
+  - `permission.task`
+  - hidden subagents
+- `capability_evidence`:
+  - 官方 agents docs
+  - 官方 commands docs
+  - advanced agentic features reference
+- `adoption_signals`:
+  - OpenAgentsControl 把 OpenCode 用在明确的 plan/review/validation 分层里，而不是无界 fan-out
+  - 官方 docs 一直将 subagents 表述成 focused task units
+- `support_level`: `supported`
+- `strong_tool`: `OpenCode`
+- `counterevidence_or_limits`:
+  - 公开成功案例仍主要围绕 shallow orchestration
+  - 不应把 absence of detached worker 硬转写成“多开 subagent 就等价”
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `OpenCode`
+  - `Codex CLI`
+  - `Claude Code`
+  - `Cursor`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.opencode.practice.multi_agent`
+  - `ba.opencode.command.agents_and_parallel`
+  - `ba.opencode.practice.advanced_agentic_coordination`
+- `why_continue_reviewing`:
+  - 需要与 Codex shallow delegation、Claude teams threshold、Cursor foreground/background split 做跨工具比较。

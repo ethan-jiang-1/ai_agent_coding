@@ -1,0 +1,55 @@
+# cursor__command_surface_control_plane
+
+- `tool_candidate_id`: `cursor__command_surface_control_plane`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `quick commands、custom commands 与 modes 已构成柔性控制面`
+- `candidate_aliases`:
+  - `command-surface control plane`
+  - `custom command control layer`
+  - `mode plus command fluency`
+- `source_tool`: `Cursor`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 会话控制、上下文注入、规则生成、重复 workflow 触发，优先通过 quick commands、project/global commands 与 mode 切换完成，而不是全部混进自由提示词主线程。
+- `why_not_just_feature_tip`:
+  - 重点不是命令名，而是把重复控制动作沉淀为稳定入口。
+- `trigger_or_context`:
+  - 规则生成
+  - 上下文注入
+  - 长对话总结或重置
+  - 高频 review / handoff workflow
+- `supporting_tool_facts`:
+  - quick commands
+  - `.cursor/commands`
+  - `~/.cursor/commands`
+  - Custom Modes
+  - command palette actions
+- `capability_evidence`:
+  - 官方 commands docs
+  - 官方 custom modes docs
+  - command surface mapping reference
+- `adoption_signals`:
+  - 官方示例命令库已经把 setup / tests / review / PR workflow 做成 commands 模板
+  - Cursor 2026 产品叙事持续强调可复用 workflow，而不是一次性 prompt
+- `support_level`: `supported`
+- `strong_tool`: `Cursor`
+- `counterevidence_or_limits`:
+  - commands 当前仍带 beta 边界
+  - 这套控制面更分散，强度未必和 Claude Code 的 built-in command plane 等价
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Cursor`
+  - `Claude Code`
+  - `Codex CLI`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.cursor.practice.interactive_command_layer`
+  - `ba.cursor.command.ask_and_custom_modes`
+  - `ba.cursor.reference.command_surface_mapping`
+- `why_continue_reviewing`:
+  - 需要跨工具比较“可扩展控制面”与“内建命令控制面”的行为强度差异。

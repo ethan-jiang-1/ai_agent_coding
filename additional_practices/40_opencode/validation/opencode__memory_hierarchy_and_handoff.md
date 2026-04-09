@@ -1,0 +1,56 @@
+# opencode__memory_hierarchy_and_handoff
+
+- `tool_candidate_id`: `opencode__memory_hierarchy_and_handoff`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `session、shared backend、share/export 与 handoff 必须分层`
+- `candidate_aliases`:
+  - `memory hierarchy`
+  - `session-share-export-handoff layering`
+  - `collaboration handoff layering`
+- `source_tool`: `OpenCode`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 当前任务状态、同一 backend 的延续、跨机器搬运、公开分享与人类交接会进入不同层，而不是都塞进一个“会话恢复”概念里。
+- `why_not_just_feature_tip`:
+  - 这改变的是状态组织结构，而不是单个 `share` 或 `export` 命令。
+- `trigger_or_context`:
+  - 跨天任务
+  - 跨客户端接续
+  - 跨机器搬运
+  - 人类交接
+- `supporting_tool_facts`:
+  - session list / fork
+  - `serve` / `attach`
+  - `share`
+  - `unshare`
+  - `export`
+  - `import`
+- `capability_evidence`:
+  - 官方 share docs
+  - 官方 server/web docs
+  - 官方 session/export docs
+- `adoption_signals`:
+  - OpenWork 把 sessions、remote server、execution plan、debug exports 做成一整套 workflow
+  - 官方 share docs 明确 retention / privacy，使 handoff layering 更像必要纪律
+- `support_level`: `supported`
+- `strong_tool`: `OpenCode`
+- `counterevidence_or_limits`:
+  - OpenCode 缺少 Claude 那种 auto-memory 叙事
+  - adoption 证据仍多来自工具逻辑与生态包装，而非大量团队复盘
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `OpenCode`
+  - `Claude Code`
+  - `Cursor`
+  - `Codex CLI`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.opencode.practice.memento_workflow`
+  - `ba.opencode.command.sessions_share_handoff`
+  - `ba.opencode.practice.advanced_agentic_coordination`
+- `why_continue_reviewing`:
+  - 需要与其他工具的 memory / resume / share / handoff layering 做统一收敛。

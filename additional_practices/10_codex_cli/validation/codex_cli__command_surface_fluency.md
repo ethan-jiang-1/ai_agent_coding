@@ -1,0 +1,51 @@
+# codex_cli__command_surface_fluency
+
+- `tool_candidate_id`: `codex_cli__command_surface_fluency`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `把 slash surface 当成控制平面，而不是零散快捷键`
+- `candidate_aliases`:
+  - `command-surface fluency`
+  - `interactive control plane`
+  - `review/diff/debug-config loop`
+- `source_tool`: `Codex CLI`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 在交互式会话里，用户不再把控制动作塞回自然语言提示，而是用 `/plan`、`/permissions`、`/review`、`/diff`、`/debug-config`、`/ps` 等入口管理会话状态、检查配置、复盘结果和切换执行姿态。
+- `why_not_just_feature_tip`:
+  - 重点不是“这些命令存在”，而是“高质量使用者已经把它们编入工作流”。
+- `trigger_or_context`:
+  - 长交互会话
+  - 复杂改动前后的 diff / review
+  - 配置不生效、权限不确定、会话状态漂移
+- `supporting_tool_facts`:
+  - 当前官方 slash docs 明确包含 `/fast`、`/personality`、`/debug-config`、`/review`、`/ps`、`/permissions`
+  - `0.105.0` / `0.107.0` 继续强化 `/copy`、`/clear`、memory/debug 相关动作
+- `capability_evidence`:
+  - 官方 slash docs
+  - 官方 release `0.93.0`、`0.97.0`、`0.105.0`
+  - CLI features / reference
+- `adoption_signals`:
+  - JP definitive guide 把 `/debug-config`、`/compact`、`/review`、`/skills` 列为第一天就该知道的会话内控制入口
+  - Blake recipes 把 `/init`、`/diff`、`/plan`、cloud 命令显式编进 recipe
+- `support_level`: `supported`
+- `strong_tool`: `Codex CLI`
+- `counterevidence_or_limits`:
+  - 很多具体 slash commands 只适合落到 `commands/` 或第 `12` 章
+  - 单独某个命令不足以升格为 practice
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Codex CLI`
+  - `Claude Code`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.codex_cli.practice.interactive_only`
+  - `ba.codex_cli.command.interactive_only_commands`
+  - `ba.codex_cli.reference.slash_commands_reference`
+- `why_continue_reviewing`:
+  - 需要跨工具比较“交互命令层是否都已经上升为行为层”，以及 Codex 的这类习惯是不是比其他工具更成熟。

@@ -1,0 +1,53 @@
+# codex_cli__skills_over_agents_bloat
+
+- `tool_candidate_id`: `codex_cli__skills_over_agents_bloat`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `稳定合同写少而准，重流程知识尽量放技能而不是堆 AGENTS`
+- `candidate_aliases`:
+  - `skills over AGENTS bloat`
+  - `progressive context loading`
+  - `thin AGENTS, heavier skills`
+- `source_tool`: `Codex CLI`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 不再把所有操作性知识、流程细节和项目习惯都堆进 `AGENTS.md`，而是把稳定合同保留在 AGENTS，重流程知识转移到可按需加载的 skills 或外部文件。
+- `why_not_just_feature_tip`:
+  - 这是上下文打包方式的迁移，不是“技能功能上线了”这么简单。
+- `trigger_or_context`:
+  - repo 规则越来越长
+  - 需要可复用流程知识
+  - 同一团队跨工具复用 agent workflow
+- `supporting_tool_facts`:
+  - `0.94.0` 开始从 `.agents/skills` 加载 skills
+  - `0.97.0` 支持 live skill updates
+  - 官方工程文确认 skills metadata 会进入 assembled context，并按需展开
+- `capability_evidence`:
+  - 官方 release `0.94.0`、`0.97.0`
+  - `Unrolling the Codex agent loop`
+  - API changelog `Skills in Responses API`
+- `adoption_signals`:
+  - Blake guide 把 AGENTS 和 skills 并列成 daily user 核心系统
+  - `2601.20404` 支持 AGENTS.md 可提升效率
+  - `2602.11988` 同时提醒 context file 会诱导更广泛探索但不必然带来更好结果，说明“堆更多上下文”并不是稳定解
+- `support_level`: `partially_supported`
+- `strong_tool`: `Codex CLI`
+- `counterevidence_or_limits`:
+  - adoption signal 仍不够强，更多是高信号用户和研究层面的方向性证据
+  - 当前很像跨工具长期趋势，但未必已足够成熟到成为独立 practice
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Codex CLI`
+  - `Claude Code`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.codex_cli.practice.rule_hierarchy`
+  - `ba.codex_cli.practice.kv_cache`
+  - `ba.codex_cli.command.agents_and_rules_commands`
+- `why_continue_reviewing`:
+  - 需要继续看其他工具对 skills / rule files / memories 的处理方式，判断这到底是跨工具新实践，还是 Codex 当前阶段的局部优化。

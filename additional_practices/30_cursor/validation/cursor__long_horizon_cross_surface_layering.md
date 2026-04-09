@@ -1,0 +1,55 @@
+# cursor__long_horizon_cross_surface_layering
+
+- `tool_candidate_id`: `cursor__long_horizon_cross_surface_layering`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `IDE、web、mobile、chatops 与 API 的长程代理必须分层`
+- `candidate_aliases`:
+  - `long-horizon cross-surface layering`
+  - `background agent layering`
+  - `cross-entry orchestration`
+- `source_tool`: `Cursor`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 用户会明确区分 IDE Background Agent、web/mobile follow-up、Slack/GitHub/Linear 触发、API 编排与 automations，而不是把它们都当成“同一个后台 agent”。
+- `why_not_just_feature_tip`:
+  - 这定义的是长任务如何触发、接续、审查和交接，不是入口列表。
+- `trigger_or_context`:
+  - 跨时段任务
+  - 跨设备接续
+  - chatops / issue-driven delegation
+  - 程序化并发
+- `supporting_tool_facts`:
+  - Background Agents
+  - web / mobile agents
+  - Slack / GitHub / Linear integrations
+  - Background Agents API
+  - Automations
+- `capability_evidence`:
+  - 官方 docs
+  - `2026-03-05` automations changelog
+  - `2026-04-02` Cursor 3 blog / changelog
+- `adoption_signals`:
+  - 官方 forum announcement 与 changelog examples 已把 overnight triage、PR review、issue delegation、follow-up 写成主要场景
+  - Cursor 官方持续把 cross-surface orchestration 放在产品主叙事中心
+- `support_level`: `supported`
+- `strong_tool`: `Cursor`
+- `counterevidence_or_limits`:
+  - 真实团队级编排复盘目前仍多由官方叙事主导
+  - 容易和 `automations` 候选发生重叠，后续需要收敛
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Cursor`
+  - `Claude Code`
+  - `Codex CLI`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.cursor.practice.advanced_agentic_coordination`
+  - `ba.cursor.command.advanced_agentic_coordination`
+  - `ba.cursor.command.background_agents`
+- `why_continue_reviewing`:
+  - 需要与 Claude 的 schedule / GitHub Actions、Codex cloud、OpenCode backend/share 做跨工具收敛。

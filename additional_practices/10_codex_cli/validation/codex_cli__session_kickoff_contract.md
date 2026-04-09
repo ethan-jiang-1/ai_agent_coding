@@ -1,0 +1,54 @@
+# codex_cli__session_kickoff_contract
+
+- `tool_candidate_id`: `codex_cli__session_kickoff_contract`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `先定执行姿态的 session 开局契约`
+- `candidate_aliases`:
+  - `session kickoff discipline`
+  - `plan-mode-default kickoff`
+  - `safe start contract`
+- `source_tool`: `Codex CLI`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 非 trivial 任务不再直接丢一个自然语言目标就开跑，而是先明确会话形态、是否先 `/plan`、当前 approval / sandbox、是否需要 AGENTS / skills / review 回路，再进入执行。
+- `why_not_just_feature_tip`:
+  - 这改变的是“每个复杂 session 怎么开局”，不是教用户记住某个命令。
+- `trigger_or_context`:
+  - 新 repo 首次进入
+  - 大改动或高风险改动
+  - 长任务
+  - 需要明确验证和 review 回路的任务
+- `supporting_tool_facts`:
+  - `0.94.0` 把 plan mode 推成默认
+  - `0.98.0` 把 steer mode 变成 stable by default
+  - `/debug-config`、`/init`、`/review`、`/compact` 都已成为正式入口
+- `capability_evidence`:
+  - 官方 release `0.94.0`: plan mode default
+  - 官方 release `0.98.0`: steer mode stable by default
+  - 官方 slash docs: `/plan`、`/debug-config`、`/review`、`/permissions`
+- `adoption_signals`:
+  - JP quick-start 明确提倡 safe setup、clarifying questions、plan-and-verify、resume/review
+  - JP definitive guide 给出 daily-driver config 和“先看清 config / approval / sandbox”的真实用法
+  - Blake workflow recipes 把 `/init`、`/plan`、`/diff` 编进标准开局流程
+- `support_level`: `supported`
+- `strong_tool`: `Codex CLI`
+- `counterevidence_or_limits`:
+  - 这更像 `01` / `03` / `08` 的 merge 强化，而不是新章节
+  - adoption signal 强，但仍主要来自高信号个体，而不是更大规模团队案例
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Codex CLI`
+  - `Claude Code`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.codex_cli.practice.session_lifecycle`
+  - `ba.codex_cli.practice.plan_before_code`
+  - `ba.codex_cli.practice.tool_permission`
+- `why_continue_reviewing`:
+  - 需要在其他 3 个工具里验证“先定执行姿态”的开局契约是否同样成立，还是只有 Codex 因 plan/steer default 才特别强。

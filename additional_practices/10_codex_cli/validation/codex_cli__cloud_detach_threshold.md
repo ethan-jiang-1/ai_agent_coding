@@ -1,0 +1,53 @@
+# codex_cli__cloud_detach_threshold
+
+- `tool_candidate_id`: `codex_cli__cloud_detach_threshold`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `本地续跑与 cloud 委派之间要有明确阈值`
+- `candidate_aliases`:
+  - `long horizon control`
+  - `cloud detach threshold`
+  - `resume vs cloud split`
+- `source_tool`: `Codex CLI`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 用户不再把所有长任务硬塞进本地 `resume` / `fork`，而是会明确判断何时切到 `codex cloud exec`，并通过 `status`、`diff`、`apply` 回到本地。
+- `why_not_just_feature_tip`:
+  - 这定义的是长任务如何切面和收口，而不是单个 cloud 命令的用法。
+- `trigger_or_context`:
+  - 异步长任务
+  - 需要稍后取回结果
+  - 需要 detached 执行或 best-of-N
+  - 本地会话已不适合继续挂住
+- `supporting_tool_facts`:
+  - 当前 CLI docs 已把 `codex cloud` 写成正式终端入口
+  - `codex apply` 已成正式命令
+  - `--attempts` 允许 best-of-N
+- `capability_evidence`:
+  - CLI features
+  - CLI reference
+  - 官方 product / engineering posts 对 long-running 和 steer 的强化
+- `adoption_signals`:
+  - Blake recipe 已直接给出 cloud debugging 的完整闭环：`exec -> status -> diff -> apply`
+  - Blake 明确区分 CLI、desktop app、cloud 三种 surface 的用途
+- `support_level`: `supported`
+- `strong_tool`: `Codex CLI`
+- `counterevidence_or_limits`:
+  - adoption signal 还没有非常多的独立团队复盘
+  - web overview 页面仍有陈旧描述，文档面存在漂移
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Codex CLI`
+  - `Claude Code`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.codex_cli.practice.memento_workflow`
+  - `ba.codex_cli.practice.advanced_agentic_coordination`
+  - `ba.codex_cli.command.advanced_agentic_coordination_commands`
+- `why_continue_reviewing`:
+  - 需要验证其他工具是否也存在类似的“本地 loop / detached loop”阈值判断，还是 Codex 更特殊。

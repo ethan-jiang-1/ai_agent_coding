@@ -1,0 +1,52 @@
+# claude_code__plan_first_kickoff
+
+- `tool_candidate_id`: `claude_code__plan_first_kickoff`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `先计划、再批注、后执行的开局契约`
+- `candidate_aliases`:
+  - `session kickoff discipline`
+  - `plan-first kickoff`
+  - `annotated plan workflow`
+- `source_tool`: `Claude Code`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 非 trivial 任务默认先进入 plan / research / written plan / review loop，而不是直接进入可编辑实现。
+- `why_not_just_feature_tip`:
+  - 这改变的是 Claude Code 每个复杂任务的起步方式，不是教用户记住 `--permission-mode plan`。
+- `trigger_or_context`:
+  - 大功能
+  - 架构性改动
+  - 高风险 repo
+  - 需要多轮人工 judgement 注入的任务
+- `supporting_tool_facts`:
+  - `--permission-mode plan`
+  - `/plan`
+  - built-in command control plane
+- `capability_evidence`:
+  - 官方 commands / current docs
+  - official webinar 对 long-horizon complex work 的强化
+- `adoption_signals`:
+  - Boris: deep-read -> research.md -> plan.md -> annotation cycles -> implement
+  - Rungie: `defaultMode: "plan"`，always start in plan mode
+  - Joe Hu: raw text -> plan mode -> clarifying questions -> document review
+- `support_level`: `supported`
+- `strong_tool`: `Claude Code`
+- `counterevidence_or_limits`:
+  - 这更像 `01` / `03` 的 merge 强化，不像新章
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Claude Code`
+  - `Codex CLI`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.claude_code.practice.session_lifecycle`
+  - `ba.claude_code.practice.plan_before_code`
+  - `ba.claude_code.command.permission_and_tools_commands`
+- `why_continue_reviewing`:
+  - 需要验证其他工具有没有像 Claude Code 这样强的 written-plan + review-loop adoption。

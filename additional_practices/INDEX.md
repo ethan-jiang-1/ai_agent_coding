@@ -2,7 +2,7 @@
 
 ## Run Snapshot
 
-Time: 2026-04-09 10:59:29 CST
+Time: 2026-04-09 11:46:46 CST
 Run ID: 2026-04-09_additional_practices_r1
 Supersedes Run ID: none
 Effective Window: 2026-01-01 to 2026-04-09
@@ -26,41 +26,45 @@ Non-Drift Constraints:
 
 ## Progress
 
-Current Phase: Phase 2. Tool Loop: Codex CLI
+Current Phase: Phase 5. Tool Loop: OpenCode
 Phase Status: in_progress
-Current Tool: Codex CLI
+Current Tool: OpenCode
 Current Step: Step 2A. Tool Baseline
 Step Status: completed
-Last Completed Checkpoint: Phase 2 entry and Codex CLI Step 2A completed
+Last Completed Checkpoint: Phase 4 completed and OpenCode Step 2A completed
 
 Next Action:
 
 - 执行 `Step 2B. Tool External Scan`
-- 先做 Codex CLI 的 `Tier A` 官方时间窗扫描，再补 `Tier B` 和必要的 supplemental pass
-- 以 `10_codex_cli/baseline/2026-04-09_codex_cli_baseline_audit.md` 里标出的优先方向作为外部搜索入口
+- 先做 OpenCode 的 `Tier A` 官方时间窗扫描，再补必要的 practitioner / community 信号
+- 以 `40_opencode/baseline/2026-04-09_opencode_baseline_audit.md` 里标出的优先方向作为外部搜索入口
 
 Next Mandatory Checkpoint:
 
-- 完成 Codex CLI 的 `Step 2F. Tool Exit Summary`
+- 完成 OpenCode 的 `Step 2F. Tool Exit Summary`
 
 Blockers / Open Questions:
 
-- 还未开始 `2026-01-01` 到 `2026-04-09` 的 Codex CLI 官方时间窗扫描，需优先核实该窗口内的产品事实变化。
-- `session_kickoff_discipline`、`command_surface_fluency`、`long_horizon_control` 在 Codex CLI 内已经有本地基线，但是否形成新增候选仍需外部 adoption 信号。
-- Codex CLI 当前只是完成 baseline 审计，还没有任何 `tool_candidate_id` 或 candidate card。
+- OpenCode 的官方时间窗扫描还未开始。
+- `plan` agent 的开局纪律，到底有多强 adoption，还需要外部信号确认。
+- `serve` / `web` / `attach` 的 shared-backend long horizon，是否真的改变了长程协作习惯，需要优先核实。
 
 ## Working Memory
 
 Current Candidate Set:
 
-- 当前只有全局假设桶，Codex CLI 仍未分配任何 `tool_candidate_id`
+- `Codex CLI` 已保留 `6` 个活跃候选，并完成工具级 exit summary
+- `Claude Code` 已保留 `6` 个活跃候选，并完成工具级 exit summary
+- `Cursor` 已保留 `6` 个活跃候选，并完成工具级 exit summary
 - 当前候选观察框架已固定在 `01_global/candidate_pool/2026-04-09_initial_candidate_observation_frame.md`
+- `OpenCode` 刚完成 baseline，尚未分配任何 `tool_candidate_id`
 
 Current Open Questions:
 
-- Codex CLI 的时间窗内新增官方能力，是否真的改写了 `12` / `13` 章周边的行为层。
-- 哪些 Codex CLI 线索最后只适合 merge 到既有锚点，而不应成为新 practice。
-- 哪些 Codex CLI 现象只是命令面或 reference 层变丰富，而不是行为模式发生变化。
+- `plan` agent 是否已经在 2026 窗口里变成更强的开局契约，而不只是功能点。
+- OpenCode 的 TUI built-ins、built-in commands、custom commands，到底有多强的行为层意义。
+- shared backend、share/export/import、handoff 这些层次，外部 workflow 是否已经把边界说清。
+- bounded subtask orchestration 是否足以成为强 guardrail 候选，而不是纯 capability facts。
 
 ## Artifacts Produced
 
@@ -68,6 +72,18 @@ Current Open Questions:
 - `01_global/baseline/2026-04-09_canonical_landing_index.md`
 - `01_global/candidate_pool/2026-04-09_initial_candidate_observation_frame.md`
 - `10_codex_cli/baseline/2026-04-09_codex_cli_baseline_audit.md`
+- `10_codex_cli/intake/2026-04-09_codex_cli_additional_practices_scan.md`
+- `10_codex_cli/validation/` candidate cards and deep dives
+- `10_codex_cli/summary/2026-04-09_codex_cli_exit_summary.md`
+- `20_claude_code/baseline/2026-04-09_claude_code_baseline_audit.md`
+- `20_claude_code/intake/2026-04-09_claude_code_additional_practices_scan.md`
+- `20_claude_code/validation/` candidate cards and deep dives
+- `20_claude_code/summary/2026-04-09_claude_code_exit_summary.md`
+- `30_cursor/baseline/2026-04-09_cursor_baseline_audit.md`
+- `30_cursor/intake/2026-04-09_cursor_additional_practices_scan.md`
+- `30_cursor/validation/` candidate cards and deep dives
+- `30_cursor/summary/2026-04-09_cursor_exit_summary.md`
+- `40_opencode/baseline/2026-04-09_opencode_baseline_audit.md`
 - `99_final/final_recommendation.md`
 
 ## Review Queue Status

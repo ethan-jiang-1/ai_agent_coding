@@ -1,0 +1,48 @@
+# claude_code__agent_teams_threshold
+
+- `tool_candidate_id`: `claude_code__agent_teams_threshold`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `agent teams 需要高门槛，不应替代 subagents / worktree`
+- `candidate_aliases`:
+  - `agent teams threshold`
+  - `teams overuse guardrail`
+  - `experimental heavy orchestration threshold`
+- `source_tool`: `Claude Code`
+- `scope`: `agent-specific`
+- `behavior_change`:
+  - 用户会先用 subagents 和 worktree，只有在 workers 需要彼此直接通信、共享 task list、lead 显式编排时才进入 agent teams。
+- `why_not_just_feature_tip`:
+  - 重点不是“有 teams 功能”，而是“不要在普通并行场景过度升级到更贵、更实验性的 teams”。
+- `trigger_or_context`:
+  - lead + teammates
+  - teammate direct communication
+  - shared task list
+  - heavy orchestration
+- `supporting_tool_facts`:
+  - 官方 docs 明确 experimental
+  - teammates 独立 sessions
+  - costs materially higher
+- `capability_evidence`:
+  - 官方 advanced docs
+  - current changelog around agent teams and task hooks
+- `adoption_signals`:
+  - 官方 advanced patterns webinar 专门讲 subagents、MCP、scaling，而不是把 teams 当默认入口
+  - 当前高信号 practitioner workflow 更强调 plan-first、parallel sessions、worktree，而不是 teams-first
+- `support_level`: `partially_supported`
+- `strong_tool`: `Claude Code`
+- `counterevidence_or_limits`:
+  - capability 存在，但 adoption 明显弱于 plan-first 和 worktree isolation
+  - 很可能最终只作为 Claude-specific `13` 章边界说明
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Claude Code`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.claude_code.practice.advanced_agentic_coordination`
+  - `ba.claude_code.command.advanced_agentic_coordination_commands`
+- `why_continue_reviewing`:
+  - 需要继续找更直接的 adoption 证据；如果后续仍弱，应该保留为 Claude-specific 边界，而不是升格为跨工具 canonical 候选。

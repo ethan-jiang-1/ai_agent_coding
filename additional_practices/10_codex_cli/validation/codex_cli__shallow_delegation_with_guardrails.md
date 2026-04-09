@@ -1,0 +1,54 @@
+# codex_cli__shallow_delegation_with_guardrails
+
+- `tool_candidate_id`: `codex_cli__shallow_delegation_with_guardrails`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `浅层 delegation 比激进 fan-out 更像当前默认实践`
+- `candidate_aliases`:
+  - `delegation/subagent orchestration`
+  - `bounded subagents`
+  - `shallow multi-agent`
+- `source_tool`: `Codex CLI`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 多代理不再等于“尽量多开”，而是明确限制线程数、深度和职责边界，优先让主线程整合，子代理做只读探索或边界清晰的子任务。
+- `why_not_just_feature_tip`:
+  - 这改变的是任务拆分策略，不是讲某个配置键的存在。
+- `trigger_or_context`:
+  - 需要探索 / 实现 / 审查分工
+  - 大任务但仍需主线程掌控收口
+  - 多处只读调查或分片执行
+- `supporting_tool_facts`:
+  - `max_threads = 6`
+  - `max_depth = 1`
+  - subagents 继承 parent sandbox / approval
+  - `spawn_agents_on_csv` 仍是 experimental
+  - thread fork into sub-agents 是当前窗口新增
+- `capability_evidence`:
+  - 官方 subagents docs
+  - 官方 release `0.91.0`、`0.105.0`、`0.107.0`
+  - feature maturity docs
+- `adoption_signals`:
+  - Blake guide 明确把 cloud tasks / SDK orchestration 作为 delegation pattern 的重要出口，而不是默认鼓励深树 subagents
+  - 当前高信号外部材料几乎都把多代理放在“可控拆分”语境下，而不是无限 fan-out
+- `support_level`: `supported`
+- `strong_tool`: `Codex CLI`
+- `counterevidence_or_limits`:
+  - capability 层很强，但 adoption 层仍弱于 session kickoff、command surface、cloud threshold
+  - 目前没有足够多高质量公开案例证明复杂 subagent 图已经成为默认最佳实践
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Codex CLI`
+  - `Claude Code`
+  - `Cursor`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.codex_cli.practice.multi_agent`
+  - `ba.codex_cli.practice.advanced_agentic_coordination`
+  - `ba.codex_cli.command.subagents_and_parallel_commands`
+- `why_continue_reviewing`:
+  - 需要看其他工具的 adoption 层是否也更偏浅层 delegation，还是只有 Codex 因当前边界设置而如此。

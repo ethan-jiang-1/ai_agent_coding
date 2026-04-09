@@ -1,0 +1,53 @@
+# opencode__skills_as_lazy_context_layer
+
+- `tool_candidate_id`: `opencode__skills_as_lazy_context_layer`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `skills 应作为按需加载的上下文层，而不是把一切塞进 AGENTS 与 commands`
+- `candidate_aliases`:
+  - `skills as lazy context layer`
+  - `on-demand reusable instructions`
+  - `skills over bloated static instructions`
+- `source_tool`: `OpenCode`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 重流程、可复用、非每次都需要的知识，优先放到 skills，让 agent 按需发现和加载，而不是无限扩张 `AGENTS.md`、`instructions` 或 custom commands。
+- `why_not_just_feature_tip`:
+  - 这改变的是上下文打包方式，不是单个目录路径。
+- `trigger_or_context`:
+  - 重复 workflow
+  - 多项目复用
+  - 大型规则集
+  - Claude/Codex/OpenCode 混合生态
+- `supporting_tool_facts`:
+  - native `skill` tool
+  - `.opencode/skills`
+  - `.claude/skills`
+  - `.agents/skills`
+  - on-demand loading
+- `capability_evidence`:
+  - 官方 skills docs
+  - `Agent & Skill Ordering` changelog
+- `adoption_signals`:
+  - OpenWork 内置 skills manager
+  - 官方 docs 直接把 skills 定义成 reusable instructions 而非静态全量上下文
+- `support_level`: `partially_supported`
+- `strong_tool`: `OpenCode`
+- `counterevidence_or_limits`:
+  - 公开团队级 adoption 复盘仍有限
+  - 也不能因此否定 `AGENTS.md` / `instructions` 的稳定合同价值
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `OpenCode`
+  - `Codex CLI`
+  - `Claude Code`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.opencode.practice.rule_hierarchy`
+  - `ba.opencode.command.rules_and_instructions`
+  - `ba.opencode.practice.progressive_feed`
+- `why_continue_reviewing`:
+  - 需要与 Codex skills、Claude `.claude/skills` / rules、Cursor rules/commands 的层级关系做跨工具比较。

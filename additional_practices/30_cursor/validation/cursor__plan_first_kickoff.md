@@ -1,0 +1,53 @@
+# cursor__plan_first_kickoff
+
+- `tool_candidate_id`: `cursor__plan_first_kickoff`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `Ask、plan approval 与 agent execution 的开局契约`
+- `candidate_aliases`:
+  - `plan-first kickoff`
+  - `ask-first planning`
+  - `plan approval before run`
+- `source_tool`: `Cursor`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 非 trivial 任务默认先用 Ask 或 planning-oriented mode 读代码、生成计划、经人工审查后，再交给前台 Agent、long-running agent 或 cloud agent 执行。
+- `why_not_just_feature_tip`:
+  - 重点不是记住 Ask 按钮，而是把“计划先过审”变成复杂任务的起步纪律。
+- `trigger_or_context`:
+  - 大功能
+  - 多文件修改
+  - background / cloud delegation
+  - 高风险仓库
+- `supporting_tool_facts`:
+  - Ask mode
+  - Agent mode
+  - Custom Modes
+  - long-running agents with planning-first framing
+- `capability_evidence`:
+  - 官方 modes docs
+  - `2026-02-12` long-running agents changelog / blog
+- `adoption_signals`:
+  - 官方 forum announcement 直接强调先计划、再用多个 agents against the plan
+  - Cursor 2026 官方叙事已把更大任务的计划审批写成主路径
+- `support_level`: `supported`
+- `strong_tool`: `Cursor`
+- `counterevidence_or_limits`:
+  - Cursor 没有 Claude Code 那种固定命名的内建 Plan Mode
+  - 具体执行形式更分散，容易退化成“先聊两句再开跑”
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `Cursor`
+  - `Claude Code`
+  - `Codex CLI`
+  - `OpenCode`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.cursor.practice.plan_before_code`
+  - `ba.cursor.command.ask_and_custom_modes`
+  - `ba.cursor.practice.session_lifecycle`
+- `why_continue_reviewing`:
+  - 需要比较其他工具是否也像 Cursor 这样把“计划审批”扩展到 background / cloud delegation。

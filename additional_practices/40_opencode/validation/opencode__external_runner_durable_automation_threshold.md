@@ -1,0 +1,54 @@
+# opencode__external_runner_durable_automation_threshold
+
+- `tool_candidate_id`: `opencode__external_runner_durable_automation_threshold`
+- `global_candidate_id`:
+- `created_in_run`: `2026-04-09_additional_practices_r1`
+- `last_reviewed_in_run`: `2026-04-09_additional_practices_r1`
+- `candidate_name`: `真正的 durable automation 在 OpenCode 上更多发生在外部 runner`
+- `candidate_aliases`:
+  - `external-runner automation threshold`
+  - `github-runner durable automation`
+  - `native shared-state vs external automation split`
+- `source_tool`: `OpenCode`
+- `scope`: `cross-tool`
+- `behavior_change`:
+  - 用户不会把 `serve` / `attach` 误写成后台作业系统；需要定时 review、issue triage、PR automation 时，会明确切到 GitHub Actions runner 这类外部 durable automation surface。
+- `why_not_just_feature_tip`:
+  - 重点不是某个 GitHub Action，而是区分 native continuation 与 external durable automation。
+- `trigger_or_context`:
+  - schedule
+  - PR review automation
+  - issue triage
+  - comment-triggered implementation
+- `supporting_tool_facts`:
+  - `opencode github install`
+  - `schedule`
+  - `workflow_dispatch`
+  - `pull_request`
+  - `issues`
+- `capability_evidence`:
+  - 官方 GitHub integration docs
+  - official schedule / PR review / issue triage examples
+- `adoption_signals`:
+  - 官方 examples 已把 scheduled review、triage 和 PR automation 写成正式 workflow
+  - OpenWork 的 local/remote host 模式进一步放大了“OpenCode runtime 可嵌入外部工作流”的信号
+- `support_level`: `partially_supported`
+- `strong_tool`: `OpenCode`
+- `counterevidence_or_limits`:
+  - 这不是 OpenCode native scheduler
+  - adoption 证据当前仍以官方 workflow 为主
+- `decision_stage`: `tool_loop_provisional`
+- `current_decision`: `pending`
+- `affected_tools`:
+  - `OpenCode`
+  - `Cursor`
+  - `Claude Code`
+  - `Codex CLI`
+- `proposed_landing`: `merge-into-existing`
+- `source_tool_candidate_ids`:
+- `possible_baseline_anchors`:
+  - `ba.opencode.practice.advanced_agentic_coordination`
+  - `ba.opencode.command.advanced_agentic_coordination`
+  - `ba.opencode.practice.memento_workflow`
+- `why_continue_reviewing`:
+  - 需要与 Claude GitHub Actions / schedule、Cursor automations、Codex cloud detachment 做跨工具比较。
