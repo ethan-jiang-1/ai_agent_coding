@@ -21,6 +21,7 @@ cat .codex/plans/oauth2-plan.md | \
 ## 交互式对应
 
 ```text
+/plan
 /new
 /clear
 /compact
@@ -28,6 +29,8 @@ cat .codex/plans/oauth2-plan.md | \
 
 映射关系：
 
+- `/plan` ↔ Combined mapping
+  是会话内进入规划态的最近入口，但仍不能替代落盘计划文件
 - `/new` ↔ Combined mapping
   适合开始一轮新的规划或执行阶段
 - `/clear` ↔ Approximate mapping
@@ -35,7 +38,7 @@ cat .codex/plans/oauth2-plan.md | \
 - `/compact` ↔ Approximate mapping
   适合在长规划会话里压缩历史，保留核心上下文
 
-这三者都不能完全替代“只读规划并落盘”的外部工作流，但它们是交互态下最接近的控制手段。
+这些命令都不能完全替代“只读规划并落盘”的外部工作流，但它们是交互态下最接近的控制手段。
 
 ## 用同一条非交互链继续推进
 

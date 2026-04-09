@@ -2,8 +2,10 @@
 
 来源：
 
-- OpenAI 官方 Codex CLI 文档：`Slash commands in Codex CLI`
+- OpenAI 官方文档：`Slash commands`
+- OpenAI 官方文档：`CLI features`
 - 本机 `codex --help`
+- 本机 `codex exec --help`
 - 本机 `codex review --help`
 
 核验日期：2026-04-09
@@ -25,34 +27,35 @@ OpenAI 官方对这类交互式 `/...` 功能的叫法是：
 
 ---
 
-## 2. 官方列出的 built-in slash commands
+## 2. 官方当前列出的 built-in slash commands
 
 官方文档当前列出的内置 slash commands 有：
 
-- `/add-dir`
-- `/agents`
-- `/approval-mode`
-- `/bug`
+- `/agent`
+- `/apps`
 - `/clear`
 - `/compact`
-- `/config`
-- `/cost`
+- `/copy`
 - `/diff`
-- `/doctor`
-- `/help`
+- `/exit`
+- `/experimental`
+- `/feedback`
+- `/fork`
 - `/init`
+- `/logout`
 - `/mcp`
-- `/memory`
-- `/mentions`
+- `/mention`
 - `/model`
 - `/new`
+- `/permissions`
+- `/plan`
+- `/ps`
+- `/quit`
+- `/resume`
 - `/review`
+- `/sandbox-add-read-dir`
 - `/status`
-- `/terminal-setup`
-
-官方还说明：
-
-- `/approvals` 是 `/approval-mode` 的隐藏别名
+- `/statusline`
 
 ---
 
@@ -67,36 +70,40 @@ OpenAI 官方对这类交互式 `/...` 功能的叫法是：
 - `/model` ↔ `-m` / `--model`
 - `/review` ↔ `codex review`
 - `/mcp` ↔ `codex mcp`
-- `/agents` ↔ agent/subagent 配置与使用
+- `/logout` ↔ `codex logout`
+- `/resume` ↔ `codex resume`
+- `/fork` ↔ `codex fork`
+- `/agent` ↔ subagent / custom agent 工作流入口
 
 ### Combined mapping
 
 有些 slash commands 需要和其他会话动作一起理解，才能对应外部命令工作流，例如：
 
-- `/approval-mode` ↔ `-a` / `--ask-for-approval`
-- `/add-dir` ↔ `--add-dir`
+- `/permissions` ↔ `-s` / `--sandbox` 与 `-a` / `--ask-for-approval`
 - `/new` ↔ 新会话 / 重开任务边界
-- `/status` ↔ 查看当前模型、沙箱、审批等会话状态
+- `/plan` ↔ 会话内规划模式，但不能替代落盘计划文件
+- `/experimental` ↔ `codex features`
+- `/status` ↔ 官方把它描述为查看当前会话配置；但本机 `codex --help` 没有顶层 `codex status`
 
 ### Approximate mapping
 
 有些 slash commands 解决的是相近问题，但没有严格的外部一一对应，例如：
 
+- `/mention`
 - `/clear`
 - `/compact`
-- `/cost`
 - `/diff`
-- `/memory`
 
 ### No direct external mapping
 
 还有一些 slash commands 更像交互式工作流增强，本机帮助输出里没有直接等价的外部命令，例如：
 
-- `/help`
-- `/bug`
-- `/doctor`
-- `/mentions`
-- `/terminal-setup`
+- `/apps`
+- `/copy`
+- `/feedback`
+- `/ps`
+- `/sandbox-add-read-dir`
+- `/statusline`
 
 这些是后续判断是否需要最后补充兜底章的重要来源。
 
@@ -110,7 +117,9 @@ OpenAI 官方对这类交互式 `/...` 功能的叫法是：
 - `codex review`
 - `codex resume`
 - `codex fork`
+- `codex logout`
 - `codex mcp`
+- `codex cloud`
 - `-m` / `--model`
 - `-s` / `--sandbox`
 - `-a` / `--ask-for-approval`
@@ -121,6 +130,7 @@ OpenAI 官方对这类交互式 `/...` 功能的叫法是：
 
 - 并不是所有 slash commands 都有外部命令对应
 - 交互式命令面明显比外部命令面更丰富
+- 官方 slash surface 与旧版实践稿并不完全一致
 
 ---
 
@@ -147,10 +157,10 @@ OpenAI 官方对这类交互式 `/...` 功能的叫法是：
 
 如果后续真的需要新增一个最后补充兜底章，它最可能承接这些内容：
 
-- `/bug`
-- `/doctor`
-- `/mentions`
-- `/terminal-setup`
+- `/feedback`
+- `/ps`
+- `/sandbox-add-read-dir`
+- `/statusline`
 - 其他很重要但很难自然并入现有章节的 interactive-only 命令
 
 是否真的新增，要以命令融合之后的剩余情况为准，不预先强行新开。
@@ -159,6 +169,8 @@ OpenAI 官方对这类交互式 `/...` 功能的叫法是：
 
 ## 7. 当前仍需保持谨慎的点
 
-- 官方页面列出了 slash commands，但不同命令的详细行为边界并不全都能从本机 `--help` 直接确认
-- 某些 slash commands 在交互式 TUI 里的副作用、输出形式、是否会修改配置，还需要以后按需进一步核验
+- 当前官方文档里列的是 `/agent`、`/permissions`、`/mention`，不是旧稿里的 `/agents`、`/approval-mode`、`/mentions`
+- 官方不同页面之间存在少量版本漂移；例如 `Subagents` 页面仍提到 `/approvals` 和 `--yolo` 这类旧说法，而当前 slash 页面与本机帮助更接近 `/permissions` 和更长的危险模式参数名
+- 官方把 `/status` 描述为可查看 shell 侧状态，但本机 `codex-cli 0.118.0` 没有顶层 `codex status`
+- 某些 slash commands 在交互式 TUI 里的副作用、输出形式、是否会修改配置，仍需按需进一步核验
 - 所以这份 reference 适合作为 command-surface mapping 的基准，不适合把每个 slash command 都写成百分之百完整的行为规范

@@ -9,12 +9,13 @@
 - 规划、审计、定位问题时，先用 `read-only`。
 - 真正开始改文件时，再切到 `workspace-write`。
 - 自动化执行时，优先使用 `--full-auto` 这种受控快捷方式，而不是直接绕过所有保护。
-- 如果你已经在交互式会话里，`/approval-mode` 是最直接的权限控制入口，`/approvals` 是它的隐藏别名，`/status` 适合做状态确认。
+- 如果你已经在交互式会话里，`/permissions` 是最直接的权限控制入口，`/status` 适合做状态确认。
 
 还要注意一个现实差异：
 
 - 交互式 `codex` / `resume` / `fork` 有更完整的 approval 控制
 - 当前 `codex exec` 暴露的是沙箱级别和自动化快捷方式，不要想当然把交互式参数写到 `exec` 上
+- 如果用了 subagents，child agent 默认继承 parent 的审批和沙箱边界，不要把多代理误当成权限逃逸方式
 
 ## 权限提升的顺序
 

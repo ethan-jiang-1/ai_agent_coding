@@ -11,6 +11,7 @@ Claude Code 的跨会话状态传递至少分三层：会话历史、auto-memory
 - 项目级长期经验交给 auto-memory。
 - 当前任务状态、下一步和风险点交给 handoff 文件。
 - 在交互里，需要看或改 memory 用 `/memory`；需要把当前会话直接导出来做交接，用 `/export`。
+- 如果只是当前 session 里短期轮询，用 `/loop`；如果要跨重启、跨离线持续存在，就不要把它当 handoff 机制，而要转到 durable scheduling。
 
 一个实用判断：
 
@@ -25,12 +26,14 @@ Claude Code 的跨会话状态传递至少分三层：会话历史、auto-memory
 - auto-memory 不是完整对话历史
 - 会话历史太长会继续污染上下文
 - 别人接手时，明文 handoff 比隐藏在历史里更可靠
+- session-scoped `/loop` 结束即失效，不能替代 handoff 或 durable automation
 
 ## 不要这样做
 
 - 不要把 auto-memory 当任务快照。
 - 不要把会话 resume 当成跨人交接方案。
 - 不要让下一步只依赖“AI 应该记得刚才做过什么”。
+- 不要把 `/loop` 写成“长期可恢复任务”。
 
 ## 验收标准
 

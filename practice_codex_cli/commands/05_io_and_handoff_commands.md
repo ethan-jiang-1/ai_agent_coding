@@ -45,13 +45,13 @@ cat /tmp/auth-interfaces.md | \
 ## 交互式对应
 
 ```text
-/mentions
+/mention
 /diff
 ```
 
 映射关系：
 
-- `/mentions` ↔ Approximate mapping
+- `/mention` ↔ Approximate mapping
   适合在交互态里高效引用路径、文件和实体
 - `/diff` ↔ Approximate mapping
   适合查看当前改动，不等同于把中间结果外化成文件

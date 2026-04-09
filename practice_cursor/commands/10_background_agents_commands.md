@@ -10,6 +10,8 @@ Cursor 的 Background Agents 不是本地多开一个聊天窗口，而是远程
 - 有 internet access
 - 通过 GitHub 克隆仓库
 - 在独立 branch 上工作
+- 可以 install packages
+- 可以 view status、send follow-ups、take over anytime
 
 ## 适合的任务
 
@@ -26,6 +28,21 @@ Cursor 的 Background Agents 不是本地多开一个聊天窗口，而是远程
 - 对比不同方案
 - 保留主线与旁线分离
 
+## 原生隔离重点是 branch，不是 worktree
+
+当前 Cursor 官方材料稳定能确认的是：
+
+- remote isolated machine
+- separate branch
+- repo clone / push back
+
+没有稳定证据表明 Cursor editor 当前有一等本地 worktree 命令面。
+
+所以更稳的写法是：
+
+- Background Agent 的原生隔离是 remote branch worker
+- 真要本地 filesystem 级并行隔离，那已经超出当前 Cursor-native agent surface
+
 ## 更稳的组合
 
 - Ask / 主 tab：做方向确认
@@ -39,6 +56,7 @@ Cursor 的 Background Agents 不是本地多开一个聊天窗口，而是远程
 - 明确仓库或 branch
 - 明确任务边界
 - 明确输出是 diff、PR，还是摘要
+- 明确后续在哪里 follow-up：IDE、web/mobile、Slack，还是 API
 
 ## 前后台交接可以按需用 custom commands 固化
 
@@ -62,3 +80,4 @@ Cursor 的 Background Agents 不是本地多开一个聊天窗口，而是远程
 - 不要把 Background Agents 写成本地后台线程。
 - 不要让两个执行通道同时改同一组文件。
 - 不要因为它在后台跑，就忽略安全和成本边界。
+- 不要把 separate branch 误写成 local worktree。

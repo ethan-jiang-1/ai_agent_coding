@@ -26,8 +26,21 @@
 
 - Background Agents 使用 usage-based pricing
 - 首次使用时会要求你设置 spending limit
+- 只有 Max Mode-compatible models 可用于 Background Agents
 
 这意味着它不适合拿来做“先试试看”的默认入口。
+
+## 高级编排的成本放大器
+
+官方当前还能确认：
+
+- Web / Mobile agent 与 Background Agents 使用同样的 pricing model
+- Background Agents API 支持最多 256 个 active agents / API key
+
+这意味着：
+
+- 跨设备入口不会改变计费本质
+- API 级并发会把“看起来只是多开几个 agent”变成真正的规模化成本
 
 ## usage 观察
 
@@ -56,3 +69,4 @@
 - 不要把 Background Agents 当成“看不见就不算成本”。
 - 不要不看 usage dashboard。
 - 不要在方向还没确认时就直接开 Max Mode 或后台长跑。
+- 不要把 API / Slack / web-mobile 的重复 follow-up 忘记算进 usage。

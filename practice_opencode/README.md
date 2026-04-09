@@ -17,6 +17,7 @@
 - `permission`、`share`、`snapshot`、`custom commands`
 - `/compact`、`/undo`、`/redo`、`/sessions`、`/share`、`/models` 这些 TUI 入口
 - 一层额外的 interactive-only session ops 补充章，用来承接 `/help`、`/details` 一类不适合硬塞回原 11 章的会话内操作
+- 追加第 `13` 章，把 `subtask orchestration / serve-web-attach / absence of worktree & scheduler` 放到同一层处理
 
 需要明确的是：
 
@@ -31,9 +32,11 @@
 3. 接着看 `practices/04_rule_hierarchy.md`
 4. 然后看 `practices/08_tool_permission.md`
 5. 需要跨会话协作时，再看 `practices/09_memento_workflow.md`
-6. 需要具体命令时，再去对应的 `commands/` 文件
+6. 如果任务进入多客户端同状态或高级 agent 协调，再读 `practices/13_advanced_agentic_coordination.md`
+7. 需要具体命令时，再去对应的 `commands/` 文件
 
 如果要先看这轮 grounding 的事实底座，先读：
 
 - `reference/2026-04-09_opencode_official_reference.md`
 - `reference/2026-04-09_opencode_command_surface_mapping.md`
+- `reference/2026-04-09_opencode_advanced_agentic_features_reference.md`

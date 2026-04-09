@@ -11,10 +11,12 @@
 - 使用 `AGENTS.md` 作为规则载体，并按当前官方文档整理发现顺序
 - 把权限、沙箱、自动化和信息外化写成 Codex CLI 可执行的工作流
 - 对多智能体部分，纳入当前 Codex 的 subagents 能力，同时保留 `exec` 串联的保守做法
+- 追加第 `13` 章，把 `subagents / worktree 边界 / codex cloud 长程任务` 放到同一层处理
 
 建议阅读顺序：
 
 1. 先读 `practices/01_session_lifecycle.md`
 2. 再读 `practices/03_plan_before_code.md`
 3. 接着看 `practices/08_tool_permission.md`
-4. 需要落地命令时，再去对应的 `commands/` 文件
+4. 如果任务进入并行、隔离或长程执行，再读 `practices/13_advanced_agentic_coordination.md`
+5. 需要落地命令时，再去对应的 `commands/` 文件

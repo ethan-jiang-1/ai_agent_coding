@@ -43,6 +43,34 @@ claude --print \
 claude --print --no-session-persistence "做一次性分析"
 ```
 
+## GitHub Actions 的长程预算面
+
+官方 GitHub Actions 文档当前明确支持通过 `claude_args` 透传 CLI 参数：
+
+```yaml
+- uses: anthropics/claude-code-action@v1
+  with:
+    prompt: "Review this PR for security and test coverage issues"
+    claude_args: "--max-turns 5 --model sonnet"
+```
+
+还要再加两层护栏：
+
+- GitHub workflow 自己的 timeout
+- GitHub concurrency controls
+
+注意：
+
+- 官方 Actions 文档当前明确写了 `--max-turns`
+- 但本机 `claude --help` 2.1.96 没有列出这个参数
+- 所以这里应把它理解为 automation / Actions surface，而不是盲目当成常规本地 help 参数
+
+## 高级并行能力的成本现实
+
+- subagents 会额外吃 context 和 tokens
+- agent teams 的 token 成本显著高于单一 session
+- scheduled automation 会把调用次数变成持续成本，而不是一次性成本
+
 ## 会话内对应 slash commands
 
 - `Type D` `/cost`：看当前对话成本。
@@ -56,3 +84,4 @@ claude --print --no-session-persistence "做一次性分析"
 - 不要把 `--max-budget-usd` 用在交互式会话里。
 - 不要把昂贵执行放在方向确认之前。
 - 不要在 CI 里省略预算护栏。
+- 不要把 agent teams 和 schedule 产生的重复调用成本忘掉。

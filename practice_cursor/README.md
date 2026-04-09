@@ -13,6 +13,7 @@
 - `.cursor/rules/*.mdc`、`AGENTS.md`、Project Memories、`.cursorrules` legacy
 - editor 内 `Commands`、`/` quick commands、`.cursor/commands`、`~/.cursor/commands`
 - checkpoints、Background Agents、model picker、Max Mode、usage-based pricing
+- 追加第 `13` 章，把 `Background Agent orchestration / web-mobile / Slack / API / long horizon` 放到同一层处理
 
 建议阅读顺序：
 
@@ -20,5 +21,6 @@
 2. 再读 `practices/03_plan_before_code.md`
 3. 接着看 `practices/04_rule_hierarchy.md`
 4. 然后看 `practices/08_tool_permission.md`
-5. 如果要补交互式命令层，再看 `practices/12_interactive_command_layer.md`
-6. 需要落地具体操作时，再去对应的 `commands/` 文件
+5. 如果任务进入后台、跨设备或异步编排，再读 `practices/13_advanced_agentic_coordination.md`
+6. 如果要补交互式命令层，再看 `practices/12_interactive_command_layer.md`
+7. 需要落地具体操作时，再去对应的 `commands/` 文件

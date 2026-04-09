@@ -72,9 +72,22 @@ MCP 适合：
 
 Background Agents 的 terminal 自动化程度明显更高，所以权限边界必须和前台 Agent 分开理解。
 
+官方当前还能确认这些额外边界：
+
+- Background Agent 运行在隔离远程 Ubuntu 机器
+- agent 会 auto-run terminal commands
+- 有 internet access
+- 如果启动时关闭 Privacy Mode，中途再打开，当前 run 也不会立刻切回 Privacy Mode
+
+所以这章真正要防的是：
+
+- 前台 Agent 的“人工审批心态”被错误带到后台
+- remote terminal 自动化带来的 prompt injection / exfiltration 风险
+
 ## 这章最容易写错的地方
 
 - 不要把前台 Agent 和 Background Agents 的权限模型写成一样。
 - 不要只靠提示词说“别动文件、别跑命令”。
 - 不要把 `Manual` 写成当前所有 Cursor 文档都稳定列出的模式。
 - 不要默认把所有 MCP 都开着。
+- 不要忘了 Background Agent 的 Privacy Mode 切换不是即时回溯生效。

@@ -26,6 +26,7 @@ OpenCode 当前官方 docs 明确写到：
 - OpenCode 的权限收紧主路径是 config
 - 或者 agent config / agent markdown
 - 而不是会话里临时打一条 built-in slash command
+- 尤其在多 agent 场景下，更不能指望后补一条 slash command 来救场
 
 ## 整体默认 + 工具覆盖
 
@@ -106,6 +107,8 @@ OpenCode 当前官方 docs 明确写到：
 
 - agent permissions 会和全局 config 合并
 - agent rules 优先级更高
+- `permission.task` 还能限制某个 primary agent 通过 Task tool 可调哪些 subagents
+- 但用户仍然可以通过 `@` 直接调用 subagent
 
 ## 只读 reviewer agent 示例
 
@@ -133,3 +136,4 @@ Only analyze code and suggest changes.
 - 不要只靠提示词说“别改代码”。
 - 不要忘了规则顺序会改变结果。
 - 不要忽略 `external_directory`、`.env` 默认保护和 agent 级覆盖。
+- 不要把 subagent 允许范围写在脑子里，不落到 `permission.task` 或 agent config。

@@ -82,6 +82,20 @@ opencode run --attach http://localhost:4096 \
 
 这更像是减少冷启动和工具重建开销，主要优化的是工作流延迟，不是官方意义上的 token 预算护栏。
 
+## 这章和长程能力的边界
+
+OpenCode 当前官方 docs 范围里，没有看到：
+
+- 单次预算硬护栏
+- 官方 scheduler
+- 独立后台 worker 计费面
+
+所以：
+
+- `serve` / `attach` 更像共享 backend 与减少冷启动
+- `stats` 仍然是最主要的成本回看入口
+- 不要把别家工具的长程计费假设搬过来
+
 ## 当前这章最该保守理解的点
 
 在这次官方 docs 范围里，没有看到类似 `--max-budget-usd` 的单次预算上限参数。
@@ -98,3 +112,4 @@ opencode run --attach http://localhost:4096 \
 - 不要把别家工具的预算开关想当然搬过来。
 - 不要在方向不清时直接高成本执行。
 - 不要只靠感觉估成本，不看 `stats`。
+- 不要把 `serve` / `attach` 当成官方预算护栏。

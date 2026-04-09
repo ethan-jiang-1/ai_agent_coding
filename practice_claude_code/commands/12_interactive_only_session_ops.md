@@ -42,6 +42,15 @@
 
 适合查看后台任务状态。它更像会话操作层，不属于外部命令面的常规主路径。
 
+### 为什么 `/loop` 和 `/schedule` 不放这里
+
+它们已经不只是“会话内操作”，而是会引入真正的调度、后台运行和 durable automation。
+
+所以这次把它们放去第 `13` 章：
+
+- `/loop`：session-scoped scheduling
+- `/schedule`：durable scheduling surface
+
 ### `/ultraplan [description]`
 
 适合拉起更重型的交互式规划流。它和 `/plan` 有亲缘关系，但没有稳定的一键 CLI 等价物，所以更适合留在补充章里理解。

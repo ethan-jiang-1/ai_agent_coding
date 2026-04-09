@@ -24,6 +24,7 @@
 - 想切 reasoning blocks 可见性，用 `/thinking`。
 - 想选主题时，先在当前版本用 `/help` 核对命令名，或直接改 `tui.json`。
 - 如果你更习惯键盘流，先记住默认 leader key 是 `ctrl+x`，很多会话控制动作都可以不经过 `/...` 输入。
+- 如果问题已经变成“怎么跨客户端接同一 backend”或“怎么做更长程协调”，不要再停在这章，要转到第 `09` 章或第 `13` 章。
 
 这条习惯的本质是：
 
@@ -43,12 +44,14 @@
 - 不要把“打开细节”“切显示”“查主题”都写成普通任务提示词。
 - 不要把 `/thinking` 误解成切换模型或切换推理强度。
 - 不要把 `tui.json` 的交互层配置和 `opencode.json` 的 runtime/config 层混在一起。
+- 不要把 `serve` / `attach` 这类 backend 协调问题误归到 interactive-only 小操作。
 
 ## 验收标准
 
 - 你能分清什么时候该发提示词，什么时候该用 slash command。
 - 旁路问题不会明显污染主任务上下文。
 - 你知道 OpenCode 有一层真正的 interactive-only session ops。
+- 你知道这层主要处理 TUI 控制，不处理后台编排。
 
 ## 对应支撑
 

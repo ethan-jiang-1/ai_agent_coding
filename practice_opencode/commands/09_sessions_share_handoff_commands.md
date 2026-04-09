@@ -23,6 +23,29 @@ opencode import https://opncd.ai/s/abc123
 - 给自己留档
 - 从分享链接重新导入会话
 
+## server / web / attach：同一状态，不同客户端
+
+```bash
+opencode serve
+opencode web --port 4096
+opencode attach http://localhost:4096
+opencode run --attach http://localhost:4096 "继续已有 backend 的工作"
+```
+
+官方 docs 当前明确写到：
+
+- 运行 `opencode` 时本身就会启动 TUI 和 server
+- `serve` 可启动 standalone server
+- `web` 可提供浏览器界面
+- `attach` 和 `run --attach` 可接入已有 backend
+- web 与 terminal 可共享同一套 sessions 和 state
+
+这组能力更适合：
+
+- 同一状态跨客户端继续
+- 降低重复冷启动
+- 在 terminal 与 web 之间来回切换
+
 ## TUI 里的相关 slash commands
 
 - `/sessions`：切换历史会话
@@ -36,6 +59,7 @@ opencode import https://opncd.ai/s/abc123
 - `opencode export` 是 JSON 导出
 - `/share` 是当前 TUI 会话的分享动作
 - `opencode run --share` 是 run 场景的分享入口
+- `serve` / `web` / `attach` 是共享同一 backend 状态
 
 更实用的分工是：
 
@@ -93,3 +117,4 @@ opencode import https://opncd.ai/s/abc123
 - 不要把 session ID 当成跨人 handoff 方案。
 - 不要把公开 share 当成内部安全协作。
 - 不要让“下一步做什么”只留在会话历史里。
+- 不要把 `serve` / `web` / `attach` 写成 scheduler 或后台 worker。

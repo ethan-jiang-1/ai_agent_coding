@@ -4,10 +4,11 @@
 
 ## 这章收什么
 
-- `/bug`
-- `/doctor`
-- `/help`
-- `/terminal-setup`
+- `/apps`
+- `/copy`
+- `/feedback`
+- `/sandbox-add-read-dir`
+- `/statusline`
 
 以及其他明显属于会话内增强、而不是 shell 外命令替代的能力。
 
@@ -24,29 +25,35 @@
 
 ## 当前收录
 
-### `/help`
+### `/apps`
 
-- 用途：查看当前可用 slash commands 和交互命令帮助
+- 用途：会话内访问 app 相关能力
 - 映射类型：No direct external mapping
 
-### `/bug`
+### `/copy`
 
-- 用途：反馈问题或进入 bug-reporting 工作流
+- 用途：快速复制会话产物
 - 映射类型：No direct external mapping
 
-### `/doctor`
+### `/feedback`
 
-- 用途：做交互态环境诊断或故障排查入口
+- 用途：提交反馈
 - 映射类型：No direct external mapping
 
-### `/terminal-setup`
+### `/sandbox-add-read-dir`
 
-- 用途：帮助用户完成交互终端相关的配置或初始化
+- 用途：在当前会话里补充只读目录访问
 - 映射类型：No direct external mapping
 
-## 为什么 `/mentions` 暂时不放这里
+### `/statusline`
 
-`/mentions` 虽然也偏交互态，但它和“引用输入、在会话里高效指向文件或实体”关系很强，所以目前先放在 `05_io_and_handoff_commands.md` 更合适。
+- 用途：控制或查看会话状态条相关信息
+- 映射类型：No direct external mapping
+
+## 为什么 `/mention` 和 `/ps` 不放这里
+
+- `/mention` 更接近输入引用层，所以放在 `05_io_and_handoff_commands.md`
+- `/ps` 更接近长程运行观察层，所以放在 `13_advanced_agentic_coordination_commands.md`
 
 ## 使用建议
 

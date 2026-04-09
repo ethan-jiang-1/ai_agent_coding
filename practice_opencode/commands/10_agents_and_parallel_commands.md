@@ -59,6 +59,19 @@ opencode agent create
 - custom `/review-*`、`/plan-*` commands
 - 用 `tab` 在 primary agents 之间切换
 
+## 当前没有第一方 worktree 或 detached worker 叙事
+
+这次 reviewed docs 范围里，没有看到：
+
+- 类似 `--worktree` 的本地隔离工作区
+- 类似 Background Agent 的独立 branch worker
+- 类似 agent teams 的多 session 编排
+
+所以 OpenCode 在这章里更稳的重点是：
+
+- subtask / subagent 的上下文隔离
+- 而不是 filesystem 隔离或后台 worker 隔离
+
 ## 用 custom command 固定一个 agent 工作流
 
 例如 `.opencode/commands/review-diff.md`：
@@ -115,3 +128,4 @@ Recent git status:
 - 不要让多个 agent 同时改同一块代码。
 - 不要在没有职责边界时就拆多 agent。
 - 不要忘了 `explore` 更适合轻量只读探索，`general` 更适合重研究子任务。
+- 不要把 absence of worktree / background worker 硬补成存在的能力。

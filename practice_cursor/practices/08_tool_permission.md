@@ -12,6 +12,7 @@ Cursor 的权限控制不是一组 CLI 沙箱参数，而是通过 `Ask`、`Agen
 - 后台长跑任务才用 `Background Agents`，并先收紧边界。
 - MCP 只接你当前任务真需要的服务器。
 - 如果团队里 review、安全审计、测试修复这类动作真的重复很多次，再考虑用 `.cursor/commands` 做固定入口。
+- 记住前台 Agent 和 Background Agent 的权限现实不同：前台更像受控执行，后台更像远程自动执行。
 
 最实用的理解：
 
@@ -30,6 +31,7 @@ Cursor 的权限控制不是一组 CLI 沙箱参数，而是通过 `Ask`、`Agen
 - 当前 mode 和任务阶段匹配。
 - 工具集没有超过实际需要。
 - 背景 agent 的权限、仓库和目标边界是清楚的。
+- 你知道 Privacy Mode / 网络 / 自动跑命令这些边界对后台 agent 的影响。
 
 ## 对应支撑
 

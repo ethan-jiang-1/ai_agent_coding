@@ -38,6 +38,21 @@ Cursor 官方支持把聊天导出为 markdown。
 
 如果你准备跨天、跨人或跨阶段继续，这通常比“只相信旧 tab 还在”稳得多。
 
+## 背景 agent 的 handoff 不是旧 tab 逻辑
+
+官方 Background Agents 相关页面当前明确写了几种 handoff 入口：
+
+- Background Agent 把改动 push 到 repo，方便交接
+- Web / Mobile 端完成后可以 `Open in Cursor`
+- 可以分享运行链接给团队协作
+- Slack 会发 completion notifications 和 PR links
+
+这说明 Background Agent 的交接层，不只是“回到旧 tab”，而是：
+
+- branch / PR
+- Open in Cursor
+- 外部通知与链接
+
 ## 本地历史存储
 
 官方文档提到 chat 历史保存在本地 SQLite 数据库。
@@ -57,3 +72,4 @@ Cursor 官方支持把聊天导出为 markdown。
 - 不要把旧 tab 当成跨人交接方案。
 - 不要因为可以 export markdown，就不再把关键状态整理成 handoff 文件。
 - 不要让下一步只依赖“Cursor 自己会记得”。
+- 不要把 Background Agent 的 PR / branch handoff 写成普通 chat history 的延续。

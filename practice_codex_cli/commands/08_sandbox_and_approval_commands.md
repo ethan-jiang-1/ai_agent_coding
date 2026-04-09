@@ -23,16 +23,14 @@ codex --search "查一下这个依赖的最新文档"
 ## 交互式对应
 
 ```text
-/approval-mode
-/approvals
+/permissions
 /status
 ```
 
 映射关系：
 
-- `/approval-mode` ↔ Exact / Combined mapping
-  与 `-a` / `--ask-for-approval` 最接近
-- `/approvals` ↔ `/approval-mode` 的隐藏别名
+- `/permissions` ↔ Combined mapping
+  与 `-s` / `--sandbox` 和 `-a` / `--ask-for-approval` 最接近
 - `/status` ↔ Combined mapping
   用来查看当前模型、沙箱、审批等会话状态
 
@@ -54,6 +52,15 @@ codex exec --full-auto "低摩擦自动执行"
 
 当前官方 CLI 文档还说明：`codex exec` 默认就在 `read-only` sandbox 里运行。真正要改文件时，最好显式写出 `-s workspace-write`，不要依赖默认行为。
 
+## 多代理时的权限现实
+
+当前官方 subagents 文档还说明：
+
+- child agent 默认继承 parent agent 的 approval policy
+- child agent 默认继承 parent agent 的 sandbox
+
+所以多代理不会自动帮你“绕开权限问题”。权限边界还是要先在父会话定清楚。
+
 ## 权限使用建议
 
 - 规划、审计、定位问题：`read-only`
@@ -66,4 +73,4 @@ codex exec --full-auto "低摩擦自动执行"
 - 不要把交互式的 `-a` 用法直接写到 `codex exec` 上。
 - 不要默认用危险绕过模式。
 - 不要把“工作区可写”当成“没有风险”。
-- 不要忘了 `/approvals` 只是 `/approval-mode` 的隐藏别名。
+- 不要把子代理误当成权限隔离工具。

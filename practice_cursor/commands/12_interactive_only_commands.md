@@ -83,6 +83,17 @@
 - 在 chat 里输入 `/`
 - 看当前可用 quick commands 和 custom commands
 
+这一层和 Background Agents 的跨入口编排不是一回事。
+
+如果你已经进入：
+
+- web / mobile handoff
+- Slack follow-up
+- GitHub / Linear 触发
+- API 级批量编排
+
+那已经属于第 `13` 章的高级 agentic 协调，不属于这一章的 custom command 复用层。
+
 所以这章的本质不是“多记命令名称”，而是知道：
 
 - 哪些东西该进规则层
